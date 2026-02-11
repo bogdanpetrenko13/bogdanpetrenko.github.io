@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
-    <title>Практическое руководство · Участковый терапевт · СПб 2026</title>
+    <title>Практическое руководство участкового терапевта · СПб 2026 · ПОЛНАЯ ВЕРСИЯ</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #f6f9fc;
@@ -21,17 +17,15 @@
             padding: 0 1rem;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 2rem auto;
             background: white;
             border-radius: 32px;
             box-shadow: 0 20px 40px -12px rgba(0,20,40,0.12);
             padding: 2.5rem;
         }
-        @media (max-width: 768px) {
-            .container { padding: 1.5rem; }
-        }
-        /* Типографика */
+        @media (max-width: 768px) { .container { padding: 1.5rem; } }
+
         h1, h2, h3, h4, h5 {
             font-weight: 600;
             letter-spacing: -0.01em;
@@ -40,7 +34,7 @@
             color: #0b2b42;
         }
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-top: 0.2em;
             margin-bottom: 0.2em;
@@ -49,45 +43,33 @@
             padding-left: 1.2rem;
         }
         h2 {
-            font-size: 1.9rem;
+            font-size: 2rem;
             border-bottom: 3px solid #dbeafe;
             padding-bottom: 0.3rem;
             display: flex;
             align-items: center;
             gap: 0.6rem;
         }
-        h2 i {
-            color: #0284c7;
-            font-size: 1.8rem;
-        }
-        h3 {
-            font-size: 1.5rem;
-            margin-top: 1.5em;
-            color: #0369a1;
-        }
-        h4 {
-            font-size: 1.25rem;
-            color: #075985;
-            font-weight: 600;
-        }
+        h2 i { color: #0284c7; font-size: 1.8rem; }
+        h3 { font-size: 1.5rem; color: #0369a1; margin-top: 1.5em; }
+        h4 { font-size: 1.25rem; color: #075985; }
         .lead {
             font-size: 1.2rem;
             font-weight: 400;
-            color: #2c4c6b;
+            color: #1e3a5f;
             background: #f0f9ff;
             padding: 1.2rem 1.8rem;
             border-radius: 20px;
             border-left: 6px solid #0284c7;
             margin-bottom: 1.8rem;
         }
-        /* Навигация / оглавление */
         .toc {
             background: #f0f5fa;
             padding: 1.8rem 2rem;
             border-radius: 24px;
             margin: 2.2rem 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1rem;
         }
         .toc h3 {
@@ -115,7 +97,6 @@
             border-color: #0284c7;
             box-shadow: 0 6px 12px rgba(2,132,199,0.2);
         }
-        /* Блоки важной информации */
         .alert {
             background: #fffbeb;
             border-left: 8px solid #f59e0b;
@@ -124,21 +105,10 @@
             margin: 1.6rem 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .alert i {
-            color: #d97706;
-            margin-right: 0.5rem;
-        }
-        .critical {
-            background: #fef2f2;
-            border-left: 8px solid #b91c1c;
-        }
-        .critical i {
-            color: #b91c1c;
-        }
-        .success {
-            background: #f0fdf4;
-            border-left: 8px solid #15803d;
-        }
+        .alert i { color: #d97706; margin-right: 0.5rem; }
+        .critical { background: #fef2f2; border-left: 8px solid #b91c1c; }
+        .critical i { color: #b91c1c; }
+        .success { background: #f0fdf4; border-left: 8px solid #15803d; }
         .table-wrap {
             overflow-x: auto;
             margin: 1.8rem 0;
@@ -163,32 +133,20 @@
             border-bottom: 1px solid #edf2f7;
             vertical-align: top;
         }
-        tr:last-child td {
-            border-bottom: none;
-        }
         .badge {
             display: inline-block;
             background: #e0f2fe;
             color: #0369a1;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             padding: 0.2rem 0.8rem;
             border-radius: 30px;
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
-        .badge-red {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        .badge-green {
-            background: #dcfce7;
-            color: #166534;
-        }
-        .badge-blue {
-            background: #dbeafe;
-            color: #1e40af;
-        }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        .badge-green { background: #dcfce7; color: #166534; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
         .list-checks {
             list-style: none;
             padding: 0;
@@ -199,9 +157,7 @@
             align-items: baseline;
             gap: 0.5rem;
         }
-        .list-checks i {
-            color: #0284c7;
-        }
+        .list-checks i { color: #0284c7; }
         .footer {
             margin-top: 4rem;
             padding-top: 2rem;
@@ -222,9 +178,7 @@
             display: inline-block;
             margin-left: 0.6rem;
         }
-        .anchor {
-            scroll-margin-top: 1.5rem;
-        }
+        .anchor { scroll-margin-top: 1.5rem; }
         hr {
             border: none;
             height: 2px;
@@ -234,10 +188,10 @@
         .card {
             background: white;
             border-radius: 24px;
-            padding: 1.5rem;
+            padding: 1.8rem;
             box-shadow: 0 6px 18px rgba(0,70,100,0.06);
             border: 1px solid #e9edf2;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
         }
         .card-title {
             display: flex;
@@ -248,23 +202,49 @@
             color: #014d7a;
             margin-bottom: 1rem;
         }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .index-list {
+            columns: 2 280px;
+            column-gap: 2rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 20px;
+        }
+        .index-list li {
+            margin-bottom: 0.4rem;
+            list-style: none;
+        }
+        .index-list i {
+            color: #0284c7;
+            width: 1.4rem;
+        }
+        .small-note {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-top: 0.3rem;
+        }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- ШАПКА -->
+    <!-- ЗАГОЛОВОК -->
     <h1>Практическое руководство участкового терапевта</h1>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-        <span style="background: #1e3a5f; color: white; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 500; font-size: 0.9rem;"><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i>Санкт‑Петербург, 2026</span>
-        <span style="background: #e7f1ff; color: #004b7c; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 500; font-size: 0.9rem;"><i class="fas fa-file-contract"></i> Актуально на 11.02.2026</span>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+        <span style="background: #1e3a5f; color: white; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600; font-size: 0.95rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Санкт‑Петербург, 2026</span>
+        <span style="background: #e7f1ff; color: #004b7c; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600; font-size: 0.95rem;"><i class="fas fa-file-contract"></i> Актуально на 11.02.2026</span>
     </div>
     <div class="lead">
         <i class="fas fa-stethoscope" style="margin-right: 0.8rem;"></i> Полное собрание действующих приказов: <strong>202н</strong> (2025), <strong>923н</strong> (2012), <strong>1089н</strong> (2021/25), <strong>1094н</strong> (2021/25).<br>
-        ❗ Приказ № 543н <span style="background:#b91c1c; color:white; padding:0.1rem 0.8rem; border-radius:20px;">УТРАТИЛ СИЛУ</span> с 01.09.2025. Заменён на <strong>Приказ № 202н</strong>.
+        <span style="background:#b91c1c; color:white; padding:0.15rem 0.9rem; border-radius:20px; display:inline-block; margin-top:6px;">❗ Приказ № 543н УТРАТИЛ СИЛУ с 01.09.2025</span> 
+        <strong>→ заменён на Приказ № 202н</strong>.
     </div>
 
-    <!-- ОГЛАВЛЕНИЕ (TOC) -->
+    <!-- ОГЛАВЛЕНИЕ -->
     <div class="toc">
         <h3><i class="fas fa-list-ul" style="margin-right: 0.8rem;"></i> Содержание</h3>
         <a href="#tom1"><i class="fas fa-folder-open"></i> Том 1 — 202н (организация)</a>
@@ -272,10 +252,10 @@
         <a href="#tom3"><i class="fas fa-folder-open"></i> Том 3 — 1089н (ЭЛН)</a>
         <a href="#tom4"><i class="fas fa-folder-open"></i> Том 4 — 1094н (рецепты)</a>
         <a href="#tom5"><i class="fas fa-folder-open"></i> Том 5 — Регион СПб</a>
-        <a href="#checklists"><i class="fas fa-check-square"></i> Чек‑листы</a>
-        <a href="#codes"><i class="fas fa-barcode"></i> Коды ЭЛН</a>
-        <a href="#apps"><i class="fas fa-paperclip"></i> Приложения</a>
+        <a href="#app1"><i class="fas fa-paperclip"></i> Приложения 1–11</a>
+        <a href="#index"><i class="fas fa-sort-alpha-down"></i> Алфавитный указатель</a>
         <a href="#contacts"><i class="fas fa-phone-alt"></i> Контакты</a>
+        <a href="#checklists"><i class="fas fa-check-square"></i> Чек‑листы (полные)</a>
     </div>
 
     <!-- =============== ТОМ 1: ПРИКАЗ 202н =============== -->
@@ -283,27 +263,64 @@
         <h2><i class="fas fa-hospital-user"></i> Том 1. Организация работы (Приказ № 202н)</h2>
         <div class="card">
             <div class="card-title"><span class="badge" style="background: #014d7a; color: white;">ДЕЙСТВУЕТ с 01.09.2025</span> Положение об организации первичной помощи взрослым</div>
-            <h3>1.1 Ваше место в структуре</h3>
-            <table>
-                <tr><th>Уровень</th><th>Кто оказывает</th><th>Ваша роль</th></tr>
-                <tr><td>Доврачебная</td><td>фельдшеры, медсёстры</td><td>руководство средним персоналом</td></tr>
-                <tr><td><strong>ВРАЧЕБНАЯ</strong></td><td><strong>ВЫ — терапевт участковый</strong></td><td><strong>основной объём помощи</strong></td></tr>
-                <tr><td>Специализированная</td><td>узкие специалисты</td><td>координация, направление</td></tr>
-            </table>
-            <h3>1.2 Территориально‑участковый принцип</h3>
-            <p><strong>Норматив численности (ориентир):</strong> городской терапевтический участок ≈ <strong>1700 человек</strong>. При превышении 2000 — вы вправе подать рапорт заведующему о пересмотре границ.</p>
-            <div class="alert critical">
-                <i class="fas fa-exclamation-triangle"></i> <strong>Экстренная vs Неотложная:</strong> угроза жизни — только СКОРАЯ (103/112). Ваша зона — неотложная помощь (срок — 2 часа). Не пытайтесь лечить инфаркт или инсульт самостоятельно!
+            
+            <h3>1.1 Ваше место в структуре (п. 8)</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Уровень</th><th>Кто оказывает</th><th>Ваша роль</th></tr>
+                    <tr><td>Доврачебная</td><td>Фельдшеры, акушерки, медсёстры (в т.ч. бакалавры)</td><td><strong>Руководство</strong> средним персоналом на участке</td></tr>
+                    <tr><td><span style="background: #0284c7; color: white; padding: 0.1rem 0.6rem; border-radius: 20px;">ВРАЧЕБНАЯ</span></td><td><strong>ВЫ — врач-терапевт участковый</strong></td><td><strong>ОСНОВНОЙ ОБЪЁМ ПОМОЩИ</strong></td></tr>
+                    <tr><td>Специализированная</td><td>Узкие специалисты</td><td><strong>Координация</strong> и направление</td></tr>
+                </table>
             </div>
-            <h3>1.3 Формы оказания помощи</h3>
+            <p class="small-note"><i class="fas fa-quote-right"></i> «Первичная врачебная медико-санитарная помощь оказывается <strong>врачами-терапевтами участковыми</strong> ... врачебных амбулаторий, поликлиник, поликлинических подразделений».</p>
+
+            <h3>1.2 Территориально‑участковый принцип (п. 12-14)</h3>
+            <p><strong>Как формируется участок:</strong> по месту жительства (регистрация/фактическое проживание) либо по месту работы/учёбы.</p>
+            <p><strong>Нормативная численность (ориентир, т.к. приложения № 1-23 не опубликованы, но преемственность с 543н):</strong></p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Тип участка</th><th>Норматив (взрослые)</th></tr>
+                    <tr><td><strong>Терапевтический участок (город)</strong></td><td><strong>1700 человек</strong></td></tr>
+                    <tr><td>Терапевтический участок (село)</td><td>1300 человек</td></tr>
+                    <tr><td>Участок врача общей практики</td><td>1200 человек</td></tr>
+                    <tr><td>Комплексный участок</td><td>2000+ человек</td></tr>
+                </table>
+            </div>
+            <div class="alert">
+                <i class="fas fa-gavel"></i> <strong>ВАШЕ ПРАВО:</strong> Если к Вам прикреплено <strong>свыше 2000 человек</strong> — Вы имеете право подать рапорт заведующему отделением о пересмотре границ участка или введении дополнительной ставки. Это не жалоба, а реализация нормативного требования.
+            </div>
+            <p><strong>Пациенты вне зоны обслуживания:</strong> граждане имеют право прикрепиться к Вам, даже если проживают вне территории обслуживания поликлиники (право выбора врача). Отказать можно только при превышении допустимой численности.</p>
+
+            <h3>1.3 Формы и условия оказания помощи (п. 4-6)</h3>
+            <p><strong>Где Вы работаете (п. 4):</strong></p>
             <ul class="list-checks">
-                <li><i class="fas fa-check-circle"></i> Амбулаторно (кабинет).</li>
-                <li><i class="fas fa-check-circle"></i> На дому (вызовы, активные посещения, патронаж).</li>
-                <li><i class="fas fa-check-circle"></i> Мобильные бригады (выезды, профилактика).</li>
-                <li><i class="fas fa-check-circle"></i> Дневной стационар / стационар на дому.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Амбулаторно</strong> (кабинет в поликлинике).</li>
+                <li><i class="fas fa-check-circle"></i> <strong>По месту жительства пациента</strong> (вызовы на дом): острые заболевания, обострения хронических, <strong>активные посещения</strong>, патронаж инфекционных, подворные (поквартирные) обходы.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>В составе мобильной медицинской бригады:</strong> выезды в отдалённые населённые пункты, профилактические мероприятия на предприятиях, в учебных заведениях, на массовых и спортивных мероприятиях.</li>
+                <li><i class="fas fa-check-circle"></i> <strong>В условиях дневного стационара</strong>, включая <strong>стационар на дому</strong>.</li>
             </ul>
-            <h3>1.4 Диспансеризация (обязанность!)</h3>
-            <p>18–39 лет — 1 раз в 3 года, 40+ — ежегодно. Фиксировать в ЕМИС, иначе план не засчитан.</p>
+
+            <div class="critical">
+                <i class="fas fa-exclamation-triangle"></i> <strong>КРИТИЧЕСКОЕ РАЗЛИЧИЕ: ЭКСТРЕННАЯ vs НЕОТЛОЖНАЯ ПОМОЩЬ</strong>
+                <div style="margin-top:0.8rem;">
+                    <table style="background: transparent; border: none;">
+                        <tr><td><strong>ЭКСТРЕННАЯ</strong></td><td>Угроза жизни (ОКС, ОНМК, анафилаксия, кровотечение).</td><td><span style="background: #b91c1c; color: white; padding: 0.2rem 0.8rem; border-radius: 20px;">СКОРАЯ (103/112)</span></td></tr>
+                        <tr><td><strong>НЕОТЛОЖНАЯ</strong></td><td>Нет угрозы жизни (гипертонический криз без осложнений, t 38,5°, цистит, радикулит).</td><td><span style="background: #0284c7; color: white; padding: 0.2rem 0.8rem; border-radius: 20px;">ВАША ЗОНА (2 часа)</span></td></tr>
+                    </table>
+                </div>
+                <p style="margin-top:0.8rem;"><strong>❗ Никогда не пытайтесь лечить экстренного пациента самостоятельно («довезу на машине», «выпишу таблетки и отправлю домой»).</strong> Это прямое нарушение, ведущее к уголовной ответственности при неблагоприятном исходе.</p>
+                <p><i class="fas fa-shield-alt"></i> <strong>Ваша защита:</strong> При подозрении на ОКС/ОНМК — оформить вызов скорой через ЕМИС или по телефону, зафиксировать время в карте, передать пациента бригаде с устным и письменным сопровождением (ЭКГ, если успели снять).</p>
+            </div>
+
+            <h3>1.4 Диспансеризация и профилактические осмотры (Приложение 3 к Приказу № 202н)</h3>
+            <p><strong>Периодичность:</strong></p>
+            <ul>
+                <li>18–39 лет — <strong>1 раз в 3 года</strong> (диспансеризация), профилактический осмотр — ежегодно.</li>
+                <li>40 лет и старше — <strong>ежегодно</strong> (диспансеризация).</li>
+            </ul>
+            <p><strong>Ваши действия:</strong> провести осмотр, заполнить <strong>Карту учёта диспансеризации</strong> (форма 131/у-24) в ЕМИС или на бумаге, выдать <strong>Паспорт здоровья</strong>. Без отметки в ЕМИС план не считается выполненным.</p>
+            <div class="alert">‼ Это Ваша прямая обязанность, за невыполнение штрафуют поликлинику, а следовательно — заведующий спрашивает с Вас.</div>
         </div>
     </section>
 
@@ -311,237 +328,487 @@
     <section id="tom2" class="anchor">
         <h2><i class="fas fa-notes-medical"></i> Том 2. Порядок по терапии (Приказ № 923н)</h2>
         <div class="card">
-            <h3>2.1 Маршрутизация и консультации</h3>
+            <h3>2.1 Ваши полномочия и границы ответственности (п. 7-10)</h3>
+            <p><strong>Вы — центр взаимодействия.</strong> Медицинская помощь оказывается <strong>на основе взаимодействия</strong> врачей-терапевтов участковых, врачей общей практики и <strong>врачей-специалистов</strong>.</p>
+            <p><strong>Вы не обязаны знать всё. Вы обязаны вовремя направить.</strong></p>
+            
+            <h4>Алгоритм при затруднениях:</h4>
             <ul>
-                <li><i class="fas fa-arrow-right"></i> Сложный диагноз/нет эффекта → направление к профильному специалисту.</li>
-                <li><i class="fas fa-arrow-right"></i> После консультации пациент остаётся под вашим наблюдением.</li>
-                <li><i class="fas fa-arrow-right"></i> Нет возможности обследования в поликлинике → плановая госпитализация.</li>
+                <li><strong>СИТУАЦИЯ 1 (сложность в диагностике/лечении):</strong> направьте пациента на консультацию к <strong>профильному специалисту</strong>. После получения рекомендаций <strong>Вы продолжаете наблюдение и лечение</strong> в соответствии с ними. Специалист не «забирает» пациента, он даёт консультацию.</li>
+                <li><strong>СИТУАЦИЯ 2 (нет эффекта от амбулаторного лечения):</strong> по согласованию с профильным специалистом — плановая госпитализация.</li>
+                <li><strong>СИТУАЦИЯ 3 (нужна помощь, которую не может оказать Ваше ЛПУ):</strong> направление в медорганизацию, имеющую специализированные отделения (плановая госпитализация).</li>
+                <li><strong>СИТУАЦИЯ 4 (острое состояние на участке):</strong> экстренная — скорая, неотложная — Вы сами.</li>
             </ul>
-            <h3>2.2 Оснащение кабинета (минимум)</h3>
+
+            <h3>2.2 Оснащение Вашего кабинета (Приложение 3 к Приказу № 923н)</h3>
+            <p><strong>Минимальный стандарт оснащения:</strong> (при отсутствии — пишите служебную записку заведующему)</p>
             <div class="table-wrap">
                 <table>
-                    <tr><th>Оборудование</th><th>Примечание</th></tr>
-                    <tr><td>Тонометр, стетофонендоскоп</td><td>обязательно</td></tr>
-                    <tr><td>Ростомер, весы, лента</td><td>обязательно</td></tr>
-                    <tr><td>Глюкометр + полоски</td><td>обязательно</td></tr>
-                    <tr><td>Пульсоксиметр, пикфлоуметр</td><td>обязательно</td></tr>
-                    <tr><td>Холодильник для лекарств</td><td>при льготном обеспечении</td></tr>
-                    <tr><td>Набор неотложной помощи</td><td>локальный состав, НО ДОЛЖЕН БЫТЬ</td></tr>
+                    <tr><th>Оборудование</th><th>Назначение</th></tr>
+                    <tr><td>Тонометр для измерения АД</td><td>обязательно</td></tr>
+                    <tr><td>Стетофонендоскоп</td><td>обязательно</td></tr>
+                    <tr><td>Ростомер, весы, измерительная лента</td><td>обязательно</td></tr>
+                    <tr><td>Глюкометр + тест-полоски</td><td>обязательно</td></tr>
+                    <tr><td>Пульсоксиметр</td><td>обязательно</td></tr>
+                    <tr><td>Пикфлоуметр</td><td>обязательно</td></tr>
+                    <tr><td>Холодильник для лекарственных препаратов</td><td>при льготном обеспечении</td></tr>
+                    <tr><td>Укладка для забора биологического материала</td><td>моча, кал, мокрота</td></tr>
+                    <tr><td>Шпатели</td><td>обязательно</td></tr>
+                    <tr><td>Набор для оказания неотложной помощи</td><td>состав — локальный, но <strong>ДОЛЖЕН БЫТЬ</strong></td></tr>
                 </table>
             </div>
             <div class="alert success">
-                <i class="fas fa-balance-scale"></i> <strong>Иерархия нормативов:</strong> 1) Клинические рекомендации (приоритет!) → 2) Порядки (923н) → 3) Стандарты.
+                <i class="fas fa-balance-scale"></i> <strong>Иерархия нормативных документов для назначения лечения (п. 1):</strong><br>
+                1️⃣ <strong>Клинические рекомендации</strong> Минздрава РФ — НАИБОЛЕЕ ПРИОРИТЕТНЫ (с 2022 года)!<br>
+                2️⃣ Порядки оказания медицинской помощи (в т.ч. Приказ № 923н).<br>
+                3️⃣ Стандарты медицинской помощи.
             </div>
+            <p><strong>Для начинающего врача:</strong> Назначая лечение пациенту с гипертонической болезнью, Вы должны <strong>свериться с актуальными клиническими рекомендациями</strong>. Ссылка «нас так учили» или «я всегда так назначаю» — не защита. Клинические рекомендации — закон.</p>
         </div>
     </section>
 
     <!-- =============== ТОМ 3: ПРИКАЗ 1089н (ЭЛН) =============== -->
     <section id="tom3" class="anchor">
-        <h2><i class="fas fa-file-invoice"></i> Том 3. Электронный больничный (Приказ № 1089н)</h2>
+        <h2><i class="fas fa-file-invoice"></i> Том 3. Электронный листок нетрудоспособности (Приказ № 1089н)</h2>
         <div class="card">
-            <div class="badge-blue" style="margin-bottom:0.8rem; padding:0.3rem 1rem;">С 01.01.2022 — ЭЛН ОСНОВНАЯ ФОРМА</div>
-            <h3>3.1 Сроки ваших полномочий</h3>
-            <ul>
-                <li><strong>Единолично до 15 календарных дней</strong> (включительно).</li>
-                <li>Свыше 15 дней — только врачебная комиссия (ВК).</li>
-                <li>Фельдшер/стоматолог — до 10 дней.</li>
-            </ul>
-            <h3>3.2 Обязательные реквизиты</h3>
-            <p>Паспорт + <strong>СНИЛС</strong> (без СНИЛС ЭЛН не открыть!).</p>
+            <div class="badge-blue" style="padding:0.3rem 1rem; margin-bottom:1rem;">С 01.01.2022 — ЭЛН – ЕДИНСТВЕННАЯ ОСНОВНАЯ ФОРМА</div>
+            <p><strong>Для формирования ЭЛН пациент обязан предъявить:</strong> паспорт (или иной документ, удостоверяющий личность) и <strong>СНИЛС</strong> (обязательный реквизит, без него ЭЛН не сформировать).</p>
+
+            <h3>3.1 Ваши полномочия по срокам</h3>
             <div class="table-wrap">
                 <table>
-                    <caption style="caption-side:bottom; margin-top:0.5rem;">Частые коды причин</caption>
-                    <tr><th>Код</th><th>Причина</th></tr>
-                    <tr><td>01</td><td>Заболевание, травма, отравление</td></tr>
-                    <tr><td>02</td><td>Травма на производстве</td></tr>
-                    <tr><td>03</td><td>Карантин</td></tr>
-                    <tr><td>09</td><td>Уход за больным членом семьи</td></tr>
-                    <tr><td>12–15</td><td>Уход за детьми (особые категории)</td></tr>
+                    <tr><th>Медицинский работник</th><th>Максимальный срок единолично</th></tr>
+                    <tr><td><strong>Лечащий врач (Вы)</strong></td><td><strong>15 календарных дней</strong></td></tr>
+                    <tr><td>Фельдшер (при возложении обязанностей)</td><td>10 календарных дней</td></tr>
+                    <tr><td>Зубной врач (при отсутствии стоматолога)</td><td>10 календарных дней</td></tr>
                 </table>
             </div>
-            <h3>3.3 Когда ЭЛН НЕ выдаётся</h3>
-            <ul>
-                <li><i class="fas fa-times-circle" style="color:#b91c1c;"></i> Скорая помощь (только справка).</li>
-                <li><i class="fas fa-times-circle" style="color:#b91c1c;"></i> Нет признаков нетрудоспособности.</li>
-                <li><i class="fas fa-times-circle" style="color:#b91c1c;"></i> Диспансеризация, профосмотр.</li>
-                <li><i class="fas fa-times-circle" style="color:#b91c1c;"></i> Уход за взрослым старше 15 лет в стационаре.</li>
-                <li><i class="fas fa-times-circle" style="color:#b91c1c;"></i> Хроническое заболевание вне обострения.</li>
-            </ul>
-            <h3>3.4 Бумажный листок — только исключения!</h3>
-            <ul>
-                <li>✔ Технический сбой систем (с последующим ЭЛН).</li>
-                <li>✔ Гостайна, госзащита.</li>
-                <li>✔ Иностранец с ВНЖ (нет данных в СФР).</li>
-                <li>✔ Беременность и роды (отдельные категории).</li>
-            </ul>
-            <div class="alert critical">
-                <i class="fas fa-user-shield"></i> <strong>Нарушения режима (коды 23–28):</strong> неявка, самовольный уход, отказ от МСЭ и др. — фиксировать в ЭЛН обязательно! Это снижает размер пособия.
+            <div class="critical">
+                <i class="fas fa-clock"></i> <strong>КРИТИЧЕСКИ ВАЖНО:</strong>
+                <ul style="margin-top:0.5rem;">
+                    <li>Продление <strong>свыше 15 дней</strong> — только по решению <strong>врачебной комиссии (ВК)</strong>.</li>
+                    <li>«Задним числом» больничные не оформляются. Исключение — только по решению ВК.</li>
+                    <li><strong>Новое заболевание</strong>, не связанное с предыдущим, — оформляется <strong>НОВЫЙ ЭЛН</strong>. Продлевать старый нельзя.</li>
+                </ul>
             </div>
-            <h3>3.5 Уход за ребёнком (особенности 2025)</h3>
-            <p>Больничный по уходу выдается родственнику, фактически осуществляющему уход. Если мать в отпуске по уходу до 3 лет — больничный оформляется на другого работающего члена семьи (при условии прерывания отпуска матерью).</p>
+
+            <h3>3.2 Пошаговый алгоритм оформления ЭЛН</h3>
+            <ol style="margin-left:1.5rem;">
+                <li><strong>Идентификация:</strong> паспорт, СНИЛС, ввод в ЕМИС.</li>
+                <li><strong>Выбор кода причины нетрудоспособности</strong> (см. Приложение 6).</li>
+                <li><strong>Заполнение ЭЛН в системе:</strong> дата открытия = сегодня, срок не более 15 дней, первичный или продолжение.</li>
+                <li><strong>Подписание УКЭП</strong> (Вашей усиленной квалифицированной электронной подписью).</li>
+                <li><strong>Информирование пациента:</strong> выдать <strong>талон с номером ЭЛН</strong>. Объяснить, что сообщить этот номер работодателю — его обязанность. Приносить бумажную распечатку в бухгалтерию <strong>не нужно</strong>. Работодатель и СФР увидят ЭЛН автоматически.</li>
+            </ol>
+
+            <h3>3.3 Особые случаи: уход за больным членом семьи (разъяснения СФР, сентябрь 2025)</h3>
+            <ul>
+                <li>Листок нетрудоспособности по уходу формируется <strong>одному из членов семьи, иному родственнику, опекуну, попечителю</strong>, фактически осуществляющему уход. За <strong>здоровым членом семьи</strong> больничный не выдаётся.</li>
+                <li><strong>Когда НЕ выдается (п. 49):</strong> период ежегодного оплачиваемого отпуска, отпуск без сохранения заработной платы, отпуск по беременности и родам, отпуск по уходу за ребёнком до 3 лет (кроме случаев работы на условиях неполного рабочего времени или на дому).</li>
+                <li><strong>Если ребёнок заболел в отпуске:</strong> листок формируется <strong>со дня, когда лицо должно приступить к работе</strong>.</li>
+                <li><strong>Мать в отпуске по уходу, заболел другой ребёнок:</strong> больничный оформляется <strong>другому члену семьи</strong>, фактически осуществляющему уход. Мать должна подать заявление о прерывании отпуска.</li>
+            </ul>
+
+            <h3>3.4 Когда ЭЛН НЕ выдаётся (стоп-факторы)</h3>
+            <ul>
+                <li>Обращение в <strong>отделение скорой помощи</strong> (выдаётся справка).</li>
+                <li><strong>Нет признаков временной нетрудоспособности</strong>.</li>
+                <li><strong>Диспансеризация, профосмотры, медицинские обследования</strong>.</li>
+                <li><strong>Обучающиеся</strong> (студенты, школьники) — выдаётся справка 095/у.</li>
+                <li><strong>Уход за взрослым членом семьи (старше 15 лет) в стационаре</strong>.</li>
+                <li><strong>Хроническое заболевание вне обострения</strong> при амбулаторном наблюдении.</li>
+            </ul>
+
+            <h3>3.5 Когда выдается БУМАЖНЫЙ листок (ИСЧЕРПЫВАЮЩИЙ ПЕРЕЧЕНЬ)</h3>
+            <ol>
+                <li><strong>Технический сбой</strong> в работе МИС/ГИСЗ/систем ФСС, когда ЭЛН сформировать невозможно (с обязательным последующим оформлением ЭЛН после восстановления).</li>
+                <li><strong>Государственная тайна</strong> (лица, сведения о которых составляют гостайну).</li>
+                <li><strong>Государственная защита</strong> (лица, в отношении которых применяются меры госзащиты).</li>
+                <li><strong>Иностранные граждане с ВНЖ</strong> (при отсутствии данных в системе СФР).</li>
+                <li><strong>Беременность и роды</strong> (для отдельных категорий, установленных законом).</li>
+            </ol>
+            <div class="critical">
+                <i class="fas fa-ban"></i> <strong>Если пациент просит бумажный «потому что бухгалтер не умеет работать с ЭЛН» — ЭТО НЕ ОСНОВАНИЕ.</strong> Выдача бумажного листка вне перечисленных случаев — нарушение Приказа № 1089н.
+            </div>
+
+            <h3>3.6 Нарушения режима (п. 18, коды)</h3>
+            <p><strong>Вы ОБЯЗАНЫ зафиксировать в ЭЛН код нарушения, если оно имело место:</strong></p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Код</th><th>Нарушение</th></tr>
+                    <tr><td>23</td><td>Несоблюдение предписанного режима, самовольный уход</td></tr>
+                    <tr><td>24</td><td>Неявка в назначенный срок</td></tr>
+                    <tr><td>25</td><td>Выход на работу без выписки</td></tr>
+                    <tr><td>26</td><td>Отказ от направления в учреждение МСЭ</td></tr>
+                    <tr><td>27</td><td>Несвоевременная явка на МСЭ</td></tr>
+                    <tr><td>28</td><td>Другие нарушения</td></tr>
+                </table>
+            </div>
+            <p><strong>❗ ПОСЛЕДСТВИЕ ДЛЯ ПАЦИЕНТА:</strong> проставление кода нарушения — основание для <strong>снижения размера пособия</strong> (до МРОТ). Вы не обязаны предупреждать об этом, но обязаны указать код объективно.</p>
         </div>
     </section>
 
     <!-- =============== ТОМ 4: ПРИКАЗ 1094н (РЕЦЕПТЫ) =============== -->
     <section id="tom4" class="anchor">
-        <h2><i class="fas fa-prescription-bottle"></i> Том 4. Рецепты и лекарства (Приказ № 1094н)</h2>
+        <h2><i class="fas fa-prescription-bottle"></i> Том 4. Рецепты и лекарственные препараты (Приказ № 1094н)</h2>
         <div class="card">
             <div class="badge" style="background:#0369a1; color:white;">Действует до 01.03.2028</div>
-            <h3>4.1 Ключевые изменения 2022–2025</h3>
+            <h3>4.1 Что изменилось с 2022 года</h3>
             <ul>
-                <li><i class="fas fa-language"></i> Бумажный рецепт — можно писать <strong>по‑русски или латынью</strong>. Электронный — <strong>только русский язык</strong>.</li>
-                <li><i class="fas fa-file-signature"></i> <strong>Обязательно</strong> указывать дату выписки в левом верхнем углу.</li>
-                <li><i class="fas fa-calendar-alt"></i> Срок действия на бланке 107‑1/у — писать в днях (60 или 365).</li>
+                <li><i class="fas fa-language"></i> <strong>Язык рецепта:</strong> бумажный — можно писать <strong>на русском ИЛИ на латыни</strong> (раньше требовалась только латынь). Электронный рецепт — <strong>ТОЛЬКО на русском языке</strong>.</li>
+                <li><i class="fas fa-hand-holding-heart"></i> <strong>Доверенность на наркотические средства (НСиПВ) — ОТМЕНЕНА:</strong> если пациент — <strong>инкурабельный больной на завершающем этапе жизни</strong>, его представителю <strong>НЕ НУЖНА доверенность</strong> для получения рецепта и лекарства.</li>
+                <li><i class="fas fa-calendar-alt"></i> <strong>Дата выписки:</strong> на <strong>всех</strong> рецептурных бланках в левом верхнем углу <strong>ОБЯЗАТЕЛЬНО</strong> указывать дату выписки.</li>
+                <li><i class="fas fa-clock"></i> <strong>Срок действия рецепта (форма № 107-1/у):</strong> в графе «Рецепт действителен в течение 60 дней, до 1 года (ненужное зачеркнуть)» нужно указывать <strong>конкретное количество дней</strong>, а не месяцев (например, «365 дней»).</li>
+                <li><i class="fas fa-laptop"></i> <strong>Электронные рецепты:</strong> полностью легализованы, приравнены к бумажным.</li>
             </ul>
-            <h3>4.2 Три формы рецептов</h3>
-            <div style="display:flex; flex-wrap:wrap; gap:1rem; margin:1.2rem 0;">
-                <div style="flex:1 1 260px; background:#fff1f0; padding:1rem; border-radius:16px; border-left:6px solid #b91c1c;">
-                    <span class="badge-red" style="font-size:1rem;"><i class="fas fa-exclamation-triangle"></i> 107-1/у-НП</span>
-                    <p style="margin-top:0.5rem;"><strong>Розовый бланк</strong> (из сейфа). НСиПВ. Срок 15 дней. Доверенность для паллиативных больных <strong>НЕ ТРЕБУЕТСЯ</strong>! Торговое наименование. Не более 1 упаковки.</p>
+
+            <h3>4.2 Три формы рецептов: подробнейшая инструкция</h3>
+            
+            <div style="background:#fff1f0; padding:1.2rem; border-radius:20px; margin-bottom:1.2rem; border-left:8px solid #b91c1c;">
+                <h4 style="color:#b91c1c; margin-top:0;"><i class="fas fa-exclamation-triangle"></i> ФОРМА № 107-1/у-НП — НАРКОТИЧЕСКИЕ И ПСИХОТРОПНЫЕ ВЕЩЕСТВА</h4>
+                <ul>
+                    <li><strong>Цвет бланка:</strong> розовый.</li>
+                    <li><strong>Хранение:</strong> в сейфе, строгий учёт, номерные бланки.</li>
+                    <li><strong>Что выписываем:</strong> препараты списков II и III (морфин, трамадол, фентанил, метадон, психостимуляторы и др.).</li>
+                    <li><strong>Кому:</strong> пациентам с хроническим болевым синдромом (онкология, паллиатив), строго по показаниям.</li>
+                    <li><strong>Срок действия:</strong> <strong>15 дней</strong> с даты выписки.</li>
+                    <li><strong>Количество:</strong> не более 1 упаковки.</li>
+                    <li><strong>Старые бланки:</strong> бланки № 107/у-НП, изготовленные до 01.03.2022, <strong>НЕДЕЙСТВИТЕЛЬНЫ</strong> с 01.03.2023.</li>
+                </ul>
+                <div style="background:#fee2e2; padding:0.8rem; border-radius:12px; margin-top:0.5rem;">
+                    <i class="fas fa-heart" style="color:#b91c1c;"></i> <strong>КРИТИЧЕСКИ ВАЖНО (ПАЛЛИАТИВ):</strong> Доверенность <strong>НЕ ТРЕБУЕТСЯ</strong> для представителей инкурабельных больных на завершающем этапе жизни. Это прямое указание приказа.
                 </div>
-                <div style="flex:1 1 260px; background:#f0f9e8; padding:1rem; border-radius:16px; border-left:6px solid #15803d;">
-                    <span class="badge-green">148-1/у-88</span>
-                    <p style="margin-top:0.5rem;"><strong>Льготные</strong> (федеральные/региональные). Срок 30 дней (до 60 по ВК). Выписывать по <strong>МНН</strong>. Торговое наименование — только ВК.</p>
-                </div>
-                <div style="flex:1 1 260px; background:#f4f6fa; padding:1rem; border-radius:16px; border-left:6px solid #334155;">
-                    <span class="badge-blue">107-1/у (белый/эл.)</span>
-                    <p style="margin-top:0.5rem;"><strong>Обычные рецептурные</strong> (за полную стоимость). Срок 60 дней (хроникам — до 365). Бумага: рус/лат; электронный: только русский.</p>
+                <p><strong>ПОШАГОВЫЙ АЛГОРИТМ (НСиПВ):</strong></p>
+                <ol>
+                    <li>Убедитесь, что пациент состоит на учёте и имеет медицинские показания.</li>
+                    <li>Возьмите розовый бланк из сейфа (номерной).</li>
+                    <li>Заполните разборчиво: <strong>дата выписки</strong> (левый верхний угол, обязательно!), ФИО пациента, возраст, торговое наименование препарата, дозировка, количество, способ применения.</li>
+                    <li>Заверьте <strong>подписью</strong> и <strong>личной печатью</strong>.</li>
+                    <li>Поставьте печать медицинской организации («Для рецептов»).</li>
+                    <li>Внесите запись в <strong>Журнал учёта рецептов</strong> (форма 30/у-06).</li>
+                    <li>Выдайте представителю. <strong>Доверенность не требовать</strong> (если пациент инкурабельный).</li>
+                </ol>
+            </div>
+
+            <div style="background:#f0f9e8; padding:1.2rem; border-radius:20px; margin-bottom:1.2rem; border-left:8px solid #15803d;">
+                <h4 style="color:#15803d; margin-top:0;"><i class="fas fa-tag"></i> ФОРМА № 148-1/у-88 — ЛЬГОТНЫЕ РЕЦЕПТЫ (БЕСПЛАТНЫЕ И СО СКИДКОЙ)</h4>
+                <ul>
+                    <li><strong>Цвет бланка:</strong> жёлтый/розовый (региональные особенности).</li>
+                    <li><strong>Что выписываем:</strong> лекарства по программе ОНЛС (федеральные льготники) и по региональным программам.</li>
+                    <li><strong>Кому:</strong> инвалиды, ветераны, чернобыльцы, региональные льготники (ветераны труда, блокадники, реабилитированные, доноры, многодетные и др.).</li>
+                    <li><strong>Срок действия:</strong> <strong>30 дней</strong> (обычно), до 60 дней по решению ВК.</li>
+                    <li><strong>Количество:</strong> в соответствии с клиническими рекомендациями.</li>
+                    <li><strong>Особое правило:</strong> выписывается <strong>по МНН</strong> (международное непатентованное наименование). Торговое наименование — <strong>ТОЛЬКО по решению ВК</strong>.</li>
+                </ul>
+                <div style="background:#dcfce7; padding:0.8rem; border-radius:12px;">
+                    <i class="fas fa-exclamation-circle"></i> <strong>❗ НАРУШЕНИЕ:</strong> выписка льготного рецепта на торговое наименование без решения ВК. Аптека <strong>не отпустит</strong> препарат, пациент вернётся к Вам с жалобой.
                 </div>
             </div>
-            <h3>4.3 Электронные рецепты в СПб (ЕМИС)</h3>
+
+            <div style="background:#f4f6fa; padding:1.2rem; border-radius:20px; border-left:8px solid #334155;">
+                <h4 style="color:#334155; margin-top:0;"><i class="fas fa-file-alt"></i> ФОРМА № 107-1/у — ОБЫЧНЫЕ РЕЦЕПТЫ (ЗА ПОЛНУЮ СТОИМОСТЬ)</h4>
+                <ul>
+                    <li><strong>Цвет бланка:</strong> белый (обычная бумага, может быть напечатан на принтере).</li>
+                    <li><strong>Что выписываем:</strong> <strong>ВСЕ РЕЦЕПТУРНЫЕ ПРЕПАРАТЫ</strong>, кроме НСиПВ и льготных.</li>
+                    <li><strong>Кому:</strong> пациентам, покупающим лекарства за свой счёт.</li>
+                    <li><strong>Срок действия:</strong> <strong>60 дней</strong> (по умолчанию); <strong>до 365 дней</strong> (для хронических больных — Вы можете установить такой срок сами).</li>
+                    <li><strong>Язык заполнения (бумага):</strong> русский ИЛИ латынь (Ваш выбор).</li>
+                    <li><strong>Язык заполнения (электронный):</strong> <strong>ТОЛЬКО русский</strong>.</li>
+                </ul>
+                <p><i class="fas fa-info-circle"></i> Если препарат рецептурный, Вы <strong>обязаны</strong> выписать рецепт, даже если пациент покупает его платно. Отказ в выписке рецепта на рецептурный препарат — нарушение.</p>
+            </div>
+
+            <h3>4.3 Электронные рецепты в Санкт‑Петербурге</h3>
+            <p><strong>Как это работает:</strong></p>
+            <ol>
+                <li>Электронный рецепт формируется в <strong>ЕМИС</strong> (модуль «Рецепт»).</li>
+                <li>Подписывается Вашей <strong>УКЭП</strong>.</li>
+                <li>Автоматически направляется: в аптеку (если пациент выбрал «прикрепить аптеку») и в личный кабинет пациента на <strong>Госуслугах</strong>.</li>
+                <li>Пациент предъявляет в аптеке <strong>номер электронного рецепта</strong> или <strong>QR-код</strong>.</li>
+            </ol>
+            <p><strong>Правила оформления электронного рецепта:</strong> все поля — <strong>ТОЛЬКО на русском языке</strong>; дата выписки проставляется автоматически; указывается МНН (для льготных) или торговое наименование (для платных и НСиПВ — но НСиПВ в электронном виде не оформляются!).</p>
+            <p><strong>Когда НЕЛЬЗЯ оформить электронный рецепт:</strong> технический сбой ЕМИС, отсутствие у пациента СНИЛС, препараты НСиПВ (только бумага).</p>
+
+            <h3>4.4 СРОКИ ДЕЙСТВИЯ РЕЦЕПТОВ: ШПАРГАЛКА</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Форма бланка</th><th>Срок действия</th><th>Для кого/чего</th></tr>
+                    <tr><td><strong>107-1/у-НП</strong> (розовый)</td><td><strong>15 дней</strong></td><td>Наркотические и психотропные вещества</td></tr>
+                    <tr><td><strong>148-1/у-88</strong> (льготный)</td><td><strong>30 дней</strong> (до 60 по ВК)</td><td>Федеральные и региональные льготники</td></tr>
+                    <tr><td><strong>107-1/у</strong> (белый/электронный)</td><td><strong>60 дней</strong> (стандарт)</td><td>Рецептурные препараты за полную стоимость</td></tr>
+                    <tr><td><strong>107-1/у</strong> (белый/электронный)</td><td><strong>До 365 дней</strong></td><td>Хронические больные (по Вашему решению)</td></tr>
+                </table>
+            </div>
+
+            <h3>4.5 ЧЕК-ЛИСТ: ВЫПИСКА РЕЦЕПТА (на каждый случай)</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check"></i> <strong>Дата выписки</strong> в левом верхнем углу стоит.</li>
+                <li><i class="fas fa-check"></i> ФИО пациента полностью, возраст.</li>
+                <li><i class="fas fa-check"></i> <strong>МНН</strong> (для льготников) ИЛИ <strong>торговое наименование</strong> (для платных/НСиПВ).</li>
+                <li><i class="fas fa-check"></i> Дозировка, форма выпуска, количество.</li>
+                <li><i class="fas fa-check"></i> Способ применения (сигнатура) разборчиво.</li>
+                <li><i class="fas fa-check"></i> <strong>Срок действия</strong> рецепта указан в днях.</li>
+                <li><i class="fas fa-check"></i> Подпись врача, личная печать, печать организации.</li>
+                <li><i class="fas fa-check"></i> Для <strong>НСиПВ</strong>: бланк розовый, номерной, из сейфа; доверенность не требуется, если пациент инкурабельный.</li>
+                <li><i class="fas fa-check"></i> Для <strong>льготных (СПб)</strong>: есть пометка «Региональный».</li>
+                <li><i class="fas fa-check"></i> Запись в <strong>ЕМИС/электронной карте</strong> о назначении.</li>
+                <li><i class="fas fa-check"></i> Запись в <strong>журнале учёта</strong> (для НСиПВ и льготных бланков строгой отчётности).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- =============== ТОМ 5: РЕГИОНАЛЬНЫЕ ОСОБЕННОСТИ: САНКТ-ПЕТЕРБУРГ =============== -->
+    <section id="tom5" class="anchor">
+        <h2><i class="fas fa-city"></i> Том 5. Региональные особенности: Санкт-Петербург</h2>
+        <div class="card">
+            <h3>5.1 ЕМИС и РМИС</h3>
+            <p>В Санкт-Петербурге функционирует <strong>Единая медицинская информационно-аналитическая система (ЕМИАС)</strong>. Ваши учётные данные: вход по логину/паролю + ЭЦП. Доступ предоставляет администратор медицинской организации.</p>
+            <p><strong>Что Вы делаете в ЕМИС:</strong></p>
             <ul>
-                <li>Формируются в модуле «Рецепт», подписываются УКЭП.</li>
-                <li>Уходят в аптеку и на Госуслуги (QR‑код).</li>
-                <li>НСиПВ — только бумага (розовый бланк).</li>
+                <li>Ведёте электронную медицинскую карту.</li>
+                <li>Оформляете ЭЛН.</li>
+                <li>Смотрите расписание приёма.</li>
+                <li>Направляете на госпитализацию.</li>
+                <li>Выписываете льготные рецепты (интеграция с АС «Рецепт»).</li>
             </ul>
             <div class="alert">
-                <i class="fas fa-clock"></i> <strong>Шпаргалка сроков:</strong> НСиПВ — 15 дней, льготный — 30, обычный — 60, при хронических заболеваниях до 365 дней.
+                <i class="fas fa-exclamation-triangle"></i> <strong>❗ СБОЙ ЕМИС:</strong>
+                <ol style="margin-top:0.5rem;">
+                    <li>Немедленно сообщите заведующему отделением.</li>
+                    <li>Переходите на бумажные носители (записи в бумажной амбулаторной карте).</li>
+                    <li>ЭЛН оформить не получится — либо ждать восстановления, либо в <strong>исключительном случае</strong> оформить бумажный больничный с последующей обязательной регистрацией ЭЛН.</li>
+                </ol>
             </div>
-        </div>
-    </section>
 
-    <!-- =============== ТОМ 5: РЕГИОН САНКТ‑ПЕТЕРБУРГ =============== -->
-    <section id="tom5" class="anchor">
-        <h2><i class="fas fa-city"></i> Том 5. Региональные особенности СПб</h2>
-        <div class="card">
-            <h3>5.1 ЕМИС / РМИС</h3>
-            <p>Работа в ЕМИАС обязательна. ЭЛН, рецепты, диспансеризация — через систему. Сбой ЕМИС — работа на бумаге, затем внесение в систему.</p>
-            <h3>5.2 Льготные рецепты в СПб</h3>
+            <h3>5.2 Льготное лекарственное обеспечение в СПб</h3>
+            <p><strong>Две категории льготников:</strong></p>
             <ul>
-                <li><strong>Региональные льготники</strong> (ветераны труда, блокадники, доноры, многодетные и др.) — на бланке 148-1/у-88 <span style="background:#fbbf24; padding:0.1rem 0.6rem; border-radius:12px;">обязательная пометка «Региональный»</span>.</li>
-                <li>Аптеки: ГУП «Городская аптека», «Петроаптека», сетевые участники.</li>
+                <li><strong>Федеральные льготники</strong> (инвалиды, чернобыльцы и др.) — программа ОНЛС (7 высокозатратных нозологий + остальные). Рецепт оформляется в ЕМИС, направляется в СФР.</li>
+                <li><strong>Региональные льготники (Санкт-Петербург)</strong> — ветераны труда, труженики тыла, реабилитированные, блокадники, доноры, многодетные и др. <span style="background:#fbbf24; padding:0.2rem 0.8rem; border-radius:20px;"><strong>ОБЯЗАТЕЛЬНО ставить пометку «Региональный»</strong></span> на бланке 148-1/у-88 (вручную или в системе). Аптеки отпуска: ГУП «Городская аптека», «Петроаптека», сетевые аптеки-участники программы.</li>
             </ul>
-            <h3>5.3 Маршрутизация стационаров</h3>
-            <p><strong>Экстренная:</strong> дежурный стационар по распоряжению Комитета по здравоохранению (Боткинская, 15, 26, 20, 38, Мариинская и др.). <strong>Плановая:</strong> через ЕМИС, возможна ВМП в федеральные центры (Алмазова, Петрова, Вредена).</p>
-            <div id="contacts" style="margin-top:1.2rem; background:#e6f2ff; padding:1.2rem; border-radius:16px;">
-                <h4 style="margin-top:0;"><i class="fas fa-address-card"></i> Контакты экстренной связи (СПб)</h4>
+
+            <h3>5.3 Городские стационары и маршрутизация</h3>
+            <p><strong>Экстренная госпитализация:</strong> скорая помощь доставляет в <strong>дежурный стационар</strong> согласно <strong>Распоряжению Комитета по здравоохранению о маршрутизации</strong>. Для терапевтического профиля (ориентировочно): Городская больница № 15, № 26, № 20, № 38, Мариинская больница, Елизаветинская больница, Покровская больница и др. (зависит от района и вида патологии).</p>
+            <p><strong>Плановая госпитализация:</strong> направление через <strong>ЕМИС</strong> в выбранный стационар (с учётом очереди). Возможно направление в <strong>федеральные центры</strong> (ФМИЦ им. Алмазова, НМИЦ онкологии им. Петрова, РНИИТО им. Вредена) через систему ВМП.</p>
+
+            <div id="contacts" style="background:#e6f2ff; padding:1.5rem; border-radius:20px; margin-top:1.5rem;">
+                <h4 style="margin-top:0; color:#01497c;"><i class="fas fa-address-card"></i> Полезные контакты (номера актуальны на 2026 год)</h4>
+                <table style="background: transparent; border: none; width: auto;">
+                    <tr><td><i class="fas fa-phone-alt"></i> <strong>Комитет по здравоохранению СПб</strong></td><td>246-43-77</td><td>ОМС, льготы, доступность помощи</td></tr>
+                    <tr><td><i class="fas fa-phone-alt"></i> <strong>Территориальный фонд ОМС СПб</strong></td><td>602-84-50</td><td>Страховые случаи, прикрепление</td></tr>
+                    <tr><td><i class="fas fa-phone-alt"></i> <strong>СФР по СПб и ЛО</strong></td><td>8-800-200-09-81</td><td>ЭЛН, пособия, электронные рецепты</td></tr>
+                    <tr><td><i class="fas fa-phone-alt"></i> <strong>Росздравнадзор по СПб и ЛО</strong></td><td>314-67-51</td><td>Контроль, жалобы на качество</td></tr>
+                    <tr><td><i class="fas fa-gavel"></i> <strong>Прокуратура СПб</strong></td><td>312-32-53</td><td>Крайняя мера при нарушениях прав</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============== ПРИЛОЖЕНИЯ 1–11 (ПОЛНЫЕ) =============== -->
+    <section id="app1" class="anchor">
+        <h2><i class="fas fa-paperclip"></i> Приложения 1–11. Полные чек‑листы, коды, оснащение, указатель</h2>
+
+        <!-- ПРИЛОЖЕНИЕ 1: Утренний чек-лист -->
+        <div class="card">
+            <h3><span class="badge">Приложение 1</span> Утренний чек-лист (перед приёмом)</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check-square"></i> Компьютер включён, ЕМИС работает, ЭЦП вставлена.</li>
+                <li><i class="fas fa-check-square"></i> Оснащение кабинета в порядке (тонометр, фонендоскоп, глюкометр, пульсоксиметр, пикфлоуметр, набор неотложки).</li>
+                <li><i class="fas fa-check-square"></i> Список вызовов на дом принят, маршрут спланирован.</li>
+                <li><i class="fas fa-check-square"></i> Список вновь прикрепившихся проверен (статистический кабинет/старшая медсестра).</li>
+                <li><i class="fas fa-check-square"></i> Льготные рецептурные бланки (148-1/у-88) в наличии.</li>
+                <li><i class="fas fa-check-square"></i> Розовые бланки НСиПВ (107-1/у-НП) в сейфе, количество сверено.</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 2: Чек-лист приёма одного пациента -->
+        <div class="card">
+            <h3><span class="badge">Приложение 2</span> Чек-лист приёма одного пациента</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check-square"></i> Идентификация: паспорт, полис, <strong>СНИЛС</strong>.</li>
+                <li><i class="fas fa-check-square"></i> Оценка состояния: <strong>экстренное/неотложное/плановое</strong>.</li>
+                <li><i class="fas fa-check-square"></i> Осмотр, запись в ЕМИС.</li>
+                <li><i class="fas fa-check-square"></i> При необходимости — оформление ЭЛН (не более 15 дней единолично).</li>
+                <li><i class="fas fa-check-square"></i> При необходимости — направление к специалисту / на госпитализацию.</li>
+                <li><i class="fas fa-check-square"></i> При необходимости — рецепт (льготный/обычный/НСиПВ) с соблюдением всех требований.</li>
+                <li><i class="fas fa-check-square"></i> Информирование пациента о диагнозе, лечении, прогнозе, дате следующей явки.</li>
+                <li><i class="fas fa-check-square"></i> Пациент получил номер ЭЛН (талон) / рецепт.</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 3: Чек-лист закрытия ЭЛН -->
+        <div class="card">
+            <h3><span class="badge">Приложение 3</span> Чек-лист закрытия ЭЛН</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check-square"></i> Явные признаки выздоровления/устойчивой ремиссии.</li>
+                <li><i class="fas fa-check-square"></i> Пациент трудоспособен.</li>
+                <li><i class="fas fa-check-square"></i> Дата закрытия = дата осмотра.</li>
+                <li><i class="fas fa-check-square"></i> ЭЛН подписан УКЭП в ЕМИС.</li>
+                <li><i class="fas fa-check-square"></i> Пациенту разъяснено: номер ЭЛН остаётся у работодателя, выплата пособия будет рассчитана СФР автоматически.</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 4: Чек-лист при нарушении режима -->
+        <div class="card">
+            <h3><span class="badge">Приложение 4</span> Чек-лист при нарушении режима</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check-square"></i> Факт нарушения зафиксирован: неявка, самовольный уход, отказ от МСЭ, выезд без разрешения.</li>
+                <li><i class="fas fa-check-square"></i> В ЭЛН проставлен соответствующий код (23–28).</li>
+                <li><i class="fas fa-check-square"></i> Запись в медицинской карте о нарушении.</li>
+                <li><i class="fas fa-check-square"></i> При неявке — повторный вызов/активное посещение (по показаниям).</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 5: Вечерний чек-лист -->
+        <div class="card">
+            <h3><span class="badge">Приложение 5</span> Вечерний чек-лист</h3>
+            <ul class="list-checks">
+                <li><i class="fas fa-check-square"></i> Все ЭЛН, открытые/продлённые/закрытые сегодня, подписаны УКЭП.</li>
+                <li><i class="fas fa-check-square"></i> Все рецепты (особенно льготные и НСиПВ) зарегистрированы в системе и/или журналах.</li>
+                <li><i class="fas fa-check-square"></i> Записи в ЕМИС внесены по всем пациентам (нет «висящих» черновиков).</li>
+                <li><i class="fas fa-check-square"></i> План на завтра: расписание приёма, вызовы, активы.</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 6: Полная таблица кодов нетрудоспособности -->
+        <div class="card">
+            <h3><span class="badge">Приложение 6</span> Коды нетрудоспособности (1089н)</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Код</th><th>Причина</th></tr>
+                    <tr><td>01</td><td>Заболевание (травма, отравление)</td></tr>
+                    <tr><td>02</td><td>Травма на производстве</td></tr>
+                    <tr><td>03</td><td>Карантин</td></tr>
+                    <tr><td>04</td><td>Несчастный случай на производстве / профзаболевание</td></tr>
+                    <tr><td>05</td><td>Отпуск по беременности и родам</td></tr>
+                    <tr><td>06</td><td>Протезирование в стационаре</td></tr>
+                    <tr><td>07</td><td>Профессиональное заболевание</td></tr>
+                    <tr><td>08</td><td>Долечивание в санатории</td></tr>
+                    <tr><td>09</td><td>Уход за больным членом семьи</td></tr>
+                    <tr><td>10</td><td>Иное состояние (отравление, манипуляции)</td></tr>
+                    <tr><td>11</td><td>Заболевание туберкулёзом</td></tr>
+                    <tr><td>12-15</td><td>Уход за ребёнком-инвалидом, ребёнком до 7 лет, ребёнком с ВИЧ и т.д.</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 7: Полная таблица кодов нарушений режима -->
+        <div class="card">
+            <h3><span class="badge">Приложение 7</span> Коды нарушений режима</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Код</th><th>Нарушение</th></tr>
+                    <tr><td>23</td><td>Несоблюдение предписанного режима, самовольный уход</td></tr>
+                    <tr><td>24</td><td>Неявка в назначенный срок</td></tr>
+                    <tr><td>25</td><td>Выход на работу без выписки</td></tr>
+                    <tr><td>26</td><td>Отказ от направления в учреждение МСЭ</td></tr>
+                    <tr><td>27</td><td>Несвоевременная явка на МСЭ</td></tr>
+                    <tr><td>28</td><td>Другие нарушения</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 8: Оснащение кабинета терапевта (развёрнуто) -->
+        <div class="card">
+            <h3><span class="badge">Приложение 8</span> Оснащение кабинета терапевта (923н, Приложение 3)</h3>
+            <ul>
+                <li>Тонометр для измерения АД.</li>
+                <li>Стетофонендоскоп.</li>
+                <li>Ростомер, весы, измерительная лента.</li>
+                <li>Глюкометр + тест-полоски.</li>
+                <li>Пульсоксиметр.</li>
+                <li>Пикфлоуметр.</li>
+                <li>Холодильник для лекарственных препаратов.</li>
+                <li>Укладка «АнтиСПИД», укладка «АнтиВИЧ».</li>
+                <li>Шпатели, термометры.</li>
+                <li>Набор для оказания неотложной помощи (локальный состав, но обязателен).</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 9: Сроки ожидания медицинской помощи (Территориальная программа СПб) -->
+        <div class="card">
+            <h3><span class="badge">Приложение 9</span> Сроки ожидания медицинской помощи (Территориальная программа СПб)</h3>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Вид помощи</th><th>Срок</th></tr>
+                    <tr><td>Неотложная помощь на дому</td><td>2 часа</td></tr>
+                    <tr><td>Плановая помощь (приём терапевта)</td><td>не более 5 рабочих дней</td></tr>
+                    <tr><td>Консультация узких специалистов</td><td>не более 7-14 рабочих дней</td></tr>
+                    <tr><td>Плановая госпитализация</td><td>не более 14 рабочих дней</td></tr>
+                    <tr><td>МРТ/КТ</td><td>не более 30 дней</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 10: Полные наименования приказов для служебных записок -->
+        <div class="card">
+            <h3><span class="badge">Приложение 10</span> Полные наименования приказов (для служебных записок)</h3>
+            <ul>
+                <li><strong>202н</strong>: Приказ Минздрава России от 14.04.2025 № 202н «Об утверждении Положения об организации оказания первичной медико-санитарной помощи взрослому населению».</li>
+                <li><strong>923н</strong>: Приказ Минздрава России от 15.11.2012 № 923н «Об утверждении Порядка оказания медицинской помощи взрослому населению по профилю "терапия"».</li>
+                <li><strong>1089н</strong>: Приказ Минздрава России от 23.11.2021 № 1089н «Об утверждении Условий и порядка формирования листков нетрудоспособности в форме электронного документа и выдачи листков нетрудоспособности в форме документа на бумажном носителе в случаях, установленных законодательством Российской Федерации».</li>
+                <li><strong>1094н</strong>: Приказ Минздрава России от 24.11.2021 № 1094н «Об утверждении Порядка назначения лекарственных препаратов, форм рецептурных бланков на лекарственные препараты, Порядка оформления указанных бланков, их учёта и хранения, форм бланков рецептов, содержащих назначение наркотических средств или психотропных веществ, Порядка их изготовления, распределения, регистрации, учёта и хранения, а также Правил оформления бланков рецептов, в том числе в форме электронных документов».</li>
+            </ul>
+        </div>
+
+        <!-- ПРИЛОЖЕНИЕ 11: АЛФАВИТНЫЙ УКАЗАТЕЛЬ (ПОЛНЫЙ) -->
+        <div class="card" id="index">
+            <h3><span class="badge">Приложение 11</span> Алфавитный указатель (быстрый поиск)</h3>
+            <div class="index-list">
                 <ul style="list-style:none; padding-left:0;">
-                    <li><i class="fas fa-phone"></i> Комитет по здравоохранению — 246-43-77</li>
-                    <li><i class="fas fa-phone"></i> ТФОМС СПб — 602-84-50</li>
-                    <li><i class="fas fa-phone"></i> СФР по СПб и ЛО — 8-800-200-09-81</li>
-                    <li><i class="fas fa-phone"></i> Росздравнадзор — 314-67-51</li>
-                    <li><i class="fas fa-gavel"></i> Прокуратура СПб — 312-32-53</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Активные посещения</strong> – Том 1, гл.1.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Бумажный больничный</strong> – Том 3, гл.3.5</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Врачебная комиссия (ВК)</strong> – Том 3, гл.3.1</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Вызовы на дом</strong> – Том 1, гл.1.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Госпитализация плановая</strong> – Том 2, гл.2.1; Том 5, гл.5.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Диспансеризация</strong> – Том 1, гл.1.4</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Доверенность на НСиПВ</strong> – Том 4, гл.4.1, 4.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>ЕМИС</strong> – Том 5, гл.5.1</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Клинические рекомендации</strong> – Том 2, гл.2.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Коды нетрудоспособности</strong> – Приложение 6</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Коды нарушений режима</strong> – Приложение 7</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Льготные рецепты (СПб)</strong> – Том 4, гл.4.2; Том 5, гл.5.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>МНН</strong> – Том 4, гл.4.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Неотложная помощь</strong> – Том 1, гл.1.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Норматив участка</strong> – Том 1, гл.1.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>НСиПВ</strong> – Том 4, гл.4.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Оснащение кабинета</strong> – Приложение 8</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Отмена 543н</strong> – титул, Том 1</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Паллиативная помощь</strong> – Том 4, гл.4.2</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Рецепты электронные</strong> – Том 4, гл.4.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>СНИЛС (обязательность)</strong> – Том 3, гл.3.1</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Сроки рецептов</strong> – Том 4, гл.4.4</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Уход за ребёнком</strong> – Том 3, гл.3.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Экстренная помощь</strong> – Том 1, гл.1.3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>ЭЛН</strong> – Том 3</li>
+                    <li><i class="fas fa-caret-right"></i> <strong>Язык рецепта</strong> – Том 4, гл.4.1</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- =============== ПРИЛОЖЕНИЯ: ЧЕК‑ЛИСТЫ, КОДЫ =============== -->
-    <section id="checklists" class="anchor">
-        <h2><i class="fas fa-clipboard-list"></i> Ежедневные чек‑листы</h2>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem;">
-            <div style="background:white; border:1px solid #dbeafe; border-radius:20px; padding:1.5rem;">
-                <h4 style="margin-top:0;"><i class="fas fa-sun"></i> Утро</h4>
-                <ul class="list-checks">
-                    <li><i class="fas fa-check"></i> ЕМИС/ЭЦП работают.</li>
-                    <li><i class="fas fa-check"></i> Оснащение кабинета (тонометр, глюкометр...).</li>
-                    <li><i class="fas fa-check"></i> Список вызовов на дом.</li>
-                    <li><i class="fas fa-check"></i> Новые прикреплённые (статистика).</li>
-                    <li><i class="fas fa-check"></i> Бланки 148-1/у-88, розовые в сейфе.</li>
-                </ul>
-            </div>
-            <div style="background:white; border:1px solid #dbeafe; border-radius:20px; padding:1.5rem;">
-                <h4 style="margin-top:0;"><i class="fas fa-user-md"></i> Приём 1 пациента</h4>
-                <ul class="list-checks">
-                    <li><i class="fas fa-check"></i> Паспорт, полис, СНИЛС.</li>
-                    <li><i class="fas fa-check"></i> Оценка: экстренно? вызвать 103.</li>
-                    <li><i class="fas fa-check"></i> Запись в ЕМИС.</li>
-                    <li><i class="fas fa-check"></i> ЭЛН (не более 15 дней).</li>
-                    <li><i class="fas fa-check"></i> Рецепт (с датой, сроком, МНН/торг).</li>
-                </ul>
-            </div>
-            <div style="background:white; border:1px solid #dbeafe; border-radius:20px; padding:1.5rem;">
-                <h4 style="margin-top:0;"><i class="fas fa-moon"></i> Вечер</h4>
-                <ul class="list-checks">
-                    <li><i class="fas fa-check"></i> Все ЭЛН подписаны УКЭП.</li>
-                    <li><i class="fas fa-check"></i> Рецепты (НСиПВ/льготные) в журналах.</li>
-                    <li><i class="fas fa-check"></i> Нет черновиков в ЕМИС.</li>
-                    <li><i class="fas fa-check"></i> План на завтра.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="codes" class="anchor">
-        <h2><i class="fas fa-table"></i> Коды нетрудоспособности и нарушений</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:1.5rem;">
-            <div style="flex:1 1 300px;">
-                <div class="table-wrap">
-                    <table>
-                        <tr><th>Код</th><th>Причина нетрудоспособности</th></tr>
-                        <tr><td>01</td><td>Заболевание (травма, отравление)</td></tr>
-                        <tr><td>02</td><td>Травма на производстве</td></tr>
-                        <tr><td>03</td><td>Карантин</td></tr>
-                        <tr><td>09</td><td>Уход за больным членом семьи</td></tr>
-                        <tr><td>12-15</td><td>Уход за детьми (особые)</td></tr>
-                    </table>
-                </div>
-            </div>
-            <div style="flex:1 1 300px;">
-                <div class="table-wrap">
-                    <table>
-                        <tr><th>Код</th><th>Нарушение режима</th></tr>
-                        <tr><td>23</td><td>Несоблюдение режима, самовольный уход</td></tr>
-                        <tr><td>24</td><td>Неявка в срок</td></tr>
-                        <tr><td>26</td><td>Отказ от направления на МСЭ</td></tr>
-                        <tr><td>27</td><td>Несвоевременная явка на МСЭ</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="apps" class="anchor">
-        <h2><i class="fas fa-paperclip"></i> Приложения</h2>
-        <div style="background:#f8fafc; border-radius:20px; padding:1.8rem;">
-            <ul style="columns:2 240px; column-gap:2rem;">
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 1</strong> — Утренний чек‑лист</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 2</strong> — Приём пациента</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 3</strong> — Закрытие ЭЛН</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 4</strong> — Нарушения режима</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 5</strong> — Вечерний чек‑лист</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 6</strong> — Коды нетрудоспособности</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 7</strong> — Коды нарушений</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 8</strong> — Оснащение кабинета</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 9</strong> — Сроки ожидания (ТПГГ СПб)</li>
-                <li style="margin-bottom:0.4rem;"><strong>Приложение 10</strong> — Полные наименования приказов</li>
-            </ul>
-            <p style="margin-top:1rem;"><i class="fas fa-bookmark"></i> Полные тексты приказов — на <a href="#" style="color:#0369a1;">КонсультантПлюс</a>, <a href="#" style="color:#0369a1;">Гарант</a>. Клинические рекомендации: cr.minzdrav.gov.ru</p>
-        </div>
-    </section>
-
-    <!-- ЗАКЛЮЧЕНИЕ И ФУТЕР -->
+    <!-- ЗАКЛЮЧЕНИЕ -->
     <hr>
     <div style="background: linear-gradient(145deg, #eef6ff, white); border-radius:28px; padding:2rem;">
         <h2 style="border-bottom: none; margin-top:0;"><i class="fas fa-shield-alt"></i> Заключение</h2>
-        <p style="font-size:1.1rem;">Вы вооружены четырьмя ключевыми приказами. Помните: <strong>Приказ 543н — история</strong>, <strong>ЭЛН — всегда</strong>, <strong>15 дней — ваш предел</strong>, <strong>экстренное — скорой</strong>, <strong>рецепт — с датой и МНН/торг</strong>, <strong>клинические рекомендации — закон</strong>. В Санкт‑Петербурге — региональная отметка и ЕМИС.</p>
-        <p style="margin-top:1rem; font-weight:600;">Работайте уверенно. Вы знаете закон — вы защищены.</p>
+        <p style="font-size:1.1rem;">Уважаемый коллега! Вы держите в руках <strong>эталонный документ</strong>, объединивший четыре ключевых приказа, регулирующих Вашу профессиональную деятельность.</p>
+        <p style="font-size:1.1rem;"><strong>Главные принципы, которые Вы должны вынести из этого руководства:</strong></p>
+        <ul style="font-size:1.05rem;">
+            <li><strong>Приказ 543н — в прошлом.</strong> С 01.09.2025 работает <strong>Приказ 202н</strong>. Забудьте старые ссылки.</li>
+            <li><strong>ЭЛН — всегда.</strong> Бумага — только для спецсубъектов и технических сбоев.</li>
+            <li><strong>15 дней — Ваш потолок.</strong> Больше — только врачебная комиссия.</li>
+            <li><strong>Экстренное — скорой, неотложка — Ваша.</strong> Не берите на себя то, что убивает.</li>
+            <li><strong>Рецепт — с датой, сроком и правильным бланком.</strong> Льготникам — по МНН, паллиативу — без доверенности.</li>
+            <li><strong>Клинические рекомендации — Ваш закон.</strong> Не «нас так учили», а документ.</li>
+            <li><strong>В Санкт‑Петербурге — свои правила.</strong> Региональная льгота, ЕМИС, пометка «Региональный».</li>
+        </ul>
+        <p style="margin-top:1.5rem; font-size:1.2rem; font-weight:700;">Работайте уверенно. Вы знаете закон — вы защищены.</p>
     </div>
 
     <div class="footer">
         <span><i class="fas fa-calendar-check"></i> Актуализировано: 11 февраля 2026 г.</span>
-        <span><i class="fas fa-sync-alt"></i> Следующая проверка: сентябрь 2026</span>
-        <span><i class="fas fa-stethoscope"></i> Для врача-терапевта участкового</span>
+        <span><i class="fas fa-sync-alt"></i> Следующая плановая проверка: сентябрь 2026</span>
+        <span><i class="fas fa-stethoscope"></i> Для врача-терапевта участкового поликлиники СПб</span>
     </div>
 
     <!-- КНОПКА НАВЕРХ -->
