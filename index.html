@@ -2,839 +2,1158 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
-    <title>Практическое руководство дежурного врача-психиатра-нарколога · СПб 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полное практическое руководство по риичи-маджонгу</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
     <style>
-        /* ===== БАЗОВЫЕ СБРОСЫ ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f6f9fc;
-            color: #102a43;
-            line-height: 1.6;
-            padding: 0 1rem;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f7f5f0;
+            color: #1e1e2a;
+            line-height: 1.75;
+            padding: 2rem 1rem;
         }
+
         .container {
-            max-width: 1440px;
-            margin: 2rem auto;
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 20px 40px -12px rgba(0,20,40,0.12);
-            padding: 2.5rem;
+            max-width: 1050px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2.5rem 3rem;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         }
-        @media (max-width: 768px) { .container { padding: 1.5rem; } }
-        h1, h2, h3, h4, h5 {
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-top: 1.8em;
-            margin-bottom: 0.6em;
-            color: #0b2b42;
-        }
+
         h1 {
             font-size: 2.8rem;
             font-weight: 700;
-            margin-top: 0.2em;
-            margin-bottom: 0.2em;
-            color: #014d7a;
-            border-left: 8px solid #0284c7;
-            padding-left: 1.2rem;
+            letter-spacing: -0.02em;
+            color: #1a1a2c;
+            border-bottom: 4px solid #d4a373;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
         }
+
         h2 {
-            font-size: 2rem;
-            border-bottom: 3px solid #dbeafe;
-            padding-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #e6d5c0;
+            color: #2d2d44;
         }
-        h2 i { color: #0284c7; font-size: 1.8rem; }
-        h3 { font-size: 1.5rem; color: #0369a1; margin-top: 1.5em; }
-        h4 { font-size: 1.25rem; color: #075985; }
-        .lead {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: #1e3a5f;
-            background: #f0f9ff;
-            padding: 1.2rem 1.8rem;
-            border-radius: 20px;
-            border-left: 6px solid #0284c7;
-            margin-bottom: 1.8rem;
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2.2rem;
+            margin-bottom: 1rem;
+            color: #3d3d5c;
         }
-        .toc {
-            background: #f0f5fa;
-            padding: 1.8rem 2rem;
-            border-radius: 24px;
-            margin: 2.2rem 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
+
+        h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: #4d4d6c;
         }
-        .toc h3 {
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            grid-column: 1 / -1;
-            color: #0a4b6e;
-            font-size: 1.6rem;
-        }
-        .toc a {
+
+        p { margin-bottom: 1rem; }
+
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+
+        a {
+            color: #b45f3a;
             text-decoration: none;
-            color: #065a82;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            background: white;
-            border-radius: 40px;
-            transition: all 0.15s;
-            border: 1px solid #cbd5e1;
-            display: inline-block;
-            margin: 0.2rem 0;
+            border-bottom: 1px dotted #b45f3a;
         }
-        .toc a:hover {
-            background: #0284c7;
-            color: white;
-            border-color: #0284c7;
-            box-shadow: 0 6px 12px rgba(2,132,199,0.2);
+        a:hover { color: #7a4229; border-bottom: 1px solid #7a4229; }
+
+        code {
+            background: #f2ede7;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            font-family: 'SF Mono', Consolas, monospace;
+            font-size: 0.9em;
+            color: #7a4229;
         }
-        .alert {
-            background: #fffbeb;
-            border-left: 8px solid #f59e0b;
-            border-radius: 16px;
-            padding: 1.4rem 1.8rem;
-            margin: 1.6rem 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-        .alert i { color: #d97706; margin-right: 0.5rem; }
-        .critical { background: #fef2f2; border-left: 8px solid #b91c1c; }
-        .critical i { color: #b91c1c; }
-        .success { background: #f0fdf4; border-left: 8px solid #15803d; }
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1.8rem 0;
+
+        .toc {
+            background: #f2ede7;
+            padding: 1.5rem 2rem;
             border-radius: 20px;
-            border: 1px solid #e2e8f0;
+            margin-bottom: 2.5rem;
         }
+        .toc h2 {
+            margin-top: 0;
+            border-bottom: none;
+            font-size: 1.4rem;
+            padding-bottom: 0;
+        }
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+            columns: 2 220px;
+            column-gap: 2rem;
+        }
+        .toc li { margin-bottom: 0.35rem; break-inside: avoid; }
+        .toc a { border-bottom: none; font-weight: 500; }
+        .toc a:hover { border-bottom: 1px solid #b45f3a; }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 1.5rem 0;
             font-size: 0.95rem;
-            background: white;
+            background: #fcfaf8;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
         th {
-            background: #e6f0fa;
-            color: #01497c;
+            background: #e6d5c0;
             font-weight: 600;
-            padding: 0.9rem 1rem;
+            padding: 0.7rem 0.9rem;
             text-align: left;
+            color: #2d2d44;
         }
         td {
-            padding: 0.8rem 1rem;
-            border-bottom: 1px solid #edf2f7;
+            padding: 0.7rem 0.9rem;
+            border-bottom: 1px solid #eee5dd;
             vertical-align: top;
         }
         tr:last-child td { border-bottom: none; }
-        .badge {
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
+        .table-wrap { overflow-x: auto; }
+
+        .highlight-good {
+            background: #e3f0e3;
+            border-left: 6px solid #2b7a2b;
+            padding: 1rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
         }
-        .badge-red { background: #fee2e2; color: #991b1b; }
-        .badge-green { background: #dcfce7; color: #166534; }
-        .badge-blue { background: #dbeafe; color: #1e40af; }
-        .list-checks {
-            list-style: none;
-            padding: 0;
+        .highlight-bad {
+            background: #fde8e8;
+            border-left: 6px solid #b33;
+            padding: 1rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
         }
-        .list-checks li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
+        .highlight-tip {
+            background: #e3edf5;
+            border-left: 6px solid #2a6f8f;
+            padding: 1rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
         }
-        .list-checks i { color: #0284c7; }
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 1.8rem;
-            box-shadow: 0 6px 18px rgba(0,70,100,0.06);
-            border: 1px solid #e9edf2;
-            margin-bottom: 2rem;
+        .highlight-warn {
+            background: #fff4e0;
+            border-left: 6px solid #d4891a;
+            padding: 1rem 1.3rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.2rem 0;
         }
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1.4rem;
-            font-weight: 650;
-            color: #014d7a;
+
+        .yaku-table td:first-child { font-weight: 600; }
+
+        .footnote {
+            font-size: 0.85rem;
+            color: #5a5a72;
+            margin-top: -0.5rem;
             margin-bottom: 1rem;
+            font-style: italic;
         }
-        .index-list {
-            columns: 2 280px;
-            column-gap: 2rem;
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 20px;
-        }
-        .index-list li {
-            margin-bottom: 0.4rem;
-            list-style: none;
-        }
-        .index-list i {
-            color: #0284c7;
-            width: 1.4rem;
-        }
-        .small-note {
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e6d5c0;
             font-size: 0.9rem;
-            color: #4b5563;
-            margin-top: 0.3rem;
+            color: #5a5a72;
+            text-align: center;
         }
-        .footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 2px solid #cbd5e1;
-            font-size: 0.9rem;
-            color: #4b5563;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+
+        @media (max-width: 700px) {
+            .container { padding: 1.3rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .toc ul { columns: 1; }
         }
-        .anchor { scroll-margin-top: 1.5rem; }
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, #b0d4e9, transparent);
-            margin: 2rem 0;
-        }
-        .emergency-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .emergency-card {
-            flex: 1 1 280px;
-            background: white;
-            border-radius: 20px;
-            padding: 1.2rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-        }
-        .emergency-card.red { border-top: 6px solid #b91c1c; }
-        .emergency-card.blue { border-top: 6px solid #0284c7; }
-        .emergency-card h4 {
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .algo-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 6px solid #0284c7;
-        }
-        .algo-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #0369a1;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .algo-sub {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #075985;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 2px solid #b0d4e9;
-            padding-bottom: 0.3rem;
-        }
-        .drug-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .drug-list li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-        .drug-list li:before {
-            content: "•";
-            color: #0284c7;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        .anchor { scroll-margin-top: 1.5rem; }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- ===== ШАПКА ===== -->
-    <h1>Практическое руководство дежурного врача-психиатра-нарколога</h1>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-        <span style="background: #1e3a5f; color: white; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600; font-size: 0.95rem;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>Санкт‑Петербург, 2026</span>
-        <span style="background: #e7f1ff; color: #004b7c; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600; font-size: 0.95rem;"><i class="fas fa-file-contract"></i> Актуально на сентябрь 2026</span>
-    </div>
-    <div class="lead">
-        <i class="fas fa-stethoscope" style="margin-right: 0.8rem;"></i> Полное собрание нормативных актов и клинических рекомендаций для работы в наркологической клинике.<br>
-        <span style="background:#b91c1c; color:white; padding:0.15rem 0.9rem; border-radius:20px; display:inline-block; margin-top:6px;">❗ Основа: Клинические рекомендации Минздрава РФ 2024 г., приказы № 1034н, № 1094н, № 666н (с 01.09.2026)</span>
-    </div>
+    <h1>🧩 Полное практическое руководство<br>по риичи-маджонгу</h1>
+    <p style="font-size:1.1rem; color:#4a4a62;">По материалам клуба «Тесудзи» и дополнительным источникам</p>
 
-    <!-- ===== ОГЛАВЛЕНИЕ ===== -->
+    <!-- Оглавление -->
     <div class="toc">
-        <h3><i class="fas fa-list-ul" style="margin-right: 0.8rem;"></i> Содержание</h3>
-        <a href="#tom1"><i class="fas fa-folder-open"></i> Том 1 — Нормативно-правовая база</a>
-        <a href="#tom2"><i class="fas fa-folder-open"></i> Том 2 — Алкогольная зависимость (F10)</a>
-        <a href="#tom3"><i class="fas fa-folder-open"></i> Том 3 — Опиоидная зависимость (F11)</a>
-        <a href="#tom4"><i class="fas fa-folder-open"></i> Том 4 — Каннабиноиды (F12)</a>
-        <a href="#tom5"><i class="fas fa-folder-open"></i> Том 5 — Седативные/снотворные (F13)</a>
-        <a href="#tom6"><i class="fas fa-folder-open"></i> Том 6 — Кокаин и стимуляторы (F14–F15)</a>
-        <a href="#tom7"><i class="fas fa-folder-open"></i> Том 7 — Галлюциногены и растворители (F16, F18)</a>
-        <a href="#tom8"><i class="fas fa-folder-open"></i> Том 8 — Сочетанное употребление (F19)</a>
-        <a href="#tom9"><i class="fas fa-folder-open"></i> Том 9 — Немедикаментозная терапия и чек‑листы</a>
-        <a href="#app"><i class="fas fa-paperclip"></i> Приложения (МКБ, таблицы, чек-листы)</a>
-        <a href="#index"><i class="fas fa-sort-alpha-down"></i> Алфавитный указатель</a>
-        <a href="#contacts"><i class="fas fa-phone-alt"></i> Контакты</a>
-    </div>
-
-    <!-- =============== ТОМ 1: НОРМАТИВНО-ПРАВОВАЯ БАЗА =============== -->
-    <section id="tom1" class="anchor" style="margin-top: 2.5rem;">
-        <h2><i class="fas fa-gavel"></i> Том 1. Нормативно-правовая база</h2>
-        <div class="card">
-            <div class="card-title"><span class="badge" style="background: #014d7a; color: white;">АКТУАЛЬНО на 2026</span> Документы, регламентирующие наркологическую помощь</div>
-
-            <h3>1.1 Основополагающие документы</h3>
-            <div class="table-wrap">
-                <table>
-                    <tr><th>Документ</th><th>Основное содержание</th></tr>
-                    <tr><td><strong>Клинические рекомендации «Психические и поведенческие расстройства, вызванные употреблением алкоголя. Синдром зависимости от алкоголя»</strong> (Минздрав РФ, 2024)</td><td>Лечение алкогольной зависимости</td></tr>
-                    <tr><td><strong>Клинические рекомендации «… Синдром отмены алкоголя»</strong> (Минздрав РФ, 2024, примен. с 01.01.2025)</td><td>Лечение ААС всех степеней</td></tr>
-                    <tr><td><strong>Клинические рекомендации «Психические и поведенческие расстройства, вызванные употреблением ПАВ. Острая интоксикация»</strong> (2024)</td><td>Лечение острых интоксикаций всеми ПАВ</td></tr>
-                    <tr><td><strong>Клинические рекомендации «… Абстинентное состояние с делирием»</strong> (2024)</td><td>Лечение делириозных состояний</td></tr>
-                    <tr><td><strong>Приказ Минздрава № 1034н от 30.12.2015</strong> (ред. 07.06.2022, действует до 01.09.2026)</td><td>Порядок оказания помощи, диспансерное наблюдение</td></tr>
-                    <tr><td><strong>Приказ Минздрава № 666н от 13.11.2025</strong> (вступает в силу 01.09.2026)</td><td>Новый порядок оказания помощи (заменяет 1034н)</td></tr>
-                    <tr><td><strong>Приказ Минздрава № 1094н от 24.11.2021</strong> (действует до 01.03.2028)</td><td>Порядок назначения ЛП, формы рецептурных бланков</td></tr>
-                    <tr><td><strong>Приказ Минздрава № 262н от 29.04.2025</strong> (действует до 01.09.2031)</td><td>Медосвидетельствование на состояние опьянения</td></tr>
-                    <tr><td><strong>Приказ Минздрава № 208н, Минтруда № 432н от 03.05.2023</strong></td><td>Реабилитация больных наркоманией</td></tr>
-                </table>
-            </div>
-            <div class="alert success">
-                <i class="fas fa-check-circle"></i> <strong>Важно:</strong> Все клинические рекомендации 2024 года применяются с 1 января 2025 года. Приоритет в лечении — клиническим рекомендациям, затем порядкам и стандартам.
-            </div>
-            <div class="critical">
-                <i class="fas fa-exclamation-triangle"></i> <strong>Обязательно:</strong> при поступлении пациента оформлять <strong>информированное добровольное согласие</strong> на медицинское вмешательство (лечение проводится добровольно, за исключением случаев, предусмотренных законом).
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 2: АЛКОГОЛЬНАЯ ЗАВИСИМОСТЬ (F10) =============== -->
-    <section id="tom2" class="anchor">
-        <h2><i class="fas fa-wine-bottle"></i> Том 2. Алкогольная зависимость (F10)</h2>
-        <div class="card">
-            <p><span class="badge">Коды МКБ-10</span> F10.0 – острая интоксикация; F10.3 – абстинентный синдром; F10.4 – делирий; F10.5 – психотические расстройства.</p>
-
-            <!-- 2.1 Острая алкогольная интоксикация тяжелая -->
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> 2.1 Острая алкогольная интоксикация тяжелая (F10.0)</div>
-                <p><strong>Симптомы:</strong> угнетение сознания (оглушение, сопор, кома), гипотензия, гипотермия, бледность/синюшность кожи, запах алкоголя.</p>
-                <div class="algo-sub">Инфузионная терапия</div>
-                <ul class="drug-list">
-                    <li>5% глюкоза – 400–800 мл в/в капельно</li>
-                    <li>NaCl 0,9% – 400–800 мл в/в капельно</li>
-                    <li>Трисоль/Хлосоль – 400–800 мл в/в капельно</li>
-                    <li>Декстран 40/70 – 400 мл в/в капельно</li>
-                    <li>Поливидон – 400 мл в/в капельно</li>
-                </ul>
-                <div class="algo-sub">Инъекционная терапия</div>
-                <ul class="drug-list">
-                    <li>Пиридоксин (B₆) 5% – 5–10 мл в/м</li>
-                    <li>Аскорбиновая кислота 5% – 5–10 мл в/в с глюкозой</li>
-                    <li>Пирацетам 20% – 5–15 мл (1–3 г) в/м или в/в</li>
-                    <li>Никетамид – 1–2 мл п/к, в/м, в/в</li>
-                    <li>Сульфокамфокаин 10% – 2 мл п/к, в/м, в/в</li>
-                    <li>Кофеин-бензоат натрия 20% – 1–2 мл п/к</li>
-                    <li>Строфантин 0,05% – 0,5–1 мл в/в (по показаниям)</li>
-                    <li>Тиосульфат натрия 30% – 10–20 мл в/в</li>
-                    <li>Унитиол 5% – 5–10 мл в/м</li>
-                </ul>
-                <p><strong>Длительность:</strong> 2 дня. <span class="badge-red">Реанимационный профиль</span></p>
-            </div>
-
-            <!-- 2.2 Абстинентный синдром -->
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 2.2 Алкогольный абстинентный синдром (F10.3)</div>
-                <p><strong>Общие принципы:</strong> бензодиазепины – препараты выбора. Госпитализация по тяжести.</p>
-
-                <h4>Легкая степень</h4>
-                <ul class="drug-list">
-                    <li>Хлордиазепоксид 10–25 мг 2–4 р/сут</li>
-                    <li>Оксазепам 10–15 мг 2–3 р/сут</li>
-                    <li>Нитразепам 10–20 мг на ночь</li>
-                    <li>Карбамазепин 200–400 мг 2 р/сут</li>
-                    <li>Инфузии: 5% глюкоза 400 мл + Трисоль 400 мл в/в кап. 2–3 дня</li>
-                    <li>Витамины в/м (B₁, B₆, B₁₂, аскорбиновая)</li>
-                </ul>
-                <h4>Средняя степень (стационар)</h4>
-                <ul class="drug-list">
-                    <li>Дополнительно: Магния сульфат 25% – 5–10 мл в/в с глюкозой</li>
-                    <li>Калия, магния аспарагинат 10–20 мл в/в кап.</li>
-                    <li>С 7-го дня перорально: пимозид 2–4 мг/сут, перфеназин 8–16 мг/сут, пароксетин 20 мг/сут, тианептин 12,5 мг×3, миансерин 30–60 мг/сут</li>
-                </ul>
-                <h4>Тяжелая степень (реанимация)</h4>
-                <ul class="drug-list">
-                    <li>Инфузии 5–7 дней: поливидон, декстран, Трисоль/Хлосоль, 5% глюкоза, магния сульфат</li>
-                    <li>Мочегонные: фуросемид 20–40 мг в/м, маннитол 15% – 200 мл в/в кап.</li>
-                    <li>Немедикаментозная детоксикация: очистительная клизма, плазмаферез, ПКЦГ</li>
-                </ul>
-                <p><strong>Длительность:</strong> легкая – 20 дней, средняя – 15 дней, тяжелая – 25 дней.</p>
-            </div>
-
-            <!-- 2.3 Алкогольный делирий -->
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-brain" style="color:#b91c1c;"></i> 2.3 Алкогольный делирий (F10.4)</div>
-                <p><strong>Условия:</strong> реанимационный профиль. Обследование расширенное (электролиты, газы крови, коагулограмма).</p>
-                <ul class="drug-list">
-                    <li>Инфузии: поливидон, Трисоль/Хлосоль, р-р Рингера, 5% глюкоза (500–1000 мл п/к), магния сульфат, тиосульфат натрия, унитиол</li>
-                    <li>Купирование возбуждения: диазепам 10–20 мг в/м (повторно), оксибутират натрия 20% – 10–20 мл в/в медленно, тиопентал натрия – только в реанимации</li>
-                    <li>Витамины ежедневно в/в или в/м: тиамин 5% 1–2 мл, пиридоксин 5% 1–2 мл, цианокобаламин 500–1000 мкг, аскорбиновая кислота 5% 5–10 мл, никотиновая кислота 1% 1–2 мл</li>
-                    <li>Глюкокортикоиды по показаниям</li>
-                </ul>
-                <p><strong>Длительность:</strong> 7–12 дней.</p>
-            </div>
-
-            <!-- 2.4 Алкогольные психозы -->
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-ghost"></i> 2.4 Алкогольные психотические расстройства (F10.5)</div>
-                <p><strong>Галлюциноз (F10.5.2):</strong> нейролептики – галоперидол 5–15 мг/сут, трифлуоперазин 5–20 мг/сут, хлорпромазин 50–150 мг/сут, клозапин 50–200 мг/сут (после 1 недели трезвости). Транквилизаторы, ноотропы. Длительность до 20 дней.</p>
-                <p><strong>Параноид (F10.5.1):</strong> аналогично, длительность до 30 дней.</p>
-                <p><strong>Энцефалопатия / корсаковский психоз (F10.5.3, F10.6):</strong> дополнительно винпоцетин 5–10 мг в/м или внутрь 3 р/сут, циннаризин 25 мг внутрь 3 р/сут. Длительность до 40 дней.</p>
-            </div>
-
-            <!-- 2.5 Противорецидивная терапия -->
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-shield-alt"></i> 2.5 Противорецидивная терапия (поддерживающая)</div>
-                <ul class="drug-list">
-                    <li><strong>Налтрексон</strong> 50 мг/сут перорально, или 380 мг в/м 1 раз в месяц.</li>
-                    <li><strong>Налмефен</strong> 18 мг/сут или по потребности за 1,5–2 ч до употребления.</li>
-                    <li><strong>Дисульфирам</strong> 250 мг/сут, возможна имплантация 8–10 таблеток по 250 мг подкожно/внутримышечно.</li>
-                    <li><strong>Топирамат</strong> 200–300 мг/сут (титрация с 25–50 мг/сут).</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 3: ОПИОИДНАЯ ЗАВИСИМОСТЬ (F11) =============== -->
-    <section id="tom3" class="anchor">
-        <h2><i class="fas fa-syringe"></i> Том 3. Опиоидная зависимость (F11)</h2>
-        <div class="card">
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> 3.1 Опиоидная интоксикация тяжелая (F11.0)</div>
-                <p><strong>Симптомы:</strong> вялость, кома, брадипноэ, точечные зрачки, гипотензия.</p>
-                <ul class="drug-list">
-                    <li><strong>Налоксон</strong> – антидот: 0,4–2 мг в/в, повторно каждые 2–3 мин до восстановления дыхания.</li>
-                    <li>Инфузии: 5% и 10% глюкоза, Трисоль/Хлосоль, поливидон, декстран, кальция хлорид, калия/магния аспарагинат.</li>
-                    <li>Аналептики (никетамид, сульфокамфокаин), кофеин, витамины, пирацетам, строфантин/дигоксин (по показаниям).</li>
-                </ul>
-                <p><strong>Длительность:</strong> 2–3 суток.</p>
-            </div>
-
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 3.2 Опиоидный абстинентный синдром (F11.3)</div>
-                <ul class="drug-list">
-                    <li><strong>Клонидин</strong> 0,075–0,15 мг 2–3 р/сут (под контролем АД), тиаприд 100–200 мг 2–3 р/сут.</li>
-                    <li>Транквилизаторы: диазепам 5–10 мг 2–3 р/сут, карбамазепин 200–400 мг 2 р/сут.</li>
-                    <li>Нейролептики (при психопатоподобном поведении): галоперидол 5–15 мг/сут, клозапин 50–200 мг/сут, тиоридазин 50–150 мг/сут.</li>
-                    <li>Инфузии: 5% глюкоза 400 мл + Трисоль 400 мл в/в кап.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 7–12 дней (легкая/средняя), 10–12 дней (тяжелая).</p>
-            </div>
-
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-sync-alt"></i> 3.3 Постабстинентный синдром (F11.21) и ремиссия (F11.20, F11.23)</div>
-                <ul class="drug-list">
-                    <li><strong>Антидепрессанты:</strong> амитриптилин 25–75 мг/сут, кломипрамин 25–50 мг/сут, мапротилин 25–75 мг/сут, тианептин 12,5 мг×3, пароксетин 20 мг/сут.</li>
-                    <li><strong>Нейролептики:</strong> галоперидол, флюфеназин, клозапин, тиоридазин, перициазин.</li>
-                    <li><strong>Антиконвульсанты:</strong> карбамазепин 200–400 мг 2 р/сут, фенитоин.</li>
-                    <li><strong>Налтрексон</strong> – только после 7–10 дней воздержания: 25 мг 1-й день, далее 50 мг/сут (при полизависимости до 100 мг/сут).</li>
-                    <li>Психотерапия, электротранквилизация, массаж, акупунктура.</li>
-                </ul>
-                <p><strong>Длительность:</strong> постабстинентный – не менее 21 дня; ремиссия – 6–8 месяцев (180–200 дней).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 4: КАННАБИНОИДЫ (F12) =============== -->
-    <section id="tom4" class="anchor">
-        <h2><i class="fas fa-cannabis"></i> Том 4. Зависимость от каннабиноидов (F12)</h2>
-        <div class="card">
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-circle"></i> 4.1 Острая интоксикация (F12.0)</div>
-                <ul class="drug-list">
-                    <li>Амбулаторно: никетамид 1–2 мл п/к/в/м, кофеин-бензоат натрия 20% 1–2 мл п/к.</li>
-                    <li>Инфузии: 5% глюкоза 400 мл + Трисоль 400 мл в/в кап., кальция хлорид 10% – 5–10 мл в/в.</li>
-                </ul>
-                <p><strong>Длительность:</strong> до 1 суток.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 4.2 Абстинентный синдром (F12.24, F12.30)</div>
-                <ul class="drug-list">
-                    <li>Диазепам 5–10 мг 2–3 р/сут, нитразепам 10–20 мг на ночь, оксазепам 10–15 мг 2–3 р/сут, карбамазепин 200–400 мг 2 р/сут.</li>
-                    <li>При неэффективности – госпитализация.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 5–7 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-check-circle"></i> 4.3 Ремиссия (F12.20)</div>
-                <p>Психотерапия, корректоры поведения (перициазин, тиоридазин). Длительность 15–30 дней.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 5: СЕДАТИВНЫЕ/СНОТВОРНЫЕ (F13) =============== -->
-    <section id="tom5" class="anchor">
-        <h2><i class="fas fa-bed"></i> Том 5. Седативные и снотворные вещества (F13)</h2>
-        <div class="card">
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> 5.1 Тяжелая интоксикация (F13.0)</div>
-                <ul class="drug-list">
-                    <li>Промывание желудка, никетамид, дезинтоксикационные растворы (поливидон, декстран, Трисоль, Хлосоль, 5% глюкоза), витамины, ноотропы, кардиотоники.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 3–5 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 5.2 Абстинентный синдром с делирием (F13.24, F13.41)</div>
-                <ul class="drug-list">
-                    <li><strong>Фенобарбитал</strong> 50–100 мг 2–3 р/сут (с постепенным снижением), карбамазепин 200–400 мг 2 р/сут, клоназепам 0,5–1 мг 2 р/сут.</li>
-                    <li>Инфузии: поливидон 400 мл, 5% глюкоза 400–800 мл в/в.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 10–14 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 5.3 Абстинентный синдром (F13.24, F13.3)</div>
-                <ul class="drug-list">
-                    <li>Фенобарбитал, карбамазепин, клоназепам, нейролептики (хлорпромазин, тиоридазин, перициазин, сульпирид), транквилизаторы, пропранолол, препараты калия, витамины, ГАМК.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 10–12 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-sync-alt"></i> 5.4 Постабстинентный синдром (F13.21)</div>
-                <ul class="drug-list">
-                    <li>Транквилизаторы – короткими курсами (10–12 дней) при барбитуровой зависимости; при зависимости от транквилизаторов – не назначать.</li>
-                    <li>Нейролептики (галоперидол, флюфеназин, клозапин, тиоридазин, перициазин), антидепрессанты (амитриптилин, мапротилин, тианептин, кломипрамин), ноотропы, антиконвульсанты, немедикаментозная терапия.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 20–25 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-brain"></i> 5.5 Конечная стадия, деменция (F13.223, F13.73)</div>
-                <ul class="drug-list">
-                    <li>Витамины, ноотропы (пирацетам, пикамилон, голантеновая кислота, пиритинол), ГАМК, церебролизин, немедикаментозная терапия.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 90–100 дней.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 6: КОКАИН И СТИМУЛЯТОРЫ (F14–F15) =============== -->
-    <section id="tom6" class="anchor">
-        <h2><i class="fas fa-bolt"></i> Том 6. Кокаин (F14) и другие стимуляторы (F15)</h2>
-        <div class="card">
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> 6.1 Тяжелая интоксикация кокаином (F14.0)</div>
-                <ul class="drug-list">
-                    <li>Инфузии: 5% глюкоза 400 мл, 10% глюкоза 200 мл, Трисоль/Хлосоль 400 мл в/в кап.</li>
-                    <li>Диазепам 10–20 мг в/м, пропранолол 1–5 мг в/в медленно (под контролем ЭКГ), фуросемид 20–40 мг в/м.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 2–3 суток.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 6.2 Абстинентный синдром при кокаине (F14.24, F14.3)</div>
-                <ul class="drug-list">
-                    <li><strong>Бромокриптин</strong> 1,25–2,5 мг 2–3 р/сут, диазепам 5–10 мг 2–3 р/сут, амитриптилин 25–75 мг/сут, флуоксетин 20 мг/сут, пароксетин 20 мг/сут.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 7–10 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-check-circle"></i> 6.3 Ремиссия (F14.20)</div>
-                <p>Бромокриптин, антидепрессанты (пароксетин, кломипрамин), корректоры поведения (перициазин, тиоридазин), психотерапия. 180–200 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-triangle" style="color:#b91c1c;"></i> 6.4 Интоксикация другими стимуляторами (F15.0)</div>
-                <ul class="drug-list">
-                    <li>Инфузии: 5% глюкоза 400 мл, Трисоль/Хлосоль 400 мл, кальция хлорид 10% – 5–10 мл в/в, магния сульфат 25% – 5–10 мл в/в с глюкозой.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 1–3 дня.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 6.5 Абстиненция при других стимуляторах (F15.24, F15.3)</div>
-                <ul class="drug-list">
-                    <li>Бромокриптин, диазепам, амитриптилин, флуоксетин – дозировки аналогичны кокаину.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 7–10 дней.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 7: ГАЛЛЮЦИНОГЕНЫ И ЛЕТУЧИЕ РАСТВОРИТЕЛИ =============== -->
-    <section id="tom7" class="anchor">
-        <h2><i class="fas fa-skull"></i> Том 7. Галлюциногены (F16) и летучие растворители (F18)</h2>
-        <div class="card">
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-circle"></i> 7.1 Острая интоксикация галлюциногенами (F16.0)</div>
-                <ul class="drug-list">
-                    <li>Никетамид 1–2 мл п/к/в/м, кофеин-бензоат натрия 20% 1–2 мл п/к.</li>
-                    <li>Инфузии: поливидон, декстран 40/70, Трисоль/Хлосоль, 5% глюкоза, препараты кальция/калия, витамины, ноотропы (пирацетам, пиритинол), ГАМК, кардиотоники, спазмолитики.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 1–3 дня.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-exclamation-circle"></i> 7.2 Острая интоксикация летучими растворителями (F18.0)</div>
-                <p>Аналогично галлюциногенам. Длительность 1–2 дня.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-hand-holding-heart"></i> 7.3 Абстинентный синдром (F18.24, F18.3)</div>
-                <ul class="drug-list">
-                    <li>Транквилизаторы (диазепам, нитразепам, оксазепам, феназепам), антидепрессанты, нейролептики, карбамазепин, ноотропы, витамины, ГАМК.</li>
-                </ul>
-                <p><strong>Длительность:</strong> 10–20 дней.</p>
-            </div>
-            <div class="algo-card">
-                <div class="algo-title"><i class="fas fa-check-circle"></i> 7.4 Ремиссия (F18.20)</div>
-                <p>Транквилизаторы, нейролептики, ноотропы, антидепрессанты, витамины, ГАМК, немедикаментозная терапия. 90–100 дней.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 8: СОЧЕТАННОЕ УПОТРЕБЛЕНИЕ (F19) =============== -->
-    <section id="tom8" class="anchor">
-        <h2><i class="fas fa-pills"></i> Том 8. Сочетанное употребление нескольких ПАВ (F19)</h2>
-        <div class="card">
-            <div class="critical">
-                <i class="fas fa-exclamation-triangle"></i> <strong>Важно:</strong> состояния отличаются большой вариабельностью. Лечение зависит от состава комбинации. Приоритет – купирование наиболее опасного синдрома. Индивидуальный подход.
-            </div>
-            <p>Алгоритм: идентифицировать все употребляемые вещества, оценить ведущий синдром (интоксикация, абстиненция, психоз), назначить терапию согласно клиническим рекомендациям для каждого вещества с учётом перекрестных эффектов. Бензодиазепины – препараты выбора при смешанной абстиненции. Антидоты (налоксон) применяются при опиоидном компоненте.</p>
-        </div>
-    </section>
-
-    <!-- =============== ТОМ 9: НЕМЕДИКАМЕНТОЗНАЯ ТЕРАПИЯ И ЧЕК-ЛИСТЫ =============== -->
-    <section id="tom9" class="anchor">
-        <h2><i class="fas fa-hand-sparkles"></i> Том 9. Немедикаментозная терапия и чек‑листы</h2>
-        <div class="card">
-            <h3>9.1 Методы немедикаментозной терапии</h3>
-            <div class="table-wrap">
-                <table>
-                    <tr><th>Метод</th><th>Показания</th></tr>
-                    <tr><td>Психотерапия (рациональная, семейная, групповая, эмоционально-стрессовая)</td><td>Все стадии, особенно ремиссия</td></tr>
-                    <tr><td>Гипнотерапия</td><td>Поддерживающее лечение</td></tr>
-                    <tr><td>Аутогенная тренировка</td><td>Поддерживающее лечение</td></tr>
-                    <tr><td>Электротранквилизация (ЛЭНАР)</td><td>ААС, влечение к ПАВ</td></tr>
-                    <tr><td>Иглорефлексотерапия (ИРТ)</td><td>ААС, влечение</td></tr>
-                    <tr><td>Гидротерапия</td><td>Поддерживающее лечение</td></tr>
-                    <tr><td>Плазмаферез</td><td>Тяжелый ААС, делирий</td></tr>
-                    <tr><td>ГБО</td><td>Делирий</td></tr>
-                    <tr><td>Очистительная клизма</td><td>Детоксикация</td></tr>
-                </table>
-            </div>
-
-            <h3>9.2 Чек-лист дежурного врача (общий)</h3>
-            <div class="alert success">
-                <i class="fas fa-clipboard-check"></i> <strong>При поступлении:</strong>
-                <ul class="list-checks">
-                    <li><i class="fas fa-check-square"></i> Оценка тяжести, ведущий синдром (интоксикация, абстиненция, психоз)</li>
-                    <li><i class="fas fa-check-square"></i> Идентификация ПАВ (анамнез, клиника, токсикологическое исследование)</li>
-                    <li><i class="fas fa-check-square"></i> Сбор анамнеза (вещество, доза, путь введения, длительность, время последнего приема)</li>
-                    <li><i class="fas fa-check-square"></i> Неврологический и соматический осмотр</li>
-                    <li><i class="fas fa-check-square"></i> Назначение обязательного минимума обследований (ОАК, ОАМ, биохимия, ЭКГ, ВИЧ)</li>
-                    <li><i class="fas fa-check-square"></i> Консультации терапевта, невролога</li>
-                    <li><i class="fas fa-check-square"></i> Оценка показаний к госпитализации/переводу в реанимацию</li>
-                    <li><i class="fas fa-check-square"></i> Назначение терапии согласно клиническим рекомендациям</li>
-                    <li><i class="fas fa-check-square"></i> Оформление информированного добровольного согласия</li>
-                    <li><i class="fas fa-check-square"></i> Заполнение медицинской документации</li>
-                </ul>
-            </div>
-            <div class="critical">
-                <i class="fas fa-exclamation-triangle"></i> <strong>При ухудшении:</strong> перевод в реанимацию, контроль витальных функций, коррекция терапии.
-            </div>
-            <div class="alert">
-                <i class="fas fa-check-circle"></i> <strong>При выписке:</strong> оценка эффективности, рекомендации по дальнейшему наблюдению, направление на психотерапию/реабилитацию, рекомендации по воздержанию, выписной эпикриз.
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== ПРИЛОЖЕНИЯ =============== -->
-    <section id="app" class="anchor">
-        <h2><i class="fas fa-paperclip"></i> Приложения</h2>
-
-        <!-- Приложение 1: Коды МКБ-10 -->
-        <div class="card">
-            <h3><span class="badge">Приложение 1</span> Коды МКБ-10 для наркологии</h3>
-            <div class="table-wrap">
-                <table>
-                    <tr><th>Код</th><th>Расшифровка</th></tr>
-                    <tr><td>F10.0</td><td>Острая алкогольная интоксикация</td></tr>
-                    <tr><td>F10.3</td><td>Алкогольный абстинентный синдром</td></tr>
-                    <tr><td>F10.4</td><td>Алкогольный делирий</td></tr>
-                    <tr><td>F10.5</td><td>Алкогольные психозы</td></tr>
-                    <tr><td>F11.0</td><td>Опиоидная интоксикация</td></tr>
-                    <tr><td>F11.3</td><td>Опиоидный абстинентный синдром</td></tr>
-                    <tr><td>F12.0</td><td>Интоксикация каннабиноидами</td></tr>
-                    <tr><td>F12.3</td><td>Абстинентный синдром каннабиноидов</td></tr>
-                    <tr><td>F13.0</td><td>Интоксикация седативными/снотворными</td></tr>
-                    <tr><td>F13.3</td><td>Абстиненция от седативных/снотворных</td></tr>
-                    <tr><td>F13.4</td><td>Абстиненция с делирием</td></tr>
-                    <tr><td>F14.0</td><td>Интоксикация кокаином</td></tr>
-                    <tr><td>F14.3</td><td>Абстиненция кокаиновая</td></tr>
-                    <tr><td>F15.0</td><td>Интоксикация другими стимуляторами</td></tr>
-                    <tr><td>F15.3</td><td>Абстиненция от других стимуляторов</td></tr>
-                    <tr><td>F16.0</td><td>Интоксикация галлюциногенами</td></tr>
-                    <tr><td>F18.0</td><td>Интоксикация летучими растворителями</td></tr>
-                    <tr><td>F18.3</td><td>Абстиненция от растворителей</td></tr>
-                    <tr><td>F19</td><td>Сочетанное употребление нескольких ПАВ</td></tr>
-                </table>
-            </div>
-            <p class="small-note">* Для уточнения стадии зависимости используются дополнительные знаки (например, F10.2x1 – начальная стадия).</p>
-        </div>
-
-        <!-- Приложение 2: Таблица дозировок -->
-        <div class="card">
-            <h3><span class="badge">Приложение 2</span> Стартовые дозировки основных препаратов</h3>
-            <div class="table-wrap">
-                <table>
-                    <tr><th>Препарат</th><th>Начальная доза</th><th>Кратность</th></tr>
-                    <tr><td>Диазепам</td><td>5–10 мг</td><td>2–3 р/сут</td></tr>
-                    <tr><td>Хлордиазепоксид</td><td>10–25 мг</td><td>2–4 р/сут</td></tr>
-                    <tr><td>Оксазепам</td><td>10–15 мг</td><td>2–3 р/сут</td></tr>
-                    <tr><td>Феназепам</td><td>0,5–1 мг</td><td>2–3 р/сут</td></tr>
-                    <tr><td>Карбамазепин</td><td>200–400 мг</td><td>2 р/сут</td></tr>
-                    <tr><td>Клонидин</td><td>0,075–0,15 мг</td><td>2–3 р/сут</td></tr>
-                    <tr><td>Галоперидол</td><td>5–15 мг/сут</td><td>в 2–3 приема</td></tr>
-                    <tr><td>Налтрексон</td><td>25–50 мг/сут</td><td>1 р/сут</td></tr>
-                    <tr><td>Дисульфирам</td><td>250 мг/сут</td><td>1 р/сут</td></tr>
-                    <tr><td>Бромокриптин</td><td>1,25–2,5 мг</td><td>2–3 р/сут</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- Приложение 3: Чек-лист сбора анамнеза -->
-        <div class="card">
-            <h3><span class="badge">Приложение 3</span> Чек-лист сбора анамнеза у наркологического пациента</h3>
-            <ul class="list-checks">
-                <li><i class="fas fa-check-square"></i> Вид ПАВ, способ употребления (внутрь, ингаляционно, в/в).</li>
-                <li><i class="fas fa-check-square"></i> Доза, частота, длительность употребления.</li>
-                <li><i class="fas fa-check-square"></i> Время последнего употребления.</li>
-                <li><i class="fas fa-check-square"></i> Наличие абстинентного синдрома в прошлом, его тяжесть.</li>
-                <li><i class="fas fa-check-square"></i> Предыдущие попытки лечения, их эффективность.</li>
-                <li><i class="fas fa-check-square"></i> Сопутствующие соматические и психические заболевания.</li>
-                <li><i class="fas fa-check-square"></i> Аллергологический анамнез.</li>
-                <li><i class="fas fa-check-square"></i> Социальный статус, поддержка семьи.</li>
-            </ul>
-        </div>
-
-        <!-- Приложение 4: Особенности частной клиники -->
-        <div class="card">
-            <h3><span class="badge">Приложение 4</span> Особенности работы в частной наркологической клинике</h3>
-            <ul>
-                <li><strong>Добровольность:</strong> обязательное информированное согласие.</li>
-                <li><strong>Диспансерное наблюдение:</strong> регламентируется Приказом № 1034н (до 01.09.2026), затем № 666н.</li>
-                <li><strong>Медосвидетельствование:</strong> по Приказу № 262н (действует до 01.09.2031).</li>
-                <li><strong>Реабилитация:</strong> по Приказу № 208н/432н.</li>
-                <li><strong>Новый порядок № 666н</strong> с 01.09.2026 — замена 1034н.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- =============== АЛФАВИТНЫЙ УКАЗАТЕЛЬ =============== -->
-    <section id="index" class="anchor">
-        <h2><i class="fas fa-sort-alpha-down"></i> Алфавитный указатель</h2>
-        <div class="card">
-            <div class="index-list">
-                <ul style="list-style:none; padding-left:0;">
-                    <li><i class="fas fa-caret-right"></i> <strong>ААС (алкогольный)</strong> – Том 2</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Абстинентный синдром</strong> – Том 2,3,4,5,6,7</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Алкоголь</strong> – Том 2</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Антидоты</strong> – налоксон (Том 3)</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Бензодиазепины</strong> – Том 2,3,4,5,6</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Делирий</strong> – Том 2,5</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Диспансерное наблюдение</strong> – Том 1</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Дисульфирам</strong> – Том 2</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Имплантация дисульфирама</strong> – Том 2</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Интоксикация</strong> – Том 2,3,4,5,6,7</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Каннабиноиды</strong> – Том 4</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Клонидин</strong> – Том 3</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Кокаин</strong> – Том 6</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>МКБ-10</strong> – Приложение 1</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Налтрексон</strong> – Том 2,3</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Нейролептики</strong> – Том 2,3,5</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Опиоиды</strong> – Том 3</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Психозы алкогольные</strong> – Том 2</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Реабилитация</strong> – Том 1</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Ремиссия</strong> – Том 2,3,4,5,6,7</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Седативные/снотворные</strong> – Том 5</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Стимуляторы</strong> – Том 6</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Транквилизаторы</strong> – Том 2,3,4,5,6,7</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Фенобарбитал</strong> – Том 5</li>
-                    <li><i class="fas fa-caret-right"></i> <strong>Чек-лист врача</strong> – Том 9</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- =============== КОНТАКТЫ =============== -->
-    <section id="contacts" class="anchor">
-        <h2><i class="fas fa-address-card"></i> Полезные контакты (Санкт-Петербург)</h2>
-        <div class="card">
-            <ul style="list-style:none; padding-left:0;">
-                <li><i class="fas fa-phone-alt"></i> Комитет по здравоохранению – 246-43-77</li>
-                <li><i class="fas fa-phone-alt"></i> ТФОМС СПб – 602-84-50</li>
-                <li><i class="fas fa-phone-alt"></i> СФР по СПб и ЛО – 8-800-200-09-81</li>
-                <li><i class="fas fa-phone-alt"></i> Росздравнадзор – 314-67-51</li>
-                <li><i class="fas fa-gavel"></i> Прокуратура СПб – 312-32-53</li>
-                <li><i class="fas fa-ambulance"></i> Скорая помощь – 103 (112)</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- ===== ЗАКЛЮЧЕНИЕ ===== -->
-    <hr>
-    <div style="background: linear-gradient(145deg, #eef6ff, white); border-radius:28px; padding:2rem;">
-        <h2 style="border-bottom: none; margin-top:0;"><i class="fas fa-shield-alt"></i> Заключение</h2>
-        <ul style="font-size:1.05rem;">
-            <li><strong>Основа работы – клинические рекомендации Минздрава РФ 2024 г.</strong> (применяются с 01.01.2025).</li>
-            <li><strong>Приказы:</strong> 1034н (до 01.09.2026), 666н (с 01.09.2026), 1094н (рецепты), 262н (освидетельствование).</li>
-            <li><strong>Всегда идентифицируйте ПАВ</strong> – от этого зависит выбор терапии.</li>
-            <li><strong>Бензодиазепины – универсальный инструмент</strong> при абстиненции, но дозы титруются индивидуально.</li>
-            <li><strong>Антидоты:</strong> налоксон – при опиоидах, фенобарбитал – при барбитуратах.</li>
-            <li><strong>Нейролептики – только при психозе или выраженном психомоторном возбуждении.</strong></li>
-            <li><strong>Инфузионная терапия – под контролем диуреза, АД, электролитов.</strong></li>
-            <li><strong>Частная клиника – добровольность и информированное согласие обязательны.</strong></li>
-            <li><strong>Диспансеризация и наблюдение – ваша прерогатива согласно порядкам.</strong></li>
+        <h2>📑 Содержание</h2>
+        <ul>
+            <li><a href="#intro">Введение</a></li>
+            <li><a href="#glossary">Словарь терминов</a></li>
+            <li><a href="#part0">Часть 0. Подготовка к игре</a></li>
+            <li><a href="#part1">Часть 1. Азы стратегии</a></li>
+            <li><a href="#part2">Часть 2. Пайри: эффективный сбор</a></li>
+            <li><a href="#part3">Часть 3. Выигрышные ожидания</a></li>
+            <li><a href="#multiple-waits">3.5. Множественные ожидания</a></li>
+            <li><a href="#part4">Часть 4. Защита</a></li>
+            <li><a href="#part5">Часть 5. Продвинутые стратегии</a></li>
+            <li><a href="#yaku">Таблица всех яку</a></li>
+            <li><a href="#resources">Полезные ресурсы</a></li>
         </ul>
-        <p style="margin-top:1.5rem; font-size:1.2rem; font-weight:700;">Вы знаете современные стандарты – вы защищены и можете оказывать помощь на высшем уровне.</p>
     </div>
 
-    <!-- ===== ФУТЕР ===== -->
-    <div class="footer">
-        <span><i class="fas fa-calendar-check"></i> Актуализировано: сентябрь 2026 г.</span>
-        <span><i class="fas fa-sync-alt"></i> Следующая проверка: декабрь 2026</span>
-        <span><i class="fas fa-stethoscope"></i> Для дежурного врача-психиатра-нарколога, СПб</span>
-    </div>
+    <!-- ВВЕДЕНИЕ -->
+    <section id="intro">
+        <h2>Введение</h2>
+        <p>Риичи-маджонг — это игра, где удача и мастерство переплетаются в сложный узор. Новичку она может показаться хаосом: тайлы приходят и уходят, противники что-то объявляют, а вы к концу раздачи остаётесь ни с чем. Но за этим хаосом стоит стройная логика, и освоив её, вы начнёте понимать игру на совершенно новом уровне.</p>
 
-    <!-- ===== КНОПКА НАВЕРХ ===== -->
-    <div style="position: sticky; bottom: 2rem; text-align: right;">
-        <a href="#" style="background: #0284c7; color: white; padding: 0.8rem 1.2rem; border-radius: 60px; text-decoration: none; font-weight: 600; box-shadow: 0 8px 16px rgba(2,132,199,0.25);"><i class="fas fa-arrow-up"></i> Наверх</a>
-    </div>
+        <p>В основе всего лежат три принципа, которые красной нитью проходят через это руководство:</p>
 
-</div> <!-- .container -->
+        <ul>
+            <li><strong>Не мешайте руке развиваться.</strong> Главная ошибка новичков — попытка силой «выстроить» конкретную яку с первых ходов. Вместо этого нужно создать условия, при которых рука сама придёт к победе.</li>
+            <li><strong>Думайте статистикой, а не надеждой.</strong> Каждый ваш сброс и каждое решение можно оценить количественно: сколько тайлов улучшат руку, сколько могут её испортить, насколько опасен сброс.</li>
+            <li><strong>Умение защищаться важнее умения атаковать.</strong> В среднем вы будете выигрывать лишь четверть раздач. Остальные три четверти вы проводите в защите — и именно там сохраняются ваши очки.</li>
+        </ul>
+
+        <p>Это руководство проведёт вас от полного нуля до уровня, на котором вы сможете осознанно принимать решения за столом. Каждый раздел построен по одному принципу: сначала — <em>почему</em> это работает, затем — <em>как</em> это применять, и в конце — <em>типичные ошибки</em>.</p>
+    </section>
+
+    <!-- СЛОВАРЬ -->
+    <section id="glossary">
+        <h2>Словарь терминов</h2>
+        <p>Прежде чем нырять в стратегию, необходимо освоить базовый язык. В маджонге почти все термины имеют японское происхождение, и без них невозможно читать ни статьи, ни книги, ни обсуждения.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Термин</th>
+                        <th>Определение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Яку</strong></td><td>Условие, дающее право на победу. Например, риичи, пинфу, тоитои. Без хотя бы одной яку вы не можете объявить агари, даже если формально собрали 4 сета и пару.</td></tr>
+                    <tr><td><strong>Риичи</strong></td><td>Объявление о том, что ваша <strong>закрытая</strong> рука в темпае. Вы кладёте 1000 очков на стол и больше не можете менять руку до победы. Риичи само по себе является яку.</td></tr>
+                    <tr><td><strong>Темпай</strong></td><td>Состояние руки, когда до полной победы не хватает ровно одного тайла.</td></tr>
+                    <tr><td><strong>Фуритен</strong></td><td>Запрет на победу через рон, если один из ваших выигрышных тайлов уже есть в ваших сбросах или сброшен кем-то после вашего риичи.</td></tr>
+                    <tr><td><strong>Агари</strong></td><td>Объявление победы в раздаче.</td></tr>
+                    <tr><td><strong>Рон</strong></td><td>Победа на тайле, сброшенном другим игроком.</td></tr>
+                    <tr><td><strong>Цумо</strong></td><td>Победа на тайле, взятом со стены в свой ход.</td></tr>
+                    <tr><td><strong>Наки</strong></td><td>Общее название для всех открытых действий: пон, чи, кан.</td></tr>
+                    <tr><td><strong>Пон</strong></td><td>Взять чужой тайл, чтобы собрать сет из трёх одинаковых тайлов.</td></tr>
+                    <tr><td><strong>Чи</strong></td><td>Взять тайл у игрока слева, чтобы собрать шунц (последовательность из трёх тайлов одной масти).</td></tr>
+                    <tr><td><strong>Кан</strong></td><td>Собрать четыре одинаковых тайла. Бывает открытым и закрытым.</td></tr>
+                    <tr><td><strong>Хан</strong></td><td>Основная единица стоимости руки. Чем больше хан, тем выше очки.</td></tr>
+                    <tr><td><strong>Фу</strong></td><td>Дополнительные поинты для рук дешевле 5 хан.</td></tr>
+                    <tr><td><strong>Дора</strong></td><td>Бонусные тайлы, каждый даёт +1 хан к стоимости руки.</td></tr>
+                    <tr><td><strong>Ура-дора</strong></td><td>Дополнительные доры, которые открываются только при победе в риичи.</td></tr>
+                    <tr><td><strong>Шантен</strong></td><td>Количество тайлов, которых не хватает до темпая. 1 шантен = нужен 1 тайл.</td></tr>
+                    <tr><td><strong>Уке-ире</strong></td><td>Количество тайлов в колоде, которые улучшают вашу руку (приближают к темпаю).</td></tr>
+                    <tr><td><strong>Бетаори</strong></td><td>Полная защита: отказ от своей руки ради сброса только безопасных тайлов.</td></tr>
+                    <tr><td><strong>Судзи</strong></td><td>Тайлы, которые становятся относительно безопасными, если противник сбросил определённый тайл той же масти.</td></tr>
+                    <tr><td><strong>Кабе</strong></td><td>«Стена» — тайл, все четыре копии которого уже видны. Делает соседние тайлы безопасными.</td></tr>
+                    <tr><td><strong>Генбуцу</strong></td><td>Тайл, который противник уже сбрасывал сам — 100% безопасен для него.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ЧАСТЬ 0: ПОДГОТОВКА К ИГРЕ -->
+    <section id="part0">
+        <h2>Часть 0. Подготовка к игре</h2>
+        <p>Прежде чем сесть за стол и начать собирать руку, необходимо правильно организовать игровое пространство. Подготовка к раздаче — это не просто формальность. От того, как вы рассадитесь, определите дилера и построите стену, зависит очень многое: порядок ходов, распределение тайлов и даже психологический настрой.</p>
+
+        <h3>0.1. Рассадка за столом и определение дилера</h3>
+        <p>В маджонг играют четыре игрока, и каждый из них занимает одно из четырёх мест, соответствующих сторонам света: <strong>Восток</strong>, <strong>Юг</strong>, <strong>Запад</strong> и <strong>Север</strong>. Эти позиции определяют не только порядок ходов, но и то, кто будет дилером (Востоком) в первой раздаче.</p>
+
+        <p><strong>Как определить рассадку:</strong></p>
+        <ol>
+            <li><strong>Возьмите четыре тайла ветров</strong> (Восток, Юг, Запад, Север).</li>
+            <li><strong>Положите их рубашкой вверх</strong> и тщательно перемешайте.</li>
+            <li><strong>Каждый игрок тянет по одному тайлу</strong>. Тот, кто вытянул <strong>Восток</strong>, становится <strong>постоянным дилером</strong> и садится на восточную сторону стола.</li>
+            <li>Остальные игроки рассаживаются в порядке против часовой стрелки: справа от Востока сидит <strong>Юг</strong>, напротив — <strong>Запад</strong>, слева — <strong>Север</strong>.</li>
+        </ol>
+
+        <div class="highlight-tip">
+            <strong>Важно:</strong> порядок ходов в маджонге идёт <strong>против часовой стрелки</strong>: Восток → Юг → Запад → Север → снова Восток. Однако взятие тайлов из стены происходит <strong>по часовой стрелке</strong>.
+        </div>
+
+        <p><strong>Что означает «дилер»?</strong></p>
+        <p>Дилер (Восток) — это игрок, который начинает раздачу и имеет несколько важных преимуществ:</p>
+        <ul>
+            <li>Он получает <strong>14 тайлов</strong> вместо 13 (на один больше), потому что ходит первым.</li>
+            <li>При победе он получает <strong>в 1.5 раза больше очков</strong> от каждого противника.</li>
+            <li>Но при поражении (если он сбрасывает в чужую руку) он <strong>платит в 1.5 раза больше</strong>.</li>
+        </ul>
+
+        <p><strong>Ротация дилера:</strong> после каждой раздачи дилерство переходит к следующему игроку против часовой стрелки. Если дилер выигрывает или раздача заканчивается вничью, он остаётся дилером и играет дополнительную раздачу (это называется <strong>ренчан</strong>).</p>
+
+        <div class="highlight-warn">
+            <strong>Помните:</strong> индикатор раунда кладётся справа от постоянного дилера. В течение ханчана (партии) текущего дилера обозначают двумя кубиками, которые кладутся в правый нижний угол стола со стороны дилера.
+        </div>
+
+        <h3>0.2. Перемешивание тайлов</h3>
+        <p>После того как места распределены, начинается перемешивание. Все 136 тайлов (по 4 копии каждой из 34 разновидностей) кладутся на стол <strong>рубашкой вверх</strong> и тщательно перемешиваются всеми четырьмя игроками.</p>
+
+        <p><strong>Правила перемешивания:</strong></p>
+        <ul>
+            <li>Игроки должны перемешивать тайлы <strong>двумя руками</strong>, обеспечивая равномерное распределение.</li>
+            <li>Построение стены может начаться только после того, как <strong>все четыре игрока убрали руки от тайлов</strong> и согласились, что они достаточно перемешаны.</li>
+            <li>Если игрок начинает строить стену до окончания перемешивания, остальные имеют право разрушить его стену и перемешать тайлы заново.</li>
+        </ul>
+
+        <h3>0.3. Построение стены</h3>
+        <p>После перемешивания каждый игрок строит свою часть стены. Это самый важный этап подготовки, потому что от того, как построена стена, зависит весь ход раздачи.</p>
+
+        <p><strong>Как строить:</strong></p>
+        <ol>
+            <li>Каждый игрок выкладывает перед собой <strong>секцию стены длиной 17 тайлов в ряд и высотой в 2 тайла</strong> (то есть 17 стопок по 2 тайла).</li>
+            <li>Тайлы кладутся <strong>рубашкой вверх</strong>, лицевой стороной к столу.</li>
+            <li>Четыре секции сдвигаются вместе, образуя <strong>замкнутый квадрат</strong>.</li>
+            <li>Внутренняя область этого квадрата называется <strong>«рекой»</strong> — именно туда игроки будут сбрасывать тайлы.</li>
+        </ol>
+
+        <div class="highlight-tip">
+            <strong>Совет:</strong> при построении стены используйте бортик стола для одновременного выравнивания своего сектора. Это ускоряет процесс и делает стену более аккуратной.
+        </div>
+
+        <p><strong>Общее количество тайлов в стене:</strong> 17 стопок × 2 тайла × 4 стороны = <strong>136 тайлов</strong>. Из них 14 тайлов уходят в «мёртвую стену» (см. ниже), а остальные 122 тайла доступны для взятия.</p>
+
+        <h3>0.4. Разлом стены и определение места взятия тайлов</h3>
+        <p>После того как стена построена, необходимо определить, с какого места игроки будут брать тайлы. Для этого используется бросок кубиков.</p>
+
+        <p><strong>Как происходит разлом:</strong></p>
+        <ol>
+            <li><strong>Дилер (Восток) бросает два кубика d6</strong>.</li>
+            <li>Сумма выпавших чисел определяет, <strong>на чью сторону стены</strong> указывает дилер. Отсчёт идёт <strong>против часовой стрелки, начиная с самого дилера</strong>.</li>
+            <li>Например, если выпало 8, дилер отсчитывает 8 сторон, начиная со своей: Восток (1) → Юг (2) → Запад (3) → Север (4) → Восток (5) → Юг (6) → Запад (7) → Север (8). Значит, разлом будет на стороне <strong>Севера</strong>.</li>
+            <li>Игрок, на чью сторону указал дилер, <strong>отсчитывает от правого конца своей секции стены</strong> количество стопок, равное сумме на кубиках, и делает разлом.</li>
+            <li>От разлома в обратную сторону отсчитывается <strong>7 стопок (14 тайлов)</strong>. Эта группа называется <strong>мёртвой стеной</strong> и не используется в игре до объявления кана.</li>
+        </ol>
+
+        <div class="highlight-warn">
+            <strong>Важно:</strong> тайлы из мёртвой стены используются только для замены после объявления кана. Третий тайл от конца мёртвой стены переворачивается лицевой стороной вверх и служит <strong>индикатором доры</strong> — тайла, который даёт бонусные очки.
+        </div>
+
+        <p><strong>Живая стена:</strong> оставшаяся часть стены (122 тайла) называется <strong>живой стеной</strong>. Именно из неё игроки берут тайлы в течение раздачи. Взятие происходит <strong>по часовой стрелке</strong>, начиная от разлома.</p>
+
+        <h3>0.5. Раздача тайлов</h3>
+        <p>После разлома стены начинается раздача тайлов. Это финальный этап подготовки, после которого раздача считается начавшейся.</p>
+
+        <p><strong>Порядок раздачи:</strong></p>
+        <ol>
+            <li><strong>Дилер (Восток) берёт 4 тайла</strong> (2 стопки) с живой стены.</li>
+            <li>Затем <strong>Юг</strong>, <strong>Запад</strong> и <strong>Север</strong> по очереди берут по 4 тайла каждый.</li>
+            <li>Этот цикл повторяется <strong>ещё два раза</strong>. Таким образом, каждый игрок получает по <strong>12 тайлов</strong>.</li>
+            <li>После этого <strong>дилер берёт ещё один тайл</strong> (свой 13-й), а остальные игроки по очереди берут по одному тайлу.</li>
+            <li>В итоге у дилера оказывается <strong>14 тайлов</strong>, а у остальных игроков — по <strong>13 тайлов</strong>.</li>
+        </ol>
+
+        <div class="highlight-tip">
+            <strong>Почему у дилера 14 тайлов?</strong> Дилер ходит первым и уже «взял» свой первый тайл со стены. Поэтому у него на один тайл больше. После своего первого сброса у него останется 13 тайлов, как и у всех.
+        </div>
+
+        <p><strong>Начало игры:</strong> раздача считается начавшейся, когда дилер взял со стены первые четыре тайла для своей руки. С этого момента никто не может пересдавать тайлы или менять рассадку.</p>
+
+        <h3>0.6. Индикатор доры и мёртвая стена</h3>
+        <p>Один из самых важных элементов подготовки — это правильная установка индикатора доры. Дора — это бонусный тайл, который даёт +1 хан к стоимости руки.</p>
+
+        <p><strong>Как работает индикатор доры:</strong></p>
+        <ul>
+            <li>Третий тайл от конца мёртвой стены (считая слева направо) переворачивается лицевой стороной вверх.</li>
+            <li>Тайл, который идёт <strong>следующим по порядку</strong> после индикатора, становится дорой.</li>
+            <li>Например, если индикатор показывает <strong>3 пин</strong>, то дорой будет <strong>4 пин</strong>. Если индикатор — <strong>9 ман</strong>, дорой будет <strong>1 ман</strong> (цикл замыкается).</li>
+        </ul>
+
+        <div class="highlight-warn">
+            <strong>Запомните:</strong> мёртвая стена всегда состоит из 14 тайлов. Если объявляется кан, замещающий тайл берётся с конца мёртвой стены, и мёртвая стена «сдвигается». Всего за раздачу может быть объявлено не более 4 канов, потому что именно столько тайлов замены возможно взять с короткого конца мёртвой стены.
+        </div>
+
+        <h3>0.7. Чек-лист подготовки к раздаче</h3>
+        <p>Чтобы ничего не забыть, вот краткий чек-лист действий перед каждой раздачей:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Шаг</th><th>Действие</th><th>Кто выполняет</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Перемешать все 136 тайлов рубашкой вверх</td><td>Все игроки</td></tr>
+                    <tr><td>2</td><td>Построить секцию стены: 17 стопок по 2 тайла</td><td>Каждый игрок</td></tr>
+                    <tr><td>3</td><td>Сдвинуть секции, образуя замкнутый квадрат</td><td>Все игроки</td></tr>
+                    <tr><td>4</td><td>Дилер бросает два кубика для определения разлома</td><td>Дилер (Восток)</td></tr>
+                    <tr><td>5</td><td>Отсчитать стопки и сделать разлом стены</td><td>Игрок, на которого указал кубик</td></tr>
+                    <tr><td>6</td><td>Отсчитать 7 стопок от разлома — мёртвая стена</td><td>Тот же игрок</td></tr>
+                    <tr><td>7</td><td>Перевернуть третий тайл от конца мёртвой стены (индикатор доры)</td><td>Тот же игрок</td></tr>
+                    <tr><td>8</td><td>Раздать тайлы: по 4 тайла трижды, затем по 1</td><td>Все игроки по очереди</td></tr>
+                    <tr><td>9</td><td>Дилер получает 14-й тайл</td><td>Дилер</td></tr>
+                    <tr><td>10</td><td>Дилер делает первый сброс — раздача началась</td><td>Дилер</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-good">
+            <strong>Главное:</strong> подготовка к раздаче — это не просто механические действия. Правильная рассадка и построение стены задают тон всей игре. Если вы будете внимательны на этом этапе, вы избежите споров и ошибок, которые могут стоить очков.
+        </div>
+    </section>
+
+    <!-- ЧАСТЬ 1 -->
+    <section id="part1">
+        <h2>Часть 1. Азы стратегии</h2>
+        <p>Первое, что нужно понять новичку: маджонг — не про планирование. Это игра вероятностей, где каждое решение можно оценить математически. И первое, что нужно освоить — базовую гигиену сброса.</p>
+
+        <h3>1.1. Дайте руке собраться самой</h3>
+        <p>В начале раздачи у вас 13 случайных тайлов. Из них нужно получить 4 сета и пару, при этом имея хотя бы одну яку. Это огромное количество вариантов, и попытка «выстроить» конкретную комбинацию с первых ходов — это попытка предсказать, какие тайлы придут со стены. Такое предсказание невозможно.</p>
+
+        <p>Поэтому работает другой подход: <strong>не форсируйте, а направляйте</strong>. Создайте условия, при которых рука естественно придёт к победе. Для этого:</p>
+
+        <ol>
+            <li><strong>Сбросьте все одиночные ветра и драконы</strong> (кроме тех, что образуют пару). Их шанс стать частью сета — 3 из 136 тайлов. Вы теряете ходы, пока держите их.</li>
+            <li><strong>Сбросьте одиночные 1 и 9</strong>. Они образуют только пенчан (1-2 или 8-9) или канчан — слабые формы, которые потом всё равно придётся переделывать.</li>
+            <li><strong>Держите средние тайлы (3-7)</strong>. Они образуют рянмены — лучшие формы в игре.</li>
+            <li><strong>Не сбрасывайте средние тайлы</strong> без крайней необходимости. Даже одиночный средний тайл полезнее, чем пара терминалов.</li>
+        </ol>
+
+        <div class="highlight-tip">
+            <strong>Главное правило:</strong> в руке должно быть <strong>5 блоков</strong> — четыре будущих сета и одна будущая пара. Если блоков меньше — вы слишком медленные. Если больше — рука перегружена, нужно сбрасывать лишнее. Это правило «пяти блоков» — одно из главных в теории сбора руки.
+        </div>
+
+        <h3>1.2. Чего категорически не делать новичкам</h3>
+        <p>Есть несколько типичных ошибок, которые совершают почти все новички. Их нужно знать в лицо, потому что они стоят очень дорого.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>❌ Ошибка</th><th>Почему это плохо</th><th>Что делать вместо этого</th></tr></thead>
+                <tbody>
+                    <tr><td>Держать одиночного дракона «на всякий случай»</td><td>Шанс собрать пон — около 3 из 136 тайлов на ранней стадии. Вы теряете несколько ходов и скорость</td><td>Сбросьте сразу, даже если это ценный тайл</td></tr>
+                    <tr><td>Копить краевые пары (1-1, 9-9)</td><td>Такие пары не участвуют в шунцах и дают только пон, который собирается редко. Занимают целый блок</td><td>Сбросьте, если только они не единственные пары в руке</td></tr>
+                    <tr><td>Рано открываться (пон/чи) без яку</td><td>Открытая рука теряет риичи, пинфу, иппейко и другие закрытые яку. Открыться без яку = автоматический проигрыш</td><td>Открывайтесь только если у вас уже есть яку (например, пара драконов)</td></tr>
+                    <tr><td>Целенаправленно собирать чанту</td><td>Чанта даёт 1-2 хан, но собирать её сложно: каждый сет и пара должны содержать терминал или достоинство</td><td>Играйте в таняо или риичи — они проще и быстрее</td></tr>
+                    <tr><td>Хранить «красивую» руку без яку</td><td>Рука из 4 сетов и пары без яку — это просто 13 тайлов, на которые нельзя выиграть</td><td>Всегда держите в голове, какая яку у вас будет</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>1.3. Самые простые яку для начинающих</h3>
+        <p>Первая яку, которую нужно освоить — та, которая собирается «сама собой». Вот они, от простых к сложным:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Яку</th><th>Как собрать</th><th>Сложность</th><th>Почему стоит начать с неё</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Риичи</strong></td><td>Закрытая рука в темпае → объявить риичи</td><td>★☆☆</td><td>Не требует специальной формы, даёт сразу 1 хан</td></tr>
+                    <tr><td><strong>Таняо</strong></td><td>В руке только тайлы 2-8</td><td>★☆☆</td><td>Просто сбрасывайте все 1, 9, ветра, драконов — рука соберётся сама</td></tr>
+                    <tr><td><strong>Якухай</strong></td><td>Собрать пон драконов или ветра вашей комнаты</td><td>★★☆</td><td>Даёт сразу яку при открытии — можно играть в открытую</td></tr>
+                    <tr><td><strong>Тоитои</strong></td><td>Все 4 сета — поны (тройки)</td><td>★★☆</td><td>Легко собирается, если в руке много пар</td></tr>
+                    <tr><td><strong>Пинфу</strong></td><td>Закрытая рука, все сеты — шунцы, ожидание — рянмен</td><td>★★★</td><td>Даёт 1 хан, но сочетается почти со всем — часто с риичи</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-good">
+            <strong>Совет для новичков:</strong> начните с игры в <strong>таняо</strong>. Просто сбрасывайте все 1, 9, ветра и драконов и держите средние тайлы. Даже без специального планирования у вас будет собираться рука из средних тайлов, которая даёт яку. Это самый стабильный способ начать выигрывать.
+        </div>
+
+        <h3>1.4. Понятие «скорости» в маджонге</h3>
+        <p>В маджонге есть два ресурса: <strong>скорость</strong> (как быстро вы войдёте в темпай) и <strong>стоимость</strong> (сколько очков вы получите). Новички обычно гонятся за стоимостью, а нужно начинать со скорости.</p>
+
+        <p><strong>Почему скорость важнее?</strong> Если вы в темпае раньше противников, вы можете:</p>
+        <ul>
+            <li>Объявить риичи и заставить остальных защищаться.</li>
+            <li>Выиграть в тот момент, когда противники ещё собирают свои руки.</li>
+            <li>Диктовать темп игры и создавать давление.</li>
+        </ul>
+
+        <p>Медленная, но дорогая рука часто проигрывает быстрой и дешёвой. Поэтому оптимизация скорости — первый приоритет. Именно для этого и существует теория <strong>пайри</strong>, к которой мы переходим.</p>
+    </section>
+
+    <!-- ЧАСТЬ 2 -->
+    <section id="part2">
+        <h2>Часть 2. Пайри: эффективный сбор руки</h2>
+        <p><strong>Пайри</strong> (яп. 牌理) — это теория о том, какие тайлы и формы выгоднее оставлять в руке. Это основа всего сбора. Освоив пайри, вы начнёте стабильно входить в темпай быстрее противников — а это уже половина успеха в игре.</p>
+
+        <h3>2.1. Шантен и уке-ире</h3>
+        <p>Прежде чем что-то сравнивать, нужно ввести две ключевые метрики.</p>
+
+        <p><strong>Шантен</strong> — это количество «шагов» до темпая. Если вам нужно ещё два тайла, чтобы войти в темпай — у вас 2 шантена. Если один — 1 шантен. Если ни одного — вы уже в темпае.</p>
+
+        <p><strong>Уке-ире</strong> — это количество тайлов в колоде, которые улучшают вашу руку (уменьшают шантен на единицу). Чем больше уке-ире, тем выше шанс, что следующий тайл улучшит руку.</p>
+
+        <div class="highlight-tip">
+            <strong>Пример:</strong> у вас есть форма 3-4 (рянмен). Чтобы завершить её, нужны 2 или 5. В колоде по 4 каждого = 8 тайлов. Ваше уке-ире по этой форме — 8. Если у вас есть выбор между сбросом, который оставляет уке-ире 8, и сбросом, который снижает его до 4 — выбирайте первый.
+        </div>
+
+        <p>Ключевая идея: <strong>всегда сбрасывайте тот тайл, который сохраняет максимальное уке-ире</strong>. Это основа пайри. Даже простая замена «сбросить одиночный 1 или сбросить из ряда 3-4-5-6» может увеличить ваше уке-ире на 4-8 тайлов, что резко ускоряет руку.</p>
+
+        <h3>2.2. Сравнение форм (подробный разбор)</h3>
+        <p>Каждая форма в руке имеет свою «ценность» — сколько тайлов могут её завершить. Разберём все основные формы.</p>
+
+        <h4>Рянмен — золотой стандарт</h4>
+        <p><strong>Пример:</strong> 3-4, 5-6, 7-8</p>
+        <ul>
+            <li><strong>Завершающие тайлы:</strong> два соседних с двух сторон. Для 3-4 это 2 и 5.</li>
+            <li><strong>Уке-ире:</strong> 8 тайлов.</li>
+            <li><strong>Преимущества:</strong> даёт максимум вариантов, занимает всего 2 тайла, является условием для яку <strong>пинфу</strong>. Это универсальная форма, которую нужно оставлять всегда, если нет крайней нужды.</li>
+        </ul>
+
+        <h4>Пенчан — краевое ожидание</h4>
+        <p><strong>Пример:</strong> 1-2, 8-9</p>
+        <ul>
+            <li><strong>Завершающий тайл:</strong> только один (для 1-2 — это 3, для 8-9 — 7).</li>
+            <li><strong>Уке-ире:</strong> 4 тайла.</li>
+            <li><strong>Комментарий:</strong> форма слабая, потому что улучшить её почти невозможно. Она «застревает» в руке, если её не сбросить вовремя. Сбрасывайте при первой возможности.</li>
+        </ul>
+
+        <h4>Канчан — ожидание в середину</h4>
+        <p><strong>Пример:</strong> 2-4 (нужна 3), 3-5 (нужна 4), 6-8 (нужна 7)</p>
+        <ul>
+            <li><strong>Завершающий тайл:</strong> только один.</li>
+            <li><strong>Уке-ире:</strong> 4 тайла.</li>
+            <li><strong>Комментарий:</strong> лучше пенчана, потому что её можно <em>улучшить</em>. Если у вас 2-4, и вы берёте 5 — получаете 2-4-5, где уже есть рянмен 4-5. Поэтому канчан часто оставляют на 1-2 хода в надежде улучшения.</li>
+        </ul>
+
+        <h4>Рянкан — коварная ловушка</h4>
+        <p><strong>Пример:</strong> 2-4-6</p>
+        <ul>
+            <li><strong>Кажется, что ждёт:</strong> 3 и 5 → 8 тайлов, как у рянмена.</li>
+            <li><strong>Реальность:</strong> занимает <strong>три</strong> тайла, и при взятии 3 или 5 вы <strong>не получаете готовый шунц</strong>. Вы лишь улучшаете форму: было 2-4-6, стало 2-3-4-6 (ещё есть канчан 4-6) или 2-4-5-6 (есть канчан 2-4). То есть каждый раз вам нужен ещё один тайл.</li>
+            <li><strong>Уке-ире реальное:</strong> фактически хуже рянмена, потому что не завершается сразу.</li>
+            <li><strong>Вывод:</strong> не держите рянкан. Если можно перестроить в рянмен (например, сбросить 2 или 6) — делайте это.</li>
+        </ul>
+
+        <h4>Сянпон — две пары</h4>
+        <p><strong>Пример:</strong> 3-3 и 7-7</p>
+        <ul>
+            <li><strong>Завершающие тайлы:</strong> ещё один 3 или ещё один 7 (пон).</li>
+            <li><strong>Уке-ире:</strong> 4 тайла (по 2 на каждую пару).</li>
+            <li><strong>Комментарий:</strong> средняя форма. Если у вас три пары — это уже перебор, одну нужно сбрасывать. Оптимально держать 1-2 пары в руке.</li>
+        </ul>
+
+        <h4>Нобетан — двойное танки</h4>
+        <p><strong>Пример:</strong> 2-2-3-3</p>
+        <ul>
+            <li><strong>Завершающие тайлы:</strong> 2 или 3.</li>
+            <li><strong>Уке-ире:</strong> 6 тайлов (два 2 и два 3, потому что по два каждого у вас в руке).</li>
+            <li><strong>Комментарий:</strong> редкая, но полезная форма. Встречается в одноцветных руках и при большом количестве пар.</li>
+        </ul>
+
+        <h3>2.3. Практический алгоритм выбора сброса</h3>
+        <p>Каждый ход задавайте себе эти вопросы в таком порядке:</p>
+        <ol>
+            <li><strong>Сколько у меня блоков?</strong> Должно быть 5 (4 сета + пара). Если больше — есть что сбрасывать. Если меньше — держите всё, что стыкуется.</li>
+            <li><strong>Какая форма самая слабая?</strong> Рянмен &gt; сянпон &gt; канчан &gt; пенчан. Сбрасывайте слабейшую.</li>
+            <li><strong>Есть ли изолированный тайл?</strong> Если да — сбрасывайте его в первую очередь.</li>
+            <li><strong>Что даёт большее уке-ире?</strong> Сравните варианты: сброс X vs сброс Y. Выбирайте тот, что сохраняет больше.</li>
+            <li><strong>Есть ли безопасность?</strong> Если противник атакует — учитывайте опасность сброса (см. Часть 4).</li>
+        </ol>
+
+        <div class="highlight-warn">
+            <strong>Частая ошибка:</strong> сбрасывать «на автомате» крайние тайлы, даже если они часть хорошей формы. Например, 2-3-4-5 сброс 2 «потому что крайний» уничтожает рянмен 2-3 (уке-ире 8) ради ничего. Всегда считайте уке-ире перед сбросом.
+        </div>
+    </section>
+
+    <!-- ЧАСТЬ 3 -->
+    <section id="part3">
+        <h2>Часть 3. Выигрышные ожидания</h2>
+        <p>Когда вы вошли в темпай, самое важное — понимать, <strong>на какие тайлы вы ждёте</strong>. От этого зависит, сколько у вас шансов на победу, будет ли пинфу, стоит ли объявлять риичи или выгоднее сидеть в даматене (скрытом темпае).</p>
+
+        <h3>3.1. Простые (односторонние) ожидания</h3>
+        <p>Это формы, которые ждут только один вид тайла. Они слабые, потому что легко остаются без победы.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Название</th><th>Пример</th><th>Выигрышные тайлы</th><th>Уке-ире</th><th>Комментарий</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Танки</strong></td><td>5 (одиночный)</td><td>5</td><td>3</td><td>Ожидание в пару. Хуже не бывает.</td></tr>
+                    <tr><td><strong>Пенчан</strong></td><td>1-2</td><td>3</td><td>4</td><td>Краевое. Плохо тем, что нельзя улучшить.</td></tr>
+                    <tr><td><strong>Канчан</strong></td><td>2-4</td><td>3</td><td>4</td><td>В середину. Чуть лучше пенчана.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="highlight-bad">Слабость этих форм — легкость попадания в фуритен и низкое уке-ире. Если у вас выбор между танки и рянменом — всегда рянмен.</div>
+
+        <h3>3.2. Двухсторонние ожидания</h3>
+        <p>Это «рабочие лошадки» маджонга. Большинство выигранных рук используют именно эти формы.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Название</th><th>Пример</th><th>Выигрышные тайлы</th><th>Уке-ире</th><th>Комментарий</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Рянмен</strong></td><td>3-4</td><td>2 и 5</td><td>8</td><td>Лучшее базовое ожидание. Даёт пинфу.</td></tr>
+                    <tr><td><strong>Сянпон</strong></td><td>3-3 и 7-7</td><td>3 и 7</td><td>4</td><td>Две пары. Средне по силе.</td></tr>
+                    <tr><td><strong>Нобетан</strong></td><td>2-2-3-3</td><td>2 и 3</td><td>6</td><td>Двойное танки. Хорошо для тоитои.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>3.3. Сложные (многогранные) ожидания</h3>
+        <p>В длинных мастях могут возникать ожидания на 3, 4 и даже 5 видов тайлов. Например, форма 2-3-4-5-6 в одной масти.</p>
+
+        <p><strong>Разбор:</strong> эту форму можно разложить несколькими способами:</p>
+        <ul>
+            <li>2-3 + 4-5-6 → ждём 1 и 4 (рянмен)</li>
+            <li>2-3-4 + 5-6 → ждём 4 и 7 (рянмен)</li>
+            <li>2-3-4-5 + 6 → ждём 6 (танки)</li>
+        </ul>
+
+        <p>Итого выигрышные тайлы: <strong>1, 4, 7</strong> — это целая группа судзи. Такое ожидание даёт до 12 тайлов и называется <strong>санменчан</strong> (трёхстороннее). Подробнее — в разделе 3.5.</p>
+
+        <div class="highlight-tip">
+            <strong>Тренажёры для тренировки:</strong> 清一色 (Android), Mahjong Awaiting, まちあて. Эти приложения показывают руку и просят определить все выигрышные тайлы.
+        </div>
+
+        <h3>3.4. Когда объявлять риичи</h3>
+        <p>Риичи — это обязательство: вы теряете 1000 очков и не можете менять руку. При этом вы получаете яку, доступ к ура-дорам, иппацу и давление на противников. Когда это выгодно?</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Ситуация</th><th>Рекомендация</th></tr></thead>
+                <tbody>
+                    <tr><td>Хорошее ожидание (рянмен и шире), 1-2 хан</td><td>Риичи почти всегда</td></tr>
+                    <tr><td>Плохое ожидание (танки, канчан), но есть 2+ доры</td><td>Риичи, потому что стоимость оправдывает</td></tr>
+                    <tr><td>Плохое ожидание, рука дешёвая (1 хан без дор)</td><td>Даматен — не объявляйте, ждите улучшения</td></tr>
+                    <tr><td>Вы в темпае без яку</td><td>Риичи, потому что без него вы вообще не можете выиграть</td></tr>
+                    <tr><td>Поздняя игра, противник близок к победе</td><td>Осторожно: риичи может отдать очки противнику</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- НОВЫЙ РАЗДЕЛ 3.5 -->
+        <h3 id="multiple-waits">3.5. Множественные (многосторонние) ожидания</h3>
+        <p>В реальной игре часто возникают <strong>составные формы</strong>, которые ждут 3, 4 и даже больше видов тайлов одновременно. Такие руки — особенно в одноцветных построениях (чиницу) — могут давать до <strong>11-12 выигрышных тайлов</strong> и резко повышают ваши шансы на победу.</p>
+
+        <h4>Нобетан (延べ単) — расширенное танки</h4>
+        <p><strong>Форма:</strong> 4 подряд идущих тайла в одной масти (например, <strong>2-3-4-5</strong>).</p>
+        <p><strong>Суть:</strong> это два танки-ожидания, объединённых в одной форме.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Форма</th><th>Выигрышные тайлы</th><th>Уке-ире</th></tr></thead>
+                <tbody>
+                    <tr><td>2-3-4-5</td><td>2 или 5</td><td>6 тайлов</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Почему это работает:</strong> руку можно разложить двумя способами:</p>
+        <ul>
+            <li><strong>2</strong> + сет <strong>3-4-5</strong> → ждём ещё одну <strong>2</strong> для пары (танки)</li>
+            <li><strong>5</strong> + сет <strong>2-3-4</strong> → ждём ещё одну <strong>5</strong> для пары (танки)</li>
+        </ul>
+        <div class="highlight-tip">Нобетан даёт 6 тайлов — заметно лучше обычного танки (3 тайла) или сянпона (4 тайла).</div>
+
+        <h4>Санменчан (三面張) — трёхстороннее ожидание</h4>
+        <p><strong>Форма:</strong> 5 подряд идущих тайлов в одной масти (например, <strong>2-3-4-5-6</strong>).</p>
+        <p><strong>Суть:</strong> рука ждёт 3 разных вида тайлов, которые завершат один из возможных шунцов.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Форма</th><th>Выигрышные тайлы</th><th>Уке-ире</th></tr></thead>
+                <tbody>
+                    <tr><td>2-3-4-5-6</td><td>2, 5 или 8</td><td>до 12 тайлов</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Разбор:</strong> эту форму можно разложить тремя способами:</p>
+        <ul>
+            <li><strong>2-3</strong> + <strong>4-5-6</strong> → ждём <strong>1</strong> и <strong>4</strong> (рянмен)</li>
+            <li><strong>2-3-4</strong> + <strong>5-6</strong> → ждём <strong>4</strong> и <strong>7</strong> (рянмен)</li>
+            <li><strong>2-3-4-5</strong> + <strong>6</strong> → ждём <strong>6</strong> (танки)</li>
+        </ul>
+        <p>Итого выигрышные тайлы: <strong>1, 4, 7</strong> — целая группа судзи. Такое ожидание не читается через судзи, потому что противник ждёт все три тайла группы.</p>
+
+        <div class="highlight-good">
+            <strong>Важно:</strong> санменчан — <strong>максимально широкое ожидание</strong> в пределах одной масти, дающее до 12 тайлов. Если у вас санменчан — объявляйте риичи почти всегда.
+        </div>
+
+        <h4>Составные и именованные ожидания</h4>
+        <p>Помимо нобетана и санменчана, существуют более редкие и сложные формы, которые возникают в длинных мастях.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Название</th><th>Форма</th><th>Выигрышные тайлы</th><th>Особенность</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Тацумаки</strong></td><td>Сложная комбинация в одной масти</td><td>До 9 тайлов</td><td>Встречается в одноцветных руках</td></tr>
+                    <tr><td><strong>Хаппобидзин</strong></td><td>Особая форма из 8+ тайлов одной масти</td><td>До 11 тайлов</td><td>Крайне редка, но красива</td></tr>
+                    <tr><td><strong>Рянмен + сянпон</strong></td><td>Комбинация двух базовых ожиданий</td><td>До 8 тайлов</td><td>Ждёт тайлы двух мастей</td></tr>
+                    <tr><td><strong>Нобетан + канчан</strong></td><td>Сложная 4+ тайловая форма</td><td>До 9 тайлов</td><td>Комбинирует два типа ожиданий</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Некоторые формы могут давать <strong>ожидание на 23 тайла</strong> — например, форма чурен поуто в чиницу.</p>
+
+        <h4>Как распознавать множественные ожидания</h4>
+        <p><strong>Главный навык</strong> — умение по-разному разложить одну и ту же руку на сеты и пару.</p>
+        <p><strong>Алгоритм:</strong></p>
+        <ol>
+            <li>Возьмите длинную масть (5+ тайлов подряд).</li>
+            <li>Мысленно «сдвигайте» границы сетов на 1 тайл влево или вправо.</li>
+            <li>Каждый новый вариант разложения даёт <strong>новый выигрышный тайл</strong>.</li>
+        </ol>
+        <p><strong>Пример:</strong> рука 3-4-5-6-7 в одной масти.</p>
+        <ul>
+            <li>Вариант 1: сет 3-4-5 + пара 6-7 → рянмен 6-7 ждёт 5 и 8</li>
+            <li>Вариант 2: пара 3-4 + сет 5-6-7 → рянмен 3-4 ждёт 2 и 5</li>
+        </ul>
+        <p>Итого: 2, 5, 8 — снова вся группа судзи.</p>
+
+        <h4>Стратегическое значение множественных ожиданий</h4>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Ситуация</th><th>Рекомендация</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Санменчан или шире</strong></td><td><strong>Объявляйте риичи почти всегда</strong> — слишком много выигрышных тайлов</td></tr>
+                    <tr><td><strong>Рука с дорами</strong></td><td>Множественное ожидание + доры = <strong>огромная стоимость</strong></td></tr>
+                    <tr><td><strong>Поздняя игра</strong></td><td>Широкое ожидание даёт шанс <strong>догнать</strong> даже при плохой руке</td></tr>
+                    <tr><td><strong>Против риичи</strong></td><td>Если у вас 1+ дор и санменчан — <strong>атакуйте</strong>, не переходите в защиту</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Краткая сводная таблица всех ожиданий</h4>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Тип ожидания</th><th>Видов тайлов</th><th>Уке-ире</th><th>Пример</th></tr></thead>
+                <tbody>
+                    <tr><td>Танки</td><td>1</td><td>3</td><td>Одиночный 5 → ждём 5</td></tr>
+                    <tr><td>Пенчан</td><td>1</td><td>4</td><td>1-2 → ждём 3</td></tr>
+                    <tr><td>Канчан</td><td>1</td><td>4</td><td>2-4 → ждём 3</td></tr>
+                    <tr><td>Рянмен</td><td>2</td><td>8</td><td>3-4 → ждём 2 и 5</td></tr>
+                    <tr><td>Сянпон</td><td>2</td><td>4</td><td>3-3 и 7-7 → ждём 3 или 7</td></tr>
+                    <tr><td><strong>Нобетан</strong></td><td><strong>2</strong></td><td><strong>6</strong></td><td>2-3-4-5 → ждём 2 или 5</td></tr>
+                    <tr><td><strong>Санменчан</strong></td><td><strong>3</strong></td><td><strong>до 12</strong></td><td>2-3-4-5-6 → ждём 1, 4, 7</td></tr>
+                    <tr><td><strong>Тацумаки / Хаппобидзин</strong></td><td><strong>3–5</strong></td><td><strong>до 11</strong></td><td>Сложные одноцветные формы</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-good">
+            <strong>Главный вывод:</strong> множественные ожидания — это оружие, которое превращает удачу в статистику. Чем больше выигрышных тайлов, тем выше шанс, что один из них придёт. Освоив их распознавание, вы перестанете полагаться на везение и начнёте контролировать темп игры.
+        </div>
+    </section>
+
+    <!-- ЧАСТЬ 4 -->
+    <section id="part4">
+        <h2>Часть 4. Защита</h2>
+        <p>Защита в риичи-маджонге — это, пожалуй, самый недооценённый навык для новичков. Если вы хотите стабильно подниматься в рейтинге, нужно понять одну простую истину: <strong>в этой игре важнее не выигрывать больше, а проигрывать меньше</strong>.</p>
+
+        <h3>4.1. Почему защита — это основа</h3>
+        <p>Вы не можете выигрывать каждую раздачу. Статистика неумолима: в среднем вы будете забирать победу лишь в 25% случаев. Остальные 75% раздач вы будете либо наблюдать за чужой победой, либо защищаться.</p>
+
+        <p>Ключевой момент: <strong>умелая защита сохраняет ваши очки, а неумение — отдаёт их соперникам</strong>. Сэкономленные 8000 очков за раздачу — это тот же выигрыш, что и заработанный, только без риска. Если вы всегда будете сбрасывать опасные тайлы, рано или поздно вы просто станете тем игроком, в которого никто не может заронить — а это уже огромное преимущество.</p>
+
+        <h3>4.2. Бетаори: полное сворачивание</h3>
+        <p><strong>Бетаори</strong> (яп. ベタ降り) — это стратегия, при которой вы <strong>полностью отказываетесь от своей руки</strong> и сбрасываете только максимально безопасные тайлы.</p>
+
+        <p><strong>Когда это делать?</strong></p>
+        <ul>
+            <li>Сразу после объявления риичи противником, если ваша рука далека от темпая (2+ шантена).</li>
+            <li>Когда вы видите, что три сета уже открыты у противника (он почти наверняка в темпае).</li>
+            <li>Когда стоимость вашей руки мала, а потенциальный урон велик.</li>
+        </ul>
+
+        <p><strong>Порядок сброса в бетаори:</strong></p>
+        <ol>
+            <li><strong>Генбуцу</strong> — тайлы, которые противник уже сбрасывал (100% безопасны).</li>
+            <li><strong>Тайлы, которые только что сбросил игрок слева</strong> — они безопасны в течение одного круга для всех.</li>
+            <li><strong>Двойные судзи</strong> (например, 4, если сброшены и 1, и 7).</li>
+            <li><strong>Ветры</strong> — особенно те, которые уже дважды вышли.</li>
+            <li><strong>Судзи</strong> (1/9 → 2/8 → 3/7 по убыванию безопасности).</li>
+            <li><strong>Живые ветра</strong> и остальные тайлы — только если совсем нечего сбрасывать.</li>
+        </ol>
+
+        <h3>4.3. Поиск безопасных тайлов</h3>
+        <p>Безопасные тайлы — это валюта защиты. Их поиск — это игра в дедукцию: вы анализируете всё, что видно на столе.</p>
+
+        <h4>Генбуцу: абсолютная безопасность</h4>
+        <p><strong>Генбуцу</strong> (яп. 現物) — это тайл, который противник <strong>уже сбрасывал</strong>. Из-за правила фуритена он не может выиграть на этот тайл (рон).</p>
+        <ul>
+            <li>Все тайлы в дискарде противника — генбуцу для него.</li>
+            <li>Все тайлы, сброшенные кем-либо после объявления риичи — тоже генбуцу для риичи-игрока.</li>
+            <li>Тайл, который только что сбросил игрок слева от вас — временное генбуцу.</li>
+        </ul>
+        <div class="highlight-tip">
+            <strong>Стратегия:</strong> генбуцу — самое надёжное. Если у вас есть выбор между сбросом судзи и генбуцу, <strong>всегда сначала сбрасывайте генбуцу</strong>.
+        </div>
+
+        <h4>Судзи: работа с интервалами</h4>
+        <p><strong>Судзи</strong> (яп. 筋) — это тайлы, которые становятся относительно безопасными благодаря правилу фуритена. Ключевые интервалы: <strong>1-4-7, 2-5-8, 3-6-9</strong>.</p>
+
+        <p>Если противник сбросил <strong>4</strong>, то <strong>1</strong> и <strong>7</strong> становятся судзи. Если сброшены <strong>и 1, и 7</strong>, то <strong>4</strong> становится <strong>двойным судзи</strong> (накасудзи) — очень безопасным.</p>
+
+        <div class="highlight-warn">
+            <strong>Важно:</strong> судзи не 100% безопасны. Противник может ждать через канчан или сянпон. Кроме того, сильные игроки могут специально оставлять <em>ура-судзи</em> (ложные судзи) как ловушку.
+        </div>
+
+        <p><strong>Уровень безопасности судзи:</strong></p>
+        <ul>
+            <li><strong>1 и 9</strong> — самые безопасные.</li>
+            <li><strong>2 и 8</strong> — чуть опаснее (возможны канчаны 1-3 и 7-9).</li>
+            <li><strong>3, 7, 4, 5, 6</strong> — самые опасные среди судзи.</li>
+        </ul>
+
+        <h4>Кабе: стены из видимых тайлов</h4>
+        <p><strong>Кабе</strong> (яп. 壁) — это тайлы, которых все четыре экземпляра уже видны (в дискардах, открытых сетах, у вас в руке). Если все 4 тайла <strong>3 пин</strong> видны, то <strong>1 пин</strong> и <strong>2 пин</strong> становятся кабе-тайлами.</p>
+
+        <p><strong>Правило:</strong> чем ближе тайл к «стене», тем он безопаснее.</p>
+
+        <h4>Ветры и драконы</h4>
+        <p>Ветра и драконы часто безопаснее числовых тайлов, потому что их можно использовать только в понах или танки (кроме кокуши мусо). Если <strong>2 или более</strong> экземпляра какого-то ветра уже сброшены, его опасность резко падает.</p>
+
+        <p><strong>Живые</strong> драконы — наоборот, крайне опасны, особенно если у противника открытая рука с намёком на якухай.</p>
+
+        <h3>4.4. Защита против открытых рук</h3>
+        <p>Открытые руки сложнее читать, чем риичи, но у них есть свои подсказки:</p>
+        <ol>
+            <li><strong>Сколько сетов открыто.</strong> Три открытых сета — почти гарантированный темпай.</li>
+            <li><strong>Какое яку собирается.</strong> Если видно, что противник собирает хоницу, опасны тайлы именно этой масти.</li>
+            <li><strong>Дискарды.</strong> Если противник сбрасывает очень безопасные тайлы — он, скорее всего, в темпае.</li>
+            <li><strong>Реакция на атаку.</strong> Если противник продолжает делать объявления или сбрасывать опасные тайлы при чужой атаке — он тоже в темпае.</li>
+        </ol>
+
+        <h3>4.5. Когда атаковать, а когда защищаться</h3>
+        <p>Это самый сложный вопрос. Вот базовые критерии после объявления риичи противником:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Атакуйте, если...</th><th>Защищайтесь, если...</th></tr></thead>
+                <tbody>
+                    <tr><td>Вы в темпае, и рука стоит 3+ хана</td><td>Вы в 2+ шантене</td></tr>
+                    <tr><td>У вас хорошее ожидание (рянмен и шире)</td><td>У вас дешёвая рука (1-2 хана без дор)</td></tr>
+                    <tr><td>У вас много безопасных тайлов в руке</td><td>У вас мало безопасных тайлов</td></tr>
+                    <tr><td>Вы дилер и рука стоит дорого</td><td>Противник — дилер или рука выглядит дорогой</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p><strong>Промежуточный вариант — маваши учи (回し打ち):</strong> «полузащита». Вы сбрасываете относительно безопасные тайлы (судзи, кабе), но <strong>не разрушаете руку полностью</strong>, пытаясь сохранить 1-шантен. Если придёт опасный тайл — переходите в бетаори. Если дойдёте до темпая — атакуете.</p>
+
+        <h3>4.6. Практический алгоритм защиты</h3>
+        <p>Когда кто-то объявляет риичи, действуйте по этому плану:</p>
+        <ol>
+            <li><strong>Оцените свою руку:</strong> сколько шантен? Сколько хан? Есть ли доры?</li>
+            <li><strong>Оцените угрозу:</strong> не дилер ли это? Сколько тайлов может быть в руке?</li>
+            <li><strong>Примите решение:</strong> атака / маваши / бетаори.</li>
+            <li><strong>Найдите безопасные тайлы:</strong> генбуцу → двойные судзи → кабе → ветра → обычные судзи.</li>
+            <li><strong>Сбросьте и продолжайте анализировать:</strong> ситуация меняется каждый ход.</li>
+        </ol>
+
+        <div class="highlight-good">
+            <strong>Помните:</strong> даже если у вас нет 100% безопасных тайлов, судзи и кабе всё равно снижают риск. Главное — не паниковать и не сбрасывать случайные тайлы.
+        </div>
+    </section>
+
+    <!-- ЧАСТЬ 5 -->
+    <section id="part5">
+        <h2>Часть 5. Продвинутые стратегии</h2>
+        <p>Когда вы освоили базу — пайри, ожидания и защиту — можно переходить к системным знаниям из книг мастеров. Здесь собраны ключевые идеи из переводов, опубликованных на сайте клуба «Тесудзи».</p>
+
+        <h3>5.1. zeRo. «Моментальное мышление»</h3>
+        <p>Книга ориентирована на игроков 4-6 данов tenhou.net. Это набор «моментальных» решений, которые позволяют быстро оценивать руку и выбирать правильный сброс.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>№</th><th>Правило</th><th>Пояснение</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>Сбрасывайте изолированные тайлы</td><td>Тайлы, которые не входят ни в какие формы, бесполезны</td></tr>
+                    <tr><td>2</td><td>Сбрасывайте неякухайные ветра</td><td>Ветра, которые не дают яку (не ваша комната и не ваш раунд), — балласт</td></tr>
+                    <tr><td>3</td><td>Отличайте нужные тайлы от бесполезных</td><td>В масти 3-4-6 — тайл 6 часто лишний, потому что он даёт только канчан</td></tr>
+                    <tr><td>4</td><td>Якухайная пара — держите</td><td>Пара драконов или ветра комнаты — потенциал для якухай</td></tr>
+                    <tr><td>5</td><td>Следите за количеством пар</td><td>Оптимально 1-2 пары, больше — перебор</td></tr>
+                    <tr><td>6</td><td><strong>Играйте в 5 блоков</strong></td><td>Всегда держите в уме 5 групп (4 сета + пара)</td></tr>
+                    <tr><td>7</td><td>Сбрасывайте одиночные судзи</td><td>Если у вас есть 4 и 6, то 5 — судзи, но если есть 3 и 5, то 4 — не судзи</td></tr>
+                    <tr><td>8</td><td>Смягчайте потери</td><td>Если рука не собирается — защищайтесь</td></tr>
+                    <tr><td>9</td><td>Не сбрасывайте опорные тайлы</td><td>Тайлы, которые образуют рянмены или хорошие формы</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-tip">
+            <strong>Три принципа игры в открытую:</strong>
+            <ol>
+                <li><strong>Не открывайтесь с хорошими руками</strong> — закрытая рука даёт риичи и больше хан.</li>
+                <li><strong>Открывайтесь с плохими руками</strong> — чтобы ускориться и получить хотя бы яку.</li>
+                <li><strong>Не открывайтесь, если в руке нет пары</strong> — открытие без пары часто ведёт к отсутствию яку.</li>
+            </ol>
+        </div>
+
+        <h3>5.2. ASAPIN. «Сверхдетальный маджонг» и «Маджонг нового поколения»</h3>
+        <p>Книги для игроков 3-6 данов. ASAPIN известен своим формальным подходом к темпаю и оценке руки.</p>
+
+        <ul>
+            <li><strong>Формальный темпей:</strong> иногда рука уже в темпае, но вы этого не замечаете, потому что не можете правильно разложить формы. Учитесь пересчитывать формы каждые несколько ходов.</li>
+            <li><strong>Сравнение стоимости:</strong> если ваша рука стоит мало, а противник объявил риичи — защищайтесь, даже если вы в темпае. Риск не оправдывает потенциальный урон.</li>
+            <li><strong>Управление темпом:</strong> иногда выгодно объявить риичи не для победы, а для того, чтобы заставить противников защищаться и пропустить свои ходы.</li>
+        </ul>
+
+        <h3>5.3. Кавамура Акихиро. «Маджонг в открытую для победителей»</h3>
+        <p>Сборник приёмов для эффективной игры в открытую. Основные темы:</p>
+        <ul>
+            <li><strong>Скорость — важнее всего.</strong> В открытой игре вы конкурируете по скорости, а не по стоимости. Открывайтесь как можно раньше.</li>
+            <li><strong>Учитывайте доры.</strong> Дора даёт +1 хан, но не жертвуйте скоростью ради неё. Если у вас выбор между сохранением доры и улучшением формы — улучшайте форму.</li>
+            <li><strong>В ряншантене фуритен — не фуритен.</strong> Если вы в 2 шантена, фуритен не имеет значения: вы ещё не в темпае и не можете выиграть, так что сбрасывайте любые тайлы, не боясь фуритена.</li>
+            <li><strong>Поиск ближайшей яку.</strong> Открытая рука без яку — это мёртвый груз. Прежде чем открываться, убедитесь, что у вас есть яку или она гарантированно появится.</li>
+            <li><strong>Логика объявлений.</strong> Каждое объявление — это потеря информации и гибкости. Не объявляйте только потому, что можете. Объявляйте, только если это ускоряет руку.</li>
+        </ul>
+    </section>
+
+    <!-- ЧАСТЬ 6: ТАБЛИЦА ЯКУ -->
+    <section id="yaku">
+        <h2>Часть 6. Полная таблица всех яку</h2>
+        <p>Яку — это условия, дающие право на победу. Некоторые из них доступны только для закрытой руки, другие — и для открытой. Ниже — полный список с описаниями.</p>
+
+        <h3>Основные яку</h3>
+        <p><em>Курсивом</em> выделены яку, доступные только для закрытой руки.</p>
+        <div class="table-wrap">
+            <table class="yaku-table">
+                <thead><tr><th>Яку</th><th>Описание</th><th>Хан (закрытая/открытая)</th><th>Пример</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Якухай</strong></td><td>Пон/кан драконов или ветра места/раунда</td><td>1</td><td>Пон драконов</td></tr>
+                    <tr><td><strong>Таняо</strong></td><td>Только тайлы 2-8 (никаких 1, 9, ветров, драконов)</td><td>1</td><td>2-3-4 ман, 5-6-7 пин...</td></tr>
+                    <tr><td><em>Пинфу</em></td><td>Все шунцы, ожидание рянмен, закрытая рука</td><td>1</td><td>2-3-4, 5-6-7, 3-4 (ждёт 2 и 5)</td></tr>
+                    <tr><td><em>Иппейко</em></td><td>Два одинаковых шунца</td><td>1</td><td>2-3-4 ман дважды</td></tr>
+                    <tr><td><strong>Саншоку</strong></td><td>Одинаковые шунцы в трёх мастях</td><td>1/2</td><td>2-3-4 ман, 2-3-4 пин, 2-3-4 со</td></tr>
+                    <tr><td><strong>Иццу</strong></td><td>Три последовательных шунца в одной масти</td><td>1/2</td><td>1-2-3, 4-5-6, 7-8-9 ман</td></tr>
+                    <tr><td><strong>Чанта</strong></td><td>Каждый сет + пара содержат терминал или достоинство</td><td>1/2</td><td>1-2-3, 9-9, пон драконов</td></tr>
+                    <tr><td><strong>Тоитои</strong></td><td>Все 4 сета — поны (тройки)</td><td>2</td><td>Пон 3, пон 5, пон 7, пон драконов</td></tr>
+                    <tr><td><strong>Хоницу</strong></td><td>Одна масть + ветра/драконы</td><td>2/3</td><td>Все ман + ветра</td></tr>
+                    <tr><td><strong>Чиницу</strong></td><td>Только одна масть (без ветров и драконов)</td><td>5/6</td><td>Только ман</td></tr>
+                    <tr><td><strong>Джунчан</strong></td><td>Все сеты + пара содержат 1 или 9</td><td>2/3</td><td>1-2-3, 7-8-9, 9-9</td></tr>
+                    <tr><td><em>Риншан</em></td><td>Победа после кана</td><td>1</td><td>Цумо после объявления кана</td></tr>
+                    <tr><td><em>Чанкан</em></td><td>Победа на тайле, который использовали для кана</td><td>1</td><td>Рон на тайле, который кто-то только что объявил каном</td></tr>
+                    <tr><td><em>Хайтей</em></td><td>Победа на последнем тайле стены</td><td>1</td><td>Цумо с последнего тайла</td></tr>
+                    <tr><td><em>Хотей</em></td><td>Победа на последнем сбросе</td><td>1</td><td>Рон на последнем сбросе в раздаче</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Особые яку-ситуации</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Яку</th><th>Описание</th><th>Хан</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Риичи</strong></td><td>Объявление риичи в закрытом темпае</td><td>1</td></tr>
+                    <tr><td><strong>Иппацу</strong></td><td>Победа в течение одного круга после риичи</td><td>1</td></tr>
+                    <tr><td><strong>Дабул-риичи</strong></td><td>Риичи на первом ходу</td><td>2</td></tr>
+                    <tr><td><strong>Цумо</strong></td><td>Победа на своём тайле (всегда даёт 1 хан)</td><td>1</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Якуманы (максимальная стоимость)</h3>
+        <p>Якуманы дают фиксированные 32000 очков (или 48000, если вы дилер) и приравниваются к 13 хан.</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Якуман</th><th>Описание</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Кокуши мусо</strong></td><td>13 терминалов + 1 любой</td></tr>
+                    <tr><td><strong>Дайсанген</strong></td><td>Три пона/кана драконов</td></tr>
+                    <tr><td><strong>Сушу</strong></td><td>Четыре пона/кана ветров</td></tr>
+                    <tr><td><strong>Цуисо</strong></td><td>Только ветра и драконы</td></tr>
+                    <tr><td><strong>Чинрото</strong></td><td>Только 1 и 9</td></tr>
+                    <tr><td><strong>Рюисо</strong></td><td>Только зелёные тайлы (2-3-4-6-8 со + зелёный дракон)</td></tr>
+                    <tr><td><strong>Чурен поуто</strong></td><td>9-стороннее ожидание в чиницу (только для закрытой руки)</td></tr>
+                    <tr><td><strong>Суканцу</strong></td><td>Четыре кана</td></tr>
+                    <tr><td><strong>Тенхо</strong></td><td>Победа дилера на первом ходу (цумо)</td></tr>
+                    <tr><td><strong>Чихо</strong></td><td>Победа недилера на первом ходу (цумо)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Как считаются очки: практический подход</h3>
+        <p>Стоимость руки определяется двумя числами: <strong>хан</strong> (количество яку и бонусов) и <strong>фу</strong> (структурные «мини-очки»). Но запоминать все правила подсчёта фу не нужно — на практике достаточно знать несколько типовых случаев.</p>
+
+        <h4>1. Хан — это просто</h4>
+        <p>Каждый хан — это яку или бонус. Вы складываете их все и получаете итоговое число. Вот полная шпаргалка по источникам хан:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Источник хан</th><th>Сколько даёт</th><th>Комментарий</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Каждая яку</strong></td><td>1–6 хан</td><td>Смотрите таблицу яку выше</td></tr>
+                    <tr><td><strong>Риичи</strong></td><td>+1 хан</td><td>Объявление риичи</td></tr>
+                    <tr><td><strong>Иппацу</strong></td><td>+1 хан</td><td>Победа в течение одного круга после риичи</td></tr>
+                    <tr><td><strong>Дабул-риичи</strong></td><td>+2 хан</td><td>Риичи на первом ходу (включает бонус за риичи)</td></tr>
+                    <tr><td><strong>Цумо</strong></td><td>+1 хан</td><td>Победа на своём тайле</td></tr>
+                    <tr><td><strong>Дора</strong></td><td>+1 хан за каждую</td><td>Включая ура-дору и кандору. Не является яку!</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-warn">
+            <strong>Важно:</strong> дора сама по себе — не яку. Если у вас только доры и нет ни одной яку — выиграть нельзя.
+        </div>
+
+        <div class="highlight-tip">
+            <strong>Быстрый подсчёт:</strong> просто сложите все яку и все бонусы. Например: Риичи (1) + Иппацу (1) + Таняо (1) + 2 доры = <strong>5 хан</strong>. Это уже манган — 8000 очков, и фу считать не нужно!
+        </div>
+
+        <h4>2. Фу — забудьте про подсчёт, запомните типовые случаи</h4>
+        <p>На практике 90% всех рук попадают в одну из нескольких категорий. Просто определите, к какой категории относится ваша рука:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Категория руки</th><th>Типичные фу</th><th>Когда это</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Пинфу</strong></td><td>20 фу (цумо) / 30 фу (рон)</td><td>Все сеты — шунцы, рянмен-ожидание, закрытая рука</td></tr>
+                    <tr><td><strong>Чиитойцу</strong></td><td>25 фу</td><td>Семь пар (фу всегда фиксированы)</td></tr>
+                    <tr><td><strong>Закрытая рука по рон</strong></td><td>30–40 фу</td><td>Стандартная рука, выигранная на сброс</td></tr>
+                    <tr><td><strong>Закрытая рука по цумо</strong></td><td>20–30 фу</td><td>Стандартная рука, выигранная со стены</td></tr>
+                    <tr><td><strong>Открытая рука с понами</strong></td><td>30–50 фу</td><td>Есть открытые поны, особенно якухайные</td></tr>
+                    <tr><td><strong>Открытая рука с канами</strong></td><td>50–70 фу</td><td>Есть каны — они дают много фу</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-good">
+            <strong>Правило на память:</strong> если сомневаетесь — считайте <strong>30 фу для рона и 20 фу для цумо</strong>. Это правильно в 80% случаев. Ошибиться на 10 фу — это обычно разница в 1000 очков, что не критично.
+        </div>
+
+        <h4>3. Быстрый подсчёт — используйте таблицу</h4>
+        <p>Вместо того чтобы считать очки по формулам, просто найдите свою строку (хан) и столбец (фу). В скобках — выплаты при цумо: <strong>(от не-дилера / от дилера)</strong>.</p>
+
+        <p><em>Таблица для <strong>не-дилера</strong>. Для дилера умножьте результат рона на 1.5.</em></p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Хан</th>
+                        <th>20 фу</th>
+                        <th>25 фу</th>
+                        <th>30 фу</th>
+                        <th>40 фу</th>
+                        <th>50 фу</th>
+                        <th>60 фу</th>
+                        <th>70+ фу</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1 хан</strong></td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>1000 <br><span style="font-size:0.8rem;color:#666;">(300/500)</span></td>
+                        <td>1300 <br><span style="font-size:0.8rem;color:#666;">(400/700)</span></td>
+                        <td>1600 <br><span style="font-size:0.8rem;color:#666;">(400/800)</span></td>
+                        <td>2000 <br><span style="font-size:0.8rem;color:#666;">(500/1000)</span></td>
+                        <td>2300 <br><span style="font-size:0.8rem;color:#666;">(600/1200)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2 хан</strong></td>
+                        <td>—</td>
+                        <td>1600 <br><span style="font-size:0.8rem;color:#666;">(400/800)</span></td>
+                        <td>2000 <br><span style="font-size:0.8rem;color:#666;">(500/1000)</span></td>
+                        <td>2600 <br><span style="font-size:0.8rem;color:#666;">(700/1300)</span></td>
+                        <td>3200 <br><span style="font-size:0.8rem;color:#666;">(800/1600)</span></td>
+                        <td>3900 <br><span style="font-size:0.8rem;color:#666;">(1000/2000)</span></td>
+                        <td>4500 <br><span style="font-size:0.8rem;color:#666;">(1200/2300)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3 хан</strong></td>
+                        <td>—</td>
+                        <td>3200 <br><span style="font-size:0.8rem;color:#666;">(800/1600)</span></td>
+                        <td>3900 <br><span style="font-size:0.8rem;color:#666;">(1000/2000)</span></td>
+                        <td>5200 <br><span style="font-size:0.8rem;color:#666;">(1300/2600)</span></td>
+                        <td>6400 <br><span style="font-size:0.8rem;color:#666;">(1600/3200)</span></td>
+                        <td>7700 <br><span style="font-size:0.8rem;color:#666;">(2000/3900)</span></td>
+                        <td>8000 <br><span style="font-size:0.8rem;color:#666;">(2000/4000)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4 хан</strong></td>
+                        <td>—</td>
+                        <td>6400 <br><span style="font-size:0.8rem;color:#666;">(1600/3200)</span></td>
+                        <td>7700 <br><span style="font-size:0.8rem;color:#666;">(2000/3900)</span></td>
+                        <td>8000 <br><span style="font-size:0.8rem;color:#666;">(2000/4000)</span></td>
+                        <td>8000 <br><span style="font-size:0.8rem;color:#666;">(2000/4000)</span></td>
+                        <td>8000 <br><span style="font-size:0.8rem;color:#666;">(2000/4000)</span></td>
+                        <td>8000 <br><span style="font-size:0.8rem;color:#666;">(2000/4000)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="footnote">Прочерк «—» означает, что такая комбинация хан и фу невозможна. Обратите внимание: при 4 хан и 40+ фу рука автоматически становится манганом.</p>
+
+        <h4>4. Если 5+ хан — про фу можно забыть</h4>
+        <p>Начиная с 5 хан стоимость руки фиксирована и не зависит от фу. Такие руки называются «лимитными»:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Название</th><th>Хан</th><th>Не-дилер (рон)</th><th>Дилер (рон)</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Манган (満貫)</strong></td><td>5 хан (или 3 хан + 70 фу, 4 хан + 40 фу)</td><td>8000</td><td>12000</td></tr>
+                    <tr><td><strong>Ханеман (跳満)</strong></td><td>6–7 хан</td><td>12000</td><td>18000</td></tr>
+                    <tr><td><strong>Байман (倍満)</strong></td><td>8–10 хан</td><td>16000</td><td>24000</td></tr>
+                    <tr><td><strong>Санбайман (三倍満)</strong></td><td>11–12 хан</td><td>24000</td><td>36000</td></tr>
+                    <tr><td><strong>Якуман (役満)</strong></td><td>13+ хан</td><td>32000</td><td>48000</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>5. Практический алгоритм подсчёта</h4>
+        <p>Вот что вы делаете за столом, когда выиграли:</p>
+        <ol>
+            <li><strong>Сложите все хан:</strong> все яку + риичи + иппацу + цумо + доры.</li>
+            <li><strong>Если 5+ хан</strong> — сразу смотрите таблицу лимитов выше.</li>
+            <li><strong>Если меньше 5 хан</strong> — определите примерные фу:
+                <ul>
+                    <li>Пинфу? → 20 или 30 фу.</li>
+                    <li>Чиитойцу? → 25 фу.</li>
+                    <li>Закрытая рука по рон? → 30 фу.</li>
+                    <li>Открытая рука или цумо? → 20-30 фу.</li>
+                    <li>Много понов/канов? → 40-70 фу.</li>
+                </ul>
+            </li>
+            <li><strong>Найдите пересечение</strong> в таблице выплат.</li>
+        </ol>
+
+        <div class="highlight-good">
+            <strong>Главный совет:</strong> не пытайтесь считать фу точно с первого дня. Играйте, смотрите, как считает автоматика в tenhou или Mahjong Soul — через 20-30 раздач вы интуитивно запомните типичные комбинации хан и фу. Это самый быстрый способ научиться.
+        </div>
+
+        <div class="highlight-warn">
+            <strong>Пример расчёта:</strong> Вы (не-дилер) объявили риичи, поймали иппацу, у вас таняо и одна дора. Итого: 1 (риичи) + 1 (иппацу) + 1 (таняо) + 1 (дора) = <strong>4 хан</strong>. Рука закрытая, ожидание — рянмен, но есть один закрытый пон из средних тайлов. Фу примерно <strong>40</strong>. По таблице: <strong>4 хан + 40 фу = 8000 очков</strong> (манган).
+        </div>
+    </section>
+
+    <!-- РЕСУРСЫ -->
+    <section id="resources">
+        <h2>Полезные ресурсы</h2>
+        <p>Если вы хотите углубиться в тему, вот проверенные источники, которые помогут вам развиваться.</p>
+
+        <h4>Правила</h4>
+        <ul>
+            <li><a href="http://www.ma-jan.or.jp/guide/game_rule.html" target="_blank">Официальные правила JPML-A</a> — японские правила</li>
+            <li><a href="http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166" target="_blank">Riichi Competition Rules (EMA)</a> — европейские правила</li>
+            <li><a href="https://worldriichi.org/wrc-rules" target="_blank">Правила World Riichi Championship</a></li>
+            <li><a href="http://tenhou.net/man" target="_blank">Правила tenhou.net</a></li>
+        </ul>
+
+        <h4>Задачники и тренировка</h4>
+        <ul>
+            <li><a href="http://zettai-tesuji.ru" target="_blank">Задачник «Беспроигрышное мастерство маджонга»</a></li>
+            <li><a href="http://riichitheory.ru/12410_jp" target="_blank">Переводы с Perfect Mahjong</a></li>
+            <li><a href="https://tempai.net/ru/eff" target="_blank">Калькулятор эффективности</a> — показывает уке-ире</li>
+            <li><a href="https://dainachiba.github.io/RiichiBooks/" target="_blank">Книга «Riichi Book I»</a></li>
+        </ul>
+
+        <h4>Тренажёры ожиданий</h4>
+        <ul>
+            <li><strong>清一色</strong> — Android, тренирует определение ожиданий на время</li>
+            <li><strong>Mahjong Awaiting</strong> — для начинающих</li>
+            <li><strong>まちあて</strong> — для среднего и продвинутого уровня</li>
+        </ul>
+
+        <h4>Статистика и рейтинги</h4>
+        <ul>
+            <li><a href="http://tenhou.net/sc/prof.html" target="_blank">Статистика встречаемости яку на tenhou</a></li>
+            <li><a href="http://a.pqrs.se/tenhou/ranking" target="_blank">Рейтинги игроков tenhou</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Руководство составлено на основе материалов клуба «Тесудзи» и открытых источников.<br>Удачи за столом! 🀄</p>
+    </footer>
+
+</div>
 </body>
 </html>
