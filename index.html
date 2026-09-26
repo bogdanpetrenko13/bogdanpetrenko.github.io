@@ -83,6 +83,10 @@ h1 { font-size: 1.6rem; font-weight: 700; color: #f5e6c8; text-align: center; ma
 .tile.z[data-code="5z"] .honor { color: #6a6a6a; }
 .tile.z[data-code="6z"] .honor { color: #2b7a2b; }
 .tile.z[data-code="7z"] .honor { color: #b83a3a; }
+.tile.dora { box-shadow: 0 0 0 2px #e8c98e, 0 2px 0 #a89e8a, 0 3px 8px rgba(232, 201, 142, 0.5); border-color: #e8c98e; position: relative; }
+.tile.dora::after { content: ''; position: absolute; top: 2px; right: 2px; width: 6px; height: 6px; background: #e8c98e; border-radius: 50%; }
+.tile.small.dora { box-shadow: 0 0 0 2px #e8c98e, 0 2px 0 #a89e8a; }
+.tile.small.dora::after { width: 4px; height: 4px; top: 1px; right: 1px; }
 .tile.small { width: 30px; height: 40px; }
 .tile.small .num { font-size: 0.9rem; }
 .tile.small .honor { font-size: 1rem; }
@@ -420,6 +424,7 @@ function makeTile(code, opts) {
   if (opts.clickable) el.classList.add('clickable');
   if (opts.selected) el.classList.add('selected');
   if (opts.drawn) el.classList.add('drawn');
+  if (opts.dora) el.classList.add('dora');
   return el;
 }
 function renderHand(container, tiles, opts) {
@@ -736,7 +741,7 @@ const GLOSSARY = [
   { term: 'Ищу', ja: '一気通貫', cat: 'yaku', def: 'См. Иццу.' },
   { term: 'Чанта', ja: '混全帯么九', cat: 'yaku', def: 'Каждый сет содержит 1 или 9, плюс есть благородные. +2/+1.' },
   { term: 'Джунчан', ja: '純全帯么九', cat: 'yaku', def: 'Каждый сет содержит 1 или 9, без благородных. +3/+2.' },
-  { term: 'Хоницу', ja: '混一色', cat: 'yaku', def: 'Одна масть + благородные. +3/+2. «Баг системы» — можно открывать всё одной масти, стоимость огромная.' },
+  { term: 'Хоницу', ja: '混一色', cat: 'yaku', def: 'Одна масть + благородные. Открытая — 2 хана, закрытая — 3 хана. Сильна благодаря гарантированному яку без риичи, но без дор даёт скромные очки. С 3 дорами — манган, с удачным раскладом — байман.' },
   { term: 'Чиницу', ja: '清一色', cat: 'yaku', def: 'Только одна масть. +6/+5. Не якуман.' },
   { term: 'Читоицу', ja: '七対子', cat: 'yaku', def: '7 разных пар. +2 хана. Всегда 25 фу. ТОЛЬКО закрытая.' },
   { term: 'Тойтой', ja: '対々和', cat: 'yaku', def: 'Все сеты — поны. +2 хана. Открытая и закрытая.' },
@@ -793,7 +798,7 @@ const GLOSSARY = [
   { term: 'Разбор', ja: '', cat: 'strategy', def: 'Анализ прошедших партий.' },
   { term: 'Догоняющее риичи', ja: '', cat: 'strategy', def: 'Риичи, когда вы отстаёте по очкам.' },
   { term: 'Адзуки', ja: '後付け', cat: 'strategy', def: 'Открытие руки без готового яку, но с потенциалом его получить. Не должно смущать.' },
-  { term: 'Рука Шаршова', ja: '', cat: 'strategy', def: 'Техника Александра Шаршова (6 дан): открывать много дешёвых тайлов, целясь в хоницу. Даже если не получится — был шанс на байман.' },
+  { term: 'Рука Шаршова', ja: '', cat: 'strategy', def: 'Техника Александра Шаршова (6 дан): открывать много тайлов одной масти, целясь в хоницу. Из плохой стартовой руки даёт шанс на крупную победу вместо дешёвой. Иногда используется как блеф.' },
   { term: 'Дабури', ja: 'ダブリー', cat: 'advanced', def: 'Двойное риичи.' },
   { term: 'Дабутон', ja: 'ダブ東', cat: 'advanced', def: 'Двойной Восток — пара Восточных ветров в Восточном раунде.' },
   { term: 'Сокури', ja: '即リー', cat: 'advanced', def: 'Мгновенное риичи.' },
@@ -883,9 +888,9 @@ const COURSE = { lessons: [
 { id: "part-06", badge: "VI", title: "Часть VI. Открытия", desc: "Когда и зачем открываться, хоницу, рука Шаршова", prereqs: ["part-05"], blocks: [
   { type: "theory", title: "6.1. Что такое открытия и зачем они нужны", html: `<p><strong>Открытие</strong> — взятие кости у другого игрока (чи или пон). Рука становится открытой.</p><p><strong>Аналогия с боксом:</strong> риичи — правый прямой, коронный удар. Открытие — короткий резкий джеб. Обычно нокаутируют прямым, но резкий джеб может выиграть битву.</p><p><strong>Зачем нужны открытия:</strong></p><ul><li>Вспомогательный инструмент, когда получить риичи сложно.</li><li>Быстрее добраться до победы (не полагаемся на стену).</li><li>Дешёвой рукой перебить дорогую руку соперника.</li></ul><div class="example"><strong>Тенденция современного маджонга:</strong> раньше открывались редко, сейчас — 50% рук открытые. Разница между профессионалами — в уровне владения открытиями.</div>` },
   { type: "theory", title: "6.2. Шесть базовых мыслей", html: `<ol><li><strong>Чем дороже рука, тем выгоднее открытия.</strong> Три доры — открытие снижает стоимость, но мы быстрее доберёмся до победы.</li><li><strong>Когда до победы далеко — не открывайся.</strong> Открытой рукой трудно защищаться.</li><li><strong>Сначала собери блоки, а потом открывайся.</strong> С готовыми блоками открытие проще.</li><li><strong>Закрыть плохую форму сначала выгоднее.</strong> Хорошая форма в темпае → легче атаковать.</li><li><strong>Адзуки не должно смущать.</strong> Имея гарантированное яку — выиграть проще.</li><li><strong>Открытия без сдвига шантена тоже полезны.</strong> Нельзя строго запрещать.</li></ol>` },
-  { type: "theory", title: "6.3. Типовые примеры", html: `<div class="example"><strong>Пример 1. Якухай, 5-й круг, кидают 7z (красного дракона).</strong><br>Ответ: железный пон. Кто не берёт — тот в маджонг не выигрывает.</div><div class="hand-caption">Рука с якухай-потенциалом:</div><div class="hand" data-hand="234m 567m 11p 88s 5z 7z 7z"></div><div class="example"><strong>Пример 2. Таняо, 4P с дорой, кидают 4P.</strong><br>Ответ: берём и едем в таняо. Если получить рянмен 3-4P, будет темпай, но не победа. Вот почему открытие выгодно.</div><div class="hand-caption">Рука с целями в таняо:</div><div class="hand" data-hand="234m 567m 34p 5p 5p 22s 8s"></div><div class="example"><strong>Пример 3. Адзуки, 5-й круг, кидают 1P.</strong><br>Ответ: железный пон. Сянпон на 4M + 1P — плохое ожидание.</div><div class="hand-caption">Сянпон 4M + 1P:</div><div class="hand" data-hand="234m 567m 44m 11p 234s"></div><div class="example"><strong>Пример 4. Жадность, 3-й круг, кидают 4M.</strong><br>Ответ: берём. Две доры — дорогая рука, дальше жадничать невыгодно.</div><div class="hand-caption">Рука с двумя дорами:</div><div class="hand" data-hand="234m 44m 567m 678p 88s"></div><div class="example"><strong>Пример 5. Хоницу, 3-й круг, кидают 7z (красного дракона).</strong><br>Ответ: идём в хоницу.</div><div class="hand-caption">Хоницу-потенциал по манам:</div><div class="hand" data-hand="234m 567m 55m 78m 11p 7z 7z"></div>` },
-  { type: "theory", title: "6.4. Хоницу — «баг системы»", html: `<p>Хоницу — одна масть + ветра. Ты можешь открывать всё что угодно, брать любые чи одной масти — и за это дают 88 000 (байман).</p><div class="hand-caption">Готовая хоницу по манам:</div><div class="hand" data-hand="123m 456m 789m 111z 55z"></div><p><strong>Когда думать о хоницу:</strong></p><ul><li>Одна якухайная пара — задумываемся.</li><li>Две якухайные пары — стрелочка на хоницу.</li><li>Три якухайные пары — даже не думаем.</li></ul><p>Иногда можно пожертвовать готовым сетом ради хоницу.</p>` },
-  { type: "theory", title: "6.5. Рука Шаршова", html: `<p><strong>Александр Шаршов (6 дан)</strong> играл так: открывал кучу всего, у него в руке было 4 разных тайла. Изначально действенная техника — особенно когда раздали плохое.</p><p><strong>Ситуация:</strong> раздали мусор. Собирать кухай с плохими формами — мало смысла. Лучше попробовать хоницу — шанс на 88 000.</p><p><strong>Плюсы:</strong></p><ul><li>Даже если не получится — был шанс на 88 000.</li><li>Против такой руки очень сложно играть соперникам.</li></ul><p><strong>Блеф:</strong> иногда это сложная высокого уровня техника — открываешь кучу всего, соперники фолдят, а ты собираешь дешёвую руку.</p><div class="example">Если в каждой третьей-четвёртой сдаче вы сможете из мусора получить выгоду — это невероятный успех.</div>` }
+  { type: "theory", title: "6.3. Типовые примеры", html: `<p>В примерах ниже <strong>золотой рамкой</strong> подсвечены тайлы-доры.</p><div class="example"><strong>Пример 1. Якухай, 5-й круг, кидают 7z (красного дракона).</strong><br>Ответ: железный пон. Кто не берёт — тот в маджонг не выигрывает.</div><div class="hand-caption">Рука с якухай-потенциалом:</div><div class="hand" data-hand="234m 567m 11p 88s 5z 7z 7z"></div><div class="example"><strong>Пример 2. Таняо, 4P с дорой, кидают 4P.</strong><br>Ответ: берём и едем в таняо. Если получить рянмен 3-4P, будет темпай, но не победа. Вот почему открытие выгодно.</div><div class="hand-caption">Рука с 4P-дорой (подсвечена золотом):</div><div class="hand" data-hand="234m 567m 34p 5p 5p 22s 8s" data-dora="4p 4p"></div><div class="example"><strong>Пример 3. Адзуки, 5-й круг, кидают 1P.</strong><br>Ответ: железный пон. Сянпон на 4M + 1P — плохое ожидание.</div><div class="hand-caption">Сянпон 4M + 1P:</div><div class="hand" data-hand="234m 567m 44m 11p 234s"></div><div class="example"><strong>Пример 4. Жадность, 3-й круг, кидают 4M.</strong><br>Ответ: берём. Две доры — дорогая рука, дальше жадничать невыгодно. Обе 4M — дора (подсвечены).</div><div class="hand-caption">Рука с двумя дорами:</div><div class="hand" data-hand="234m 44m 567m 678p 88s" data-dora="4m 4m"></div><div class="example"><strong>Пример 5. Хоницу, 3-й круг, кидают 7z (красного дракона).</strong><br>Ответ: идём в хоницу. Гарантированное яку без риичи.</div><div class="hand-caption">Хоницу-потенциал по манам:</div><div class="hand" data-hand="234m 567m 55m 78m 11p 7z 7z"></div>` },
+  { type: "theory", title: "6.4. Хоницу — «баг системы»", html: `<p>Хоницу — одна масть + ветра. Одно из самых выгодных яку для открытия: у неё <strong>гарантированное яку</strong> без риичи, и она позволяет брать любые чи и поны одной масти.</p><p><strong>Стоимость:</strong></p><ul><li><strong>Открытая хоницу</strong> — 2 хана.</li><li><strong>Закрытая хоницу</strong> — 3 хана.</li></ul><p>Базовая рука без дор и бонусов даёт скромные 1 000–2 000 очков. Но как только добавляются доры, акадора или ура-дора — цена резко растёт. Хоницу с 3 дорами — это уже <em>манэган</em> (8 000 очков), а с удачным раскладом может доходить до <em>баймана</em> (16 000).</p><div class="hand-caption">Готовая хоницу по манам (подсвеченные тайлы — доры):</div><div class="hand" data-hand="123m 456m 789m 111z 55z" data-dora="5m 5m"></div><p><strong>Когда думать о хоницу:</strong></p><ul><li>Одна якухайная пара — задумываемся.</li><li>Две якухайные пары — стрелочка на хоницу.</li><li>Три якухайные пары — даже не думаем.</li></ul><p>Иногда можно пожертвовать готовым сетом ради хоницу — гарантированные очки важнее скорости.</p>` },
+  { type: "theory", title: "6.5. Рука Шаршова", html: `<p><strong>Александр Шаршов (6 дан)</strong> играл так: открывал кучу всего, у него в руке было 4 разных тайла. Изначально действенная техника — особенно когда раздали плохое.</p><p><strong>Ситуация:</strong> раздали мусор. Собирать кухай с плохими формами — мало смысла. Лучше попробовать хоницу — шанс на крупную победу.</p><p><strong>Плюсы:</strong></p><ul><li>Гарантированное яку без риичи — можно открывать любые тайлы одной масти.</li><li>Даже если не получится — вы хотя бы пробовали собрать дорогую руку, а не дешёвую.</li><li>Против такой руки очень сложно играть соперникам: непонятно, чего от неё ожидать.</li></ul><p><strong>Блеф:</strong> иногда это сложная высокого уровня техника — открываешь кучу всего, соперники фолдят, а ты собираешь дешёвую руку.</p><div class="example">Если в каждой третьей-четвёртой сдаче вы сможете из мусора получить выгоду — это невероятный успех.</div>` }
 ]},
 { id: "part-07", badge: "VII", title: "Часть VII. Продвинутые стратегии", desc: "zeRo, ASAPIN, Кавамура, EV", prereqs: ["part-06"], blocks: [
   { type: "theory", title: "7.1. Стратегии zeRo", html: `<p><strong>zeRo</strong> — один из сильнейших. Ставка на статистику и математику.</p><div class="example"><strong>1.</strong> Сбрасывайте 1M и 9M в начале.<br><br><strong>2.</strong> Не объявляйте пон без яку.<br><br><strong>3.</strong> Стремитесь к пинфу.<br><br><strong>4.</strong> Используйте судзи для защиты.<br><br><strong>5.</strong> Не бойтесь бэтаори.</div><p>zeRo делает ставку на <em>последовательность правильных решений</em>, а не на единичные победы.</p>` },
@@ -909,7 +914,7 @@ const COURSE = { lessons: [
 ]};
 
 /* ============ STATE ============ */
-const STORAGE_KEY = 'riichi_guide_v6';
+const STORAGE_KEY = 'riichi_guide_v7';
 function loadState() {
   try { const s = localStorage.getItem(STORAGE_KEY); if (s) return JSON.parse(s); } catch (e) {}
   return { completed: {}, stats: { correct: 0, total: 0 } };
@@ -991,13 +996,20 @@ function renderLessonBlock() {
   div.innerHTML = `<h3>${escapeHtml(block.title || '')}</h3>${block.html || ''}`;
   div.querySelectorAll('[data-hand]').forEach(el => {
     const tiles = parseHand(el.dataset.hand);
+    const doraTiles = el.dataset.dora ? parseHand(el.dataset.dora) : [];
+    const doraSet = new Set(doraTiles);
     el.innerHTML = '';
-    for (const t of sortHand(tiles)) el.appendChild(makeTile(t, {}));
+    for (const t of sortHand(tiles)) {
+      const isDora = doraSet.has(t);
+      el.appendChild(makeTile(t, { dora: isDora }));
+    }
   });
   div.querySelectorAll('[data-discard]').forEach(el => {
     const tiles = parseHand(el.dataset.discard);
+    const doraTiles = el.dataset.dora ? parseHand(el.dataset.dora) : [];
+    const doraSet = new Set(doraTiles);
     el.innerHTML = '';
-    for (const t of tiles) el.appendChild(makeTile(t, { small: true }));
+    for (const t of tiles) el.appendChild(makeTile(t, { small: true, dora: doraSet.has(t) }));
   });
   container.appendChild(div);
   renderGlossary(container, (block.title || '') + ' ' + (block.html || '').replace(/<[^>]+>/g, ' '));
