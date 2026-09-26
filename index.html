@@ -50,7 +50,7 @@ h1 { font-size: 1.6rem; font-weight: 700; color: #f5e6c8; text-align: center; ma
 .lesson-card { background: linear-gradient(145deg, #253830 0%, #1a2820 100%); border: 2px solid #3d5448; border-radius: 14px; padding: 1.1rem 1.2rem; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 1rem; }
 .lesson-card:hover { border-color: #8ec9e8; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(142, 201, 232, 0.12); }
 .lesson-card.completed { border-color: #5cb85c; }
-.lesson-num { width: 42px; height: 42px; border-radius: 50%; background: #3d5448; color: #f5e6c8; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.05rem; flex-shrink: 0; }
+.lesson-num { width: 46px; height: 46px; border-radius: 50%; background: #3d5448; color: #f5e6c8; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; letter-spacing: -0.02em; }
 .lesson-card.completed .lesson-num { background: #2b7a2b; color: #e8f5e8; }
 .lesson-info { flex: 1; min-width: 0; }
 .lesson-title { font-size: 1rem; font-weight: 600; color: #f5e6c8; margin-bottom: 0.2rem; }
@@ -208,12 +208,12 @@ mark { background: rgba(212, 163, 115, 0.35); color: #f5e6c8; padding: 0.05rem 0
 <div class="app">
   <div class="screen active" id="screen-home">
     <div class="header-row"><div style="width: 40px;"></div><h1 style="margin: 0;">Риичи-маджонг</h1><button class="settings-btn" id="btn-open-settings">⚙️</button></div>
-    <p class="subtitle">Полное практическое руководство · 24 урока · глоссарий · счётчик очков</p>
+    <p class="subtitle">Полное практическое руководство · 6 частей + введение · глоссарий · счётчик</p>
     <button class="course-hero" id="btn-open-course">
       <div class="icon">📚</div><div class="title">Руководство</div>
-      <div class="desc">24 урока с примерами рук и разбором ключевых ситуаций.</div>
+      <div class="desc">Введение, 6 частей с примерами рук и разбором ключевых ситуаций.</div>
       <div class="progress-bar"><div class="progress-fill" id="course-hero-progress" style="width:0%"></div></div>
-      <div class="progress-text" id="course-hero-text">Пройдено: 0 из 24</div>
+      <div class="progress-text" id="course-hero-text">Пройдено: 0 из 7</div>
     </button>
     <button class="glossary-hero" id="btn-open-glossary">
       <div class="icon">📖</div><div class="title">Глоссарий терминов</div>
@@ -239,7 +239,7 @@ mark { background: rgba(212, 163, 115, 0.35); color: #f5e6c8; padding: 0.05rem 0
   </div>
 
   <div class="screen" id="screen-lesson">
-    <div class="topbar"><button class="nav-btn" id="btn-lesson-back">← Уроки</button><div class="progress" id="lesson-progress">1 / 24</div><div class="score" id="lesson-score">Блок 1</div></div>
+    <div class="topbar"><button class="nav-btn" id="btn-lesson-back">← Разделы</button><div class="progress" id="lesson-progress">1 / 7</div><div class="score" id="lesson-score">Блок 1</div></div>
     <div id="lesson-content"></div>
   </div>
 
@@ -356,7 +356,7 @@ mark { background: rgba(212, 163, 115, 0.35); color: #f5e6c8; padding: 0.05rem 0
         <li><strong>Якуман</strong> — 13+ хан.</li>
       </ul>
       <h3>Двойной ветер</h3>
-      <p>Личный ветер (ваше место) совпал с ветром раунда — пара таких тайлов даёт +4 фу.</p>
+      <p>Личный ветер совпал с ветром раунда — пара таких тайлов даёт +4 фу.</p>
       <h3>Якухай</h3>
       <p>Пон драконов (白, 發, 中) или пон вашего ветра/ветра раунда. Пара даёт только 2 фу и не даёт хан якухая.</p>
     </div>
@@ -376,7 +376,7 @@ mark { background: rgba(212, 163, 115, 0.35); color: #f5e6c8; padding: 0.05rem 0
 
   <div class="screen" id="screen-settings">
     <div class="header-row"><h1 style="margin: 0;">Настройки</h1></div>
-    <div class="counter-section"><h3 style="color:#d4a373;margin-bottom:0.6rem;">Прогресс курса</h3><div style="font-size:0.82rem;color:#8aa898;margin-bottom:0.7rem;" id="course-progress-desc">—</div><div class="counter-btn-row"><button class="secondary" id="btn-reset-course">🔄 Сбросить</button></div></div>
+    <div class="counter-section"><h3 style="color:#d4a373;margin-bottom:0.6rem;">Прогресс руководства</h3><div style="font-size:0.82rem;color:#8aa898;margin-bottom:0.7rem;" id="course-progress-desc">—</div><div class="counter-btn-row"><button class="secondary" id="btn-reset-course">🔄 Сбросить</button></div></div>
     <div class="counter-section"><h3 style="color:#d4a373;margin-bottom:0.6rem;">Статистика практики</h3><div style="font-size:0.82rem;color:#8aa898;margin-bottom:0.7rem;" id="settings-stats-desc">—</div><div class="counter-btn-row"><button class="secondary" id="btn-reset-stats">Сбросить</button></div></div>
     <div style="text-align: center; margin-top: 1rem;"><button class="primary" id="btn-settings-back">Назад</button></div>
   </div>
@@ -622,7 +622,16 @@ function generateDiscardReadingProblem(rng) {
     if (dangerC.length === 0) continue;
     const danger = pick(dangerC, rng);
     const cand = shuffle([gembutsu, s1, s2, danger], rng);
-    return { hand: cand, opponentDiscard: oppDiscard, correctAnswer: danger, safeDiscards: [gembutsu, s1, s2], explain: `<strong>Самый опасный — ${humanizeTile(danger)}</strong>. Безопасны: <strong>${humanizeTile(gembutsu)}</strong> (гэмбуцу), <strong>${humanizeTile(s1)}</strong> и <strong>${humanizeTile(s2)}</strong> (судзи).` };
+    const sujiFrom = (t) => {
+      if (!isValidTile(t) || t[1] === 'z') return null;
+      const num = +t[0], suit = t[1];
+      const src = oppDiscard.find(d => { if (!isValidTile(d) || d[1] !== suit) return false; return Math.abs(+d[0] - num) === 3; });
+      return src || null;
+    };
+    const s1Src = sujiFrom(s1), s2Src = sujiFrom(s2);
+    const s1Note = s1Src ? ` (судзи от ${humanizeTile(s1Src)})` : '';
+    const s2Note = s2Src ? ` (судзи от ${humanizeTile(s2Src)})` : '';
+    return { hand: cand, opponentDiscard: oppDiscard, correctAnswer: danger, safeDiscards: [gembutsu, s1, s2], explain: `<strong>Самый опасный — ${humanizeTile(danger)}</strong>. Безопасны: <strong>${humanizeTile(gembutsu)}</strong> (гэмбуцу), <strong>${humanizeTile(s1)}</strong>${s1Note} и <strong>${humanizeTile(s2)}</strong>${s2Note}.` };
   }
   return null;
 }
@@ -663,7 +672,7 @@ const GLOSSARY = [
   { term: 'Менцу', ja: '面子', cat: 'basic', def: 'Готовый сет: шунцзу или коцу.' },
   { term: 'Тацу', ja: '搭子', cat: 'basic', def: 'Заготовка из двух тайлов.' },
   { term: 'Терминал', ja: '老頭牌', cat: 'basic', def: 'Тайлы 1 и 9.' },
-  { term: 'Чунчэн', ja: '中張牌', cat: 'basic', def: 'Терминальные тайлы: 1 и 9 любой масти.' },
+  { term: 'Чунчэн', ja: '中張牌', cat: 'basic', def: 'Терминальные тайлы: 1 и 9.' },
   { term: 'Рудзю', ja: '老頭牌', cat: 'basic', def: 'Терминалы + благородные.' },
   { term: 'Сидзу', ja: '中張牌', cat: 'basic', def: 'Простые тайлы: 2–8.' },
   { term: 'Благородные', ja: '字牌', cat: 'basic', def: 'Ветра (東南西北) и драконы (白發中).' },
@@ -693,7 +702,7 @@ const GLOSSARY = [
   { term: 'Саки-гири', ja: '先切り', cat: 'actions', def: 'Упреждающий сброс опасного тайла.' },
   { term: 'Бэтаори', ja: 'ベタ降り', cat: 'actions', def: 'Полная защита — отказ от руки.' },
   { term: 'Каваситэ', ja: '河底', cat: 'actions', def: 'Быстрая дешёвая победа.' },
-  { term: 'Рянмен', ja: '両面', cat: 'waits', def: 'Двустороннее ожидание (23M ждёт 1M или 4M). 8 тайлов. Самая сильная форма.' },
+  { term: 'Рянмен', ja: '両面', cat: 'waits', def: 'Двустороннее ожидание (23M ждёт 1M или 4M). 8 тайлов.' },
   { term: 'Канчан', ja: '嵌張', cat: 'waits', def: 'Внутреннее ожидание (13M ждёт 2M). 4 тайла.' },
   { term: 'Пенчан', ja: '辺張', cat: 'waits', def: 'Краевое ожидание (12M ждёт 3M). 4 тайла.' },
   { term: 'Рянкан', ja: '両嵌', cat: 'waits', def: 'Форма 2-4-6, ждёт 3 или 5. Коварная.' },
@@ -755,7 +764,7 @@ const GLOSSARY = [
   { term: 'Кириагэ', ja: '切上', cat: 'score', def: 'Правило округления 4/30 и 3/60 до мангана.' },
   { term: 'Дилер', ja: '親', cat: 'score', def: 'Игрок-раздающий. Платит и получает в 1.5× больше.' },
   { term: 'Недилер', ja: '子', cat: 'score', def: 'Остальные три игрока. Обычные выплаты.' },
-  { term: 'Уке-приоритет', ja: '', cat: 'strategy', def: 'Основной принцип сбора: уке приоритетнее хэнка, защиты и всего остального.' },
+  { term: 'Уке-приоритет', ja: '', cat: 'strategy', def: 'Основной принцип сбора: уке приоритетнее хэнка и защиты.' },
   { term: 'Отступить/надавить', ja: '', cat: 'strategy', def: '4 параметра Фукути: стоимость, ожидание, шантэн, место.' },
   { term: 'Относительная скорость', ja: '', cat: 'strategy', def: 'Сравнение вашей скорости с соперниками.' },
   { term: 'Формальный темпай', ja: '', cat: 'strategy', def: 'Дойти до темпая в конце раздачи, чтобы избежать нотэна.' },
@@ -801,134 +810,61 @@ function renderGlossary(container, text) {
   if (filtered.length === 0) return;
   filtered.sort((a, b) => b[0].length - a[0].length);
   const div = document.createElement('div'); div.className = 'term-glossary';
-  div.innerHTML = '<h4>📖 Термины в этом уроке</h4>' +
+  div.innerHTML = '<h4>📖 Термины в этом разделе</h4>' +
     filtered.map(([k,v]) => `<div class="glossary-item-inline"><strong>${escapeHtml(k)}</strong> — ${escapeHtml(v)}</div>`).join('');
   container.appendChild(div);
 }
 
-/* ============ COURSE ============ */
+/* ============ COURSE (по структуре текстового руководства) ============ */
 const COURSE = { lessons: [
-{ id: "lesson-01", title: "Цель игры и структура руки", desc: "Что такое риичи и из чего состоит рука", prereqs: [], blocks: [
+{ id: "intro", badge: "★", title: "Введение", desc: "Что такое риичи-маджонг, цель игры, нотация тайлов", prereqs: [], blocks: [
   { type: "theory", title: "Что такое риичи-маджонг", html: `<p><strong>Риичи-маджонг</strong> — японская версия классического маджонга. В отличие от китайских вариантов, риичи отличается повышенной динамичностью, строгими правилами и глубокой стратегией.</p><p><strong>Цель игры</strong> — первым собрать выигрышную комбинацию из 14 тайлов: <em>четыре сета и одну пару</em>.</p><div class="hand-caption">Пример готовой руки — 4 сета + пара:</div><div class="hand" data-hand="123m 456m 789p 888s 11s"></div><p>Здесь 123M и 456M — последовательности в манах, 789P — последовательность в пинах, 888S — тройка соу, а 1S-1S — пара.</p>` },
   { type: "theory", title: "Три строительных блока", html: `<p>Рука собирается из трёх типов «кирпичиков»:</p><ul><li><strong>Последовательность (шунцзу)</strong> — три последовательных тайла одной масти.</li></ul><div class="hand" data-hand="2m 3m 4m"></div><ul><li><strong>Тройка (коцу)</strong> — три одинаковых тайла.</li></ul><div class="hand" data-hand="5p 5p 5p"></div><ul><li><strong>Пара (дзанкэй)</strong> — два одинаковых тайла. Пара всегда ровно одна и служит «глазами» руки.</li></ul><div class="hand" data-hand="7s 7s"></div>` },
-  { type: "theory", title: "Главный принцип с самого начала", html: `<div class="example"><strong>Не пытайтесь силой собрать руку. Дайте ей собраться самой.</strong></div><p>Новички часто совершают ошибку: пытаются «дожать» несобранную руку, сбрасывая тайлы, которые могли бы пригодиться для защиты или для более гибкой формы.</p><p>Правильный подход — следовать статистике: выбирать формы с максимальным количеством улучшений и вовремя сбрасывать бесперспективные тайлы.</p>` }
+  { type: "theory", title: "Система обозначения тайлов", html: `<p>В руководстве используется единая международная нотация — так вы быстро читаете примеры и разборы.</p><ul><li><strong>M (маны)</strong> — иероглифы, тайлы 1M–9M.</li><li><strong>P (пины)</strong> — круги, тайлы 1P–9P.</li><li><strong>S (соу)</strong> — бамбук, тайлы 1S–9S.</li><li><strong>Ветры</strong> — E (Восточный), S (Южный), W (Западный), N (Северный).</li><li><strong>Драконы</strong> — Wh (Белый, хаку), G (Зелёный, хацу), R (Красный, чун).</li></ul><div class="hand-caption">Пример руки в нотации: 123M 456P 789S EEE SS</div><div class="hand" data-hand="123m 456p 789s 111z 22z"></div><p>На настоящих тайлах ветра и драконы нарисованы иероглифами. В нашем интерфейсе они тоже отображаются кандзи — это помогает быстрее запомнить реальный вид тайлов.</p><div class="hand-caption">Четыре ветра:</div><div class="hand" data-hand="1z 2z 3z 4z"></div><div class="hand-caption">Три дракона:</div><div class="hand" data-hand="5z 6z 7z"></div>` },
+  { type: "theory", title: "Главный принцип", html: `<div class="example"><strong>Не пытайтесь силой собрать руку. Дайте ей собраться самой.</strong></div><p>Новички часто совершают ошибку: пытаются «дожать» несобранную руку, сбрасывая тайлы, которые могли бы пригодиться для защиты или для более гибкой формы.</p><p>Правильный подход — следовать статистике: выбирать формы с максимальным количеством улучшений и вовремя сбрасывать бесперспективные тайлы.</p>` }
 ]},
-{ id: "lesson-02", title: "Обозначение тайлов", desc: "Нотация, используемая в руководстве", prereqs: ["lesson-01"], blocks: [
-  { type: "theory", title: "Стандартная международная нотация", html: `<p>В руководстве и в интерфейсе используется единая нотация — так вы быстро читаете любые примеры и разборы.</p><ul><li><strong>M (маны)</strong> — иероглифы, тайлы 1M–9M.</li><li><strong>P (пины)</strong> — круги, тайлы 1P–9P.</li><li><strong>S (соу)</strong> — бамбук, тайлы 1S–9S.</li><li><strong>Ветры</strong> — E (Восточный), S (Южный), W (Западный), N (Северный).</li><li><strong>Драконы</strong> — Wh (Белый), G (Зелёный), R (Красный).</li></ul><div class="hand-caption">Пример руки в нотации: 123M 456P 789S EEE SS</div><div class="hand" data-hand="123m 456p 789s 111z 22z"></div>` },
-  { type: "theory", title: "Ветра и драконы на плитках", html: `<p>На настоящих тайлах ветра и драконы нарисованы иероглифами. В нашем интерфейсе они тоже отображаются кандзи — это помогает быстрее запомнить реальный вид тайлов.</p><div class="hand-caption">Четыре ветра:</div><div class="hand" data-hand="1z 2z 3z 4z"></div><div class="hand-caption">Три дракона:</div><div class="hand" data-hand="5z 6z 7z"></div>` },
-  { type: "theory", title: "Пример руки с почётными тайлами", html: `<div class="hand-caption">Полная рука, где сет — тройка драконов:</div><div class="hand" data-hand="234m 567p 234s 666z 11m"></div>` }
+{ id: "part-01", badge: "I", title: "Часть 1. Азы стратегии для начинающих", desc: "Как дать руке собраться самой и не попасть в ловушки", prereqs: ["intro"], blocks: [
+  { type: "theory", title: "1.1. Дайте руке собраться самой", html: `<p>Каждая рука имеет <strong>уке-ире</strong> — количество тайлов, которые её улучшают. Чем больше уке-ире, тем выше шанс быстро собрать выигрышную комбинацию.</p><p>Новички часто «давят» на конкретную форму, сбрасывая тайлы, которые могли бы стать частью других форм. В итоге рука остаётся на месте, пока соперники выигрывают.</p><p>Правильная тактика: смотреть на руку как на <strong>набор форм</strong>, а не как на план на конкретную последовательность.</p><div class="hand-caption">Пример:</div><div class="hand" data-hand="123m 456p 78s 55m 67p 1z"></div><p>Здесь уже есть:</p><ul><li>Готовая последовательность <strong>123M</strong>.</li><li>Готовая последовательность <strong>456P</strong>.</li><li>Пара <strong>55M</strong> — глаза.</li><li>Форма <strong>78S</strong> — рянмен, принимает 6S или 9S.</li><li>Форма <strong>67P</strong> — рянмен, принимает 5P или 8P.</li><li>Одиночный ветер <strong>1E</strong>.</li></ul><p>Важно: <em>не сбрасывайте 78S или 67P ради «красивой» руки</em>. Эти формы дают максимум улучшений.</p><div class="example">Если у вас есть форма, принимающая 8 тайлов, и форма, принимающая 4 — всегда выбирайте первую.</div>` },
+  { type: "theory", title: "1.2. Избегайте ловушек новичков", html: `<p><strong>Ловушка 1: сброс 1M и 9M в начале.</strong> Терминалы могут стать частью последовательности (123M, 789M). Сбрасывайте их только если они не участвуют в формах.</p><div class="hand-caption">Плохой сброс: 1M в такой руке</div><div class="hand" data-hand="1m 3m 7p 8p 2s 3s 5s 5s 6m 6p 7m 1z 2z"></div><p><strong>Ловушка 2: сбор руки без яку.</strong> Рука без яку не считается выигрышной, даже если формально собрана. Убедитесь, что у вас есть хотя бы одно яку.</p><p><strong>Ловушка 3: игнорирование сбросов.</strong> Сбросы противников — источник информации о их руках. Терминалы и ветра в начале — намёк на слабую руку; центральные тайлы — знак близкого темпая.</p><p><strong>Ловушка 4: слишком ранний пон.</strong> Открытая рука теряет гибкость: нельзя объявить риичи, нет ура-дор, нет иппэйко. Объявляйте пон только если это ведёт к явному выигрышу.</p><p><strong>Ловушка 5: игра без плана.</strong> Бесцельный сбор приводит к фуритену. Определите цель с самого начала: быстрый выигрыш, защита или сбор дорогой руки.</p>` },
+  { type: "theory", title: "1.3. Как получить первую яку", html: `<p><strong>Яку</strong> — обязательное условие для выигрыша.</p><p><strong>Риичи</strong> — самое простое и универсальное яку. Объявляется, когда рука в темпае и закрыта. +1 хан, право на ура-доры, давление на соперников.</p><div class="hand" data-hand="123m 456m 789p 22s 34s"></div><p><strong>Танъяо</strong> — рука только из простых тайлов (2–8).</p><div class="hand" data-hand="234m 567m 234p 678s 55s"></div><p><strong>Якухай</strong> — тройка драконов или ветра раунда.</p><div class="hand" data-hand="234m 567m 234p 111z 88s"></div><p><strong>Пинфу</strong> — все сеты последовательности, пара не якухай, ожидание рянмен. Только закрытая.</p><div class="hand" data-hand="123m 456m 789p 22s 78s"></div><p><strong>Иппэйко</strong> — две одинаковые последовательности, только закрытая.</p><div class="hand" data-hand="123m 123m 456p 789s 22z"></div><div class="example">Если не уверены, какое яку собирать — стремитесь к риичи. Это универсальный путь.</div>` }
 ]},
-{ id: "lesson-03", title: "Дайте руке собраться самой", desc: "Принцип, который экономит вам раздачи", prereqs: ["lesson-02"], blocks: [
-  { type: "theory", title: "Почему это работает", html: `<p>Каждая рука имеет <strong>уке-ире</strong> — количество тайлов, которые её улучшают. Чем больше уке-ире, тем выше шанс быстро собрать выигрышную комбинацию.</p><p>Новички часто «давят» на конкретную форму, сбрасывая тайлы, которые могли бы стать частью других форм. В итоге рука остаётся на месте, пока соперники выигрывают.</p><p>Правильная тактика: смотреть на руку как на <strong>набор форм</strong>, а не как на план на конкретную последовательность.</p>` },
-  { type: "theory", title: "Пример", html: `<div class="hand-caption">Рука:</div><div class="hand" data-hand="123m 456p 78s 55m 67p 1z"></div><p>Здесь уже есть:</p><ul><li>Готовая последовательность <strong>123M</strong>.</li><li>Готовая последовательность <strong>456P</strong>.</li><li>Пара <strong>55M</strong> — глаза.</li><li>Форма <strong>78S</strong> — рянмен, принимает 6S или 9S.</li><li>Форма <strong>67P</strong> — рянмен, принимает 5P или 8P.</li><li>Одиночный ветер <strong>1E</strong>.</li></ul>` },
-  { type: "theory", title: "Совет", html: `<div class="example">Если у вас есть форма, которая принимает 8 тайлов, и форма, которая принимает 4 — всегда выбирайте первую.</div>` }
+{ id: "part-02", badge: "II", title: "Часть 2. Эффективный сбор руки", desc: "Принцип уке-ире и сравнение форм", prereqs: ["part-01"], blocks: [
+  { type: "theory", title: "2.1. Принцип «чем больше уке-ире, тем быстрее сбор»", html: `<p><strong>Уке-ире</strong> — это количество тайлов, которые улучшают вашу руку. Чем больше уке-ире, тем выше вероятность быстро собрать выигрышную комбинацию.</p><div class="hand-caption">Форма A — рянмен 23M</div><div class="hand" data-hand="2m 3m"></div><p>Уке-ире: 1M, 4M. 8 тайлов (4 копии каждого).</p><div class="hand-caption">Форма B — канчан 13M</div><div class="hand" data-hand="1m 3m"></div><p>Уке-ире: только 2M. 4 тайла.</p><div class="hand-caption">Форма C — пенчан 12M</div><div class="hand" data-hand="1m 2m"></div><p>Уке-ире: только 3M. 4 тайла.</p><p><strong>Вывод:</strong> рянмен 23M имеет в два раза больше уке-ире, чем 13M или 12M. Поэтому рянмен — самая сильная форма.</p>` },
+  { type: "theory", title: "2.2. Сравнение эффективности форм", html: `<p><strong>Рянмен (двустороннее ожидание).</strong> 23M ждёт 1M или 4M. Принимает 8 тайлов, легко улучшается до последовательности, устойчив к сбросам.</p><div class="hand" data-hand="2m 3m"></div><p><strong>Канчан (внутреннее ожидание).</strong> 13M ждёт 2M. Только 4 тайла. Может быть «ловушкой» (рянкан), если 2M сброшен. Улучшается до рянмена через 4M или 5M.</p><div class="hand" data-hand="1m 3m"></div><p><strong>Пенчан (краевое ожидание).</strong> 12M ждёт 3M. Только 4 тайла. Не может быть улучшено до рянмена — тайла 0M не существует.</p><div class="hand" data-hand="1m 2m"></div><p><strong>Рянкан (коварная ловушка).</strong> 2-4-6M, ждёт 3M или 5M. Занимает 3 тайла в руке, а выигрышный тайл один. Избегайте рянкана.</p><div class="hand" data-hand="2m 4m 6m"></div><p><strong>Сянпон (ожидание на паре).</strong> 55M + 99P, любая пара завершит руку. 4 аута. Часто используется для сбора якухая.</p><div class="hand" data-hand="123m 456m 55m 99p 234s"></div>` },
+  { type: "theory", title: "2.3. Таблица сравнения форм", html: `<div class="example"><strong>Рянмен</strong> (23M) — 8 тайлов — ★★★★★ — использовать всегда, если есть выбор.<br><br><strong>Сянпон</strong> (55M + 99P) — 4 тайла — ★★★☆☆ — для якухай или быстрого выигрыша.<br><br><strong>Канчан</strong> (13M) — 4 тайла — ★★☆☆☆ — только если нет альтернатив.<br><br><strong>Пенчан</strong> (12M) — 4 тайла — ★★☆☆☆ — только если нет альтернатив.<br><br><strong>Рянкан</strong> (2-4-6M) — 4 аута — ★☆☆☆☆ — избегать.</div><p>Общее правило: <em>рянмен &gt; сянпон &gt; канчан ≥ пенчан &gt; рянкан</em>.</p>` }
 ]},
-{ id: "lesson-04", title: "Ловушки новичков", desc: "Пять типичных ошибок", prereqs: ["lesson-03"], blocks: [
-  { type: "theory", title: "Ловушка 1: сброс 1M и 9M в начале", html: `<p><strong>Почему это плохо:</strong> терминалы могут стать частью последовательности (123M, 789M), а также использоваться в паре.</p><p><strong>Что делать:</strong> сбрасывайте их только если они не участвуют ни в одной форме.</p><div class="hand-caption">Плохой сброс: 1M в такой руке</div><div class="hand" data-hand="1m 3m 7p 8p 2s 3s 5s 5s 6m 6p 7m 1z 2z"></div><div class="hand-caption">Лучше сбросить 1E или 2Z:</div><div class="hand" data-hand="1z 2z"></div>` },
-  { type: "theory", title: "Ловушка 2: сбор руки без яку", html: `<p><strong>Почему это плохо:</strong> рука без яку не считается выигрышной, даже если формально собрана.</p><p><strong>Что делать:</strong> убедитесь, что у вас есть хотя бы одно яку — риичи, танъяо, якухай, пинфу или иппэйко.</p>` },
-  { type: "theory", title: "Ловушка 3: игнорирование сбросов", html: `<p><strong>Почему это плохо:</strong> сбросы противников — источник информации о их руках.</p><p><strong>Что делать:</strong> следите за тем, какие тайлы сбрасывают соперники.</p>` },
-  { type: "theory", title: "Ловушка 4: слишком ранний пон", html: `<p><strong>Почему это плохо:</strong> открытая рука теряет гибкость: нельзя объявить риичи, нет ура-дор, нет иппэйко.</p><p><strong>Что делать:</strong> объявляйте пон только если это ведёт к явному выигрышу.</p>` },
-  { type: "theory", title: "Ловушка 5: игра без плана", html: `<p><strong>Почему это плохо:</strong> бесцельный сбор руки приводит к фуритену.</p><p><strong>Что делать:</strong> определите цель с самого начала: быстрый выигрыш, защита или сбор дорогой руки.</p>` }
+{ id: "part-03", badge: "III", title: "Часть 3. Выигрышные ожидания", desc: "Простые и многогранные ожидания", prereqs: ["part-02"], blocks: [
+  { type: "theory", title: "3.1. Простые ожидания", html: `<div class="example"><strong>Рянмен</strong> — 23M → 1M, 4M (8 тайлов).<br><br><strong>Канчан</strong> — 13M → 2M (4 тайла).<br><br><strong>Пенчан</strong> — 12M → 3M (4 тайла).<br><br><strong>Сянпон</strong> — 55M + 99P → 5M или 9P (4 тайла).<br><br><strong>Танки</strong> — одиночный 5M → второй 5M (3 тайла).</div><div class="hand-caption">Пример танки:</div><div class="hand" data-hand="123m 456m 789m 22p 1s"></div><p>Темпай с ожиданием 1S (танки).</p><div class="hand-caption">Пример сянпона:</div><div class="hand" data-hand="111m 234m 567m 99p 22s"></div><p>Ждём 9P или 2S.</p>` },
+  { type: "theory", title: "3.2. Сложные многогранные ожидания", html: `<p><strong>Санмэнчан</strong> — форма 2-3-4-5-6M.</p><div class="hand" data-hand="2m 3m 4m 5m 6m"></div><p>Разложение:</p><ul><li>2-3 + 4-5-6 → 1M или 4M.</li><li>2-3-4 + 5-6 → 4M или 7M.</li><li>2-3-4-5 + 6 → 6M (танки).</li></ul><p>Итого 1M, 4M, 7M — до 12 аутов.</p><div class="hand-caption">Полная рука с санмэнчаном:</div><div class="hand" data-hand="23456m 234p 567p 88s"></div><p><strong>Нобэтан</strong> — форма 2-3-4-5P.</p><div class="hand" data-hand="2p 3p 4p 5p"></div><p>Ожидание: 2P или 5P. 6 аутов.</p><div class="hand-caption">Полная рука с нобэтаном:</div><div class="hand" data-hand="123m 456m 789m 2345p 5z"></div><p><strong>Пинфу-санмэн</strong> — трёхстороннее ожидание с потенциалом пинфу.</p><div class="hand" data-hand="123m 456m 789m 55p 67p 88s"></div><p>Ожидание: 5P, 8P или 8S. 10 тайлов.</p><p><strong>Рянмэн-санмэн</strong> — двойное рянмен-ожидание.</p><div class="hand" data-hand="123m 456m 789m 234p 567p"></div><p>Ожидание: 1P, 4P, 7P — 12 тайлов.</p>` },
+  { type: "theory", title: "3.3. Таблица сложных ожиданий", html: `<div class="example"><strong>Санмэнчан</strong> (23456M) — 1M, 4M, 7M — до 12 тайлов.<br><br><strong>Нобэтан</strong> (2345P) — 2P, 5P — 6 тайлов.<br><br><strong>Пинфу-санмэн</strong> (55P + 67P + 88S) — 5P, 8P, 8S — 10 тайлов.<br><br><strong>Рянмэн-санмэн</strong> (234P + 567P) — 1P, 4P, 7P — 12 тайлов.</div><p>Чем больше многогранных ожиданий вы умеете распознавать, тем чаще будете выигрывать быстрее соперников.</p>` }
 ]},
-{ id: "lesson-05", title: "Как получить первую яку", desc: "Простые яку для начинающих", prereqs: ["lesson-04"], blocks: [
-  { type: "theory", title: "Что такое яку", html: `<p><strong>Яку</strong> — обязательное условие для выигрыша. Без яку рука не считается выигрышной.</p>` },
-  { type: "theory", title: "Яку №1: Риичи", html: `<p><strong>Риичи</strong> — самое простое и универсальное яку. Объявляется, когда ваша рука в темпае и закрыта.</p><p>+1 хан, право на ура-доры, давление на соперников.</p><div class="hand-caption">Рука, готовая к риичи:</div><div class="hand" data-hand="123m 456m 789p 22s 34s"></div>` },
-  { type: "theory", title: "Яку №2–5: остальные базовые", html: `<p><strong>Танъяо</strong> — рука только из простых тайлов (2–8).</p><div class="hand" data-hand="234m 567m 234p 678s 55s"></div><p><strong>Якухай</strong> — тройка драконов или ветра раунда.</p><div class="hand" data-hand="234m 567m 234p 111z 88s"></div><p><strong>Пинфу</strong> — все сеты последовательности, пара не якухай, ожидание рянмен. Только закрытая.</p><div class="hand" data-hand="123m 456m 789p 22s 78s"></div><p><strong>Иппэйко</strong> — две одинаковые последовательности, только закрытая.</p><div class="hand" data-hand="123m 123m 456p 789s 22z"></div>` }
+{ id: "part-04", badge: "IV", title: "Часть 4. Защита в риичи-маджонге", desc: "Судзи, кабэ, бэтаори и другие тактики", prereqs: ["part-03"], blocks: [
+  { type: "theory", title: "4.1. Основные принципы защиты", html: `<ol><li><strong>Следите за сбросами.</strong> Сбросы противников — источник информации о их руках.</li><li><strong>Не сбрасывайте опасные тайлы.</strong> Если противник объявил риичи, избегайте тайлов, которые могут быть у него в руке.</li><li><strong>Используйте судзи.</strong> Это тайлы, безопасные для сброса после риичи.</li><li><strong>Не бойтесь бэтаори.</strong> Если рука слабая — лучше сбросить всё и защищаться.</li></ol><p>Три из четырёх раздач мы не выигрываем. Главная задача большинства раздач — просто не набросить.</p>` },
+  { type: "theory", title: "4.2. Судзи — безопасные тайлы", html: `<p><strong>Судзи</strong> — тайлы, которые с высокой вероятностью безопасны для сброса после риичи противника. Логика основана на рянменах: если противник сбросил 4M, он не может иметь рянмен 3-4M или 5-6M, которые ждут 4M.</p><ul><li>Сбросил 1M → безопасны 4M.</li><li>Сбросил 2M → безопасен 5M.</li><li>Сбросил 3M → безопасен 6M.</li><li>Сбросил 4M → безопасны 1M и 7M.</li><li>Сбросил 5M → безопасны 2M и 8M.</li><li>Сбросил 6M → безопасны 3M и 9M.</li><li>Сбросил 7M → безопасен 4M.</li><li>Сбросил 8M → безопасен 5M.</li><li>Сбросил 9M → безопасен 6M.</li></ul><div class="hand-caption">Противник сбросил 4S:</div><div class="discard-row" data-discard="4s"></div><div class="hand-caption">Его кава:</div><div class="discard-row" data-discard="1p 9s 4z 2m 3z 4s 7p 8p"></div><p>Гэмбуцу: 2M, 4S, 7P, 8P. Судзи от 4S: 1S и 7S.</p><div class="example">Судзи не дают 100% безопасности, но сильно снижают риск.</div>` },
+  { type: "theory", title: "4.3. Кабэ (стены)", html: `<p><strong>Кабэ</strong> — ситуация, когда все четыре копии тайла видны (в дискардах, на руках или в открытых наборах). Это делает связанные ожидания маловероятными.</p><ul><li>Если все четыре 3M видны — ожидания на 1M, 2M, 4M, 5M менее вероятны.</li><li>Если все четыре 7P видны — ожидания на 5P, 6P, 8P, 9P менее вероятны.</li></ul><div class="hand-caption">Противник сбросил все четыре 2P:</div><div class="discard-row" data-discard="2p 2p 2p 2p"></div><p>Значит, у него не может быть форм 1-2-3P или 2-3-4P. Соседние тайлы становятся безопаснее.</p><p>Кабэ — более сильный сигнал, чем судзи, потому что основан на <em>отсутствии возможности</em>.</p>` },
+  { type: "theory", title: "4.4. Бэтаори (полная защита)", html: `<p><strong>Бэтаори</strong> — стратегия полной защиты. Вы полностью отказываетесь от руки и сосредотачиваетесь на том, чтобы не набросить.</p><p><strong>Когда использовать:</strong></p><ul><li>Рука слабая и не имеет шансов на выигрыш.</li><li>Противник объявил риичи, нет безопасных тайлов.</li><li>Вы в фуритене.</li><li>Поздняя стадия, вы на 1-м месте.</li></ul><p><strong>Как играть:</strong></p><ol><li>Сбрасывайте только безопасные тайлы: гэмбуцу, судзи, тайлы за кабэ.</li><li>Не объявляйте риичи, если рука слабая.</li><li>Не пытайтесь собрать руку через опасные тайлы.</li><li>Иногда сбрасывайте собственные формы ради безопасности.</li></ol><div class="example">Лучше потерять 1000 очков на нотэне, чем 8000 на роне в чужую манган.</div>` },
+  { type: "theory", title: "4.5. Саки-гири (упреждающий сброс)", html: `<p><strong>Саки-гири</strong> — упреждающий сброс опасного тайла до того, как противник объявит риичи.</p><div class="hand-caption">У вас в руке 3M, который может быть опасен:</div><div class="hand" data-hand="3m"></div><p>Сбросьте его заранее — пока риичи ещё не объявлен. Если позже 3M окажется опасным, у вас его уже не будет.</p><p><strong>Совет:</strong> если чувствуете, что противник близок к риичи, сбросьте опасные тайлы заранее.</p>` },
+  { type: "theory", title: "4.6. Разрушение пар", html: `<p><strong>Разрушение пар</strong> — сброс одного тайла из пары для уменьшения потенциального урона.</p><div class="hand-caption">У вас пара 55M, и 5M потенциально опасно:</div><div class="hand" data-hand="5m 5m"></div><p>Сбросьте один 5M — это уменьшает вероятность, что противник выиграет на 5M с вашей пары. Оставшийся 5M может стать частью других форм.</p><p><strong>Когда использовать:</strong> если у вас нет безопасных тайлов для сброса, и вам нужно чем-то пожертвовать.</p>` }
 ]},
-{ id: "lesson-06", title: "Принцип уке-ире", desc: "Чем больше улучшений — тем быстрее выигрыш", prereqs: ["lesson-05"], blocks: [
-  { type: "theory", title: "Что такое уке-ире", html: `<p><strong>Уке-ире</strong> — количество тайлов, которые улучшают вашу руку.</p>` },
-  { type: "theory", title: "Сравнение трёх форм", html: `<div class="hand-caption">Форма A — рянмен 23M</div><div class="hand" data-hand="2m 3m"></div><p>Уке-ире: 1M, 4M. 8 тайлов.</p><div class="hand-caption">Форма B — канчан 13M</div><div class="hand" data-hand="1m 3m"></div><p>Уке-ире: только 2M. 4 тайла.</p><div class="hand-caption">Форма C — пенчан 12M</div><div class="hand" data-hand="1m 2m"></div><p>Уке-ире: только 3M. 4 тайла.</p><p><strong>Вывод:</strong> рянмен 23M имеет в два раза больше уке-ире.</p>` }
+{ id: "part-05", badge: "V", title: "Часть 5. Продвинутые стратегии", desc: "zeRo, ASAPIN, Кавамура и общие советы", prereqs: ["part-04"], blocks: [
+  { type: "theory", title: "5.1. Стратегии zeRo", html: `<p><strong>zeRo</strong> — один из сильнейших игроков в риичи-маджонг. Его стратегии основаны на статистике и математике.</p><div class="example"><strong>1. Сбрасывайте 1M и 9M в начале.</strong><br>Терминальные тайлы реже участвуют в последовательностях. Сброс их в начале освобождает руку для более гибких форм.<br><br><strong>2. Не объявляйте пон без яку.</strong><br>Открытая рука без яку не может выиграть.<br><br><strong>3. Стремитесь к пинфу.</strong><br>Пинфу — одно из самых простых и эффективных яку.<br><br><strong>4. Используйте судзи для защиты.</strong><br>Математически обоснованный способ снизить риск.<br><br><strong>5. Не бойтесь бэтаори.</strong><br>Полная защита часто выгоднее, чем попытка выиграть слабую руку.</div><p>zeRo делает ставку на <em>последовательность правильных решений</em>, а не на единичные крупные победы.</p>` },
+  { type: "theory", title: "5.2. Стратегии ASAPIN", html: `<p><strong>ASAPIN</strong> — известный японский игрок, специализирующийся на агрессивной игре.</p><div class="example"><strong>1. Атакуйте, если у вас преимущество.</strong><br>Если ваша рука сильнее, чем у противников, агрессивная игра увеличивает шансы на выигрыш.<br><br><strong>2. Не бойтесь риичи.</strong><br>Риичи даёт +1 хан и ура-дору.<br><br><strong>3. Используйте кабэ для атаки.</strong><br>Если знаете, что противник не может выиграть на тайл, можете безопасно его сбросить.<br><br><strong>4. Следите за дорами.</strong><br>Стремитесь к рукам с дорами.<br><br><strong>5. Не игнорируйте защиту.</strong><br>Если рука слабая — защищайтесь.</div><p>ASAPIN оценивает <em>относительную скорость</em> и решает: давить или отступать.</p>` },
+  { type: "theory", title: "5.3. Стратегии Кавамуры", html: `<p><strong>Кавамура</strong> — известный японский игрок и автор книг по риичи-маджонгу. Его подход — игра по статистике с вниманием к балансу атаки и защиты.</p><div class="example"><strong>1. Играйте по статистике.</strong><br>Маджонг — это игра вероятностей.<br><br><strong>2. Не пытайтесь выиграть каждую руку.</strong><br>Иногда лучше сбросить слабую руку и защищаться.<br><br><strong>3. Используйте информацию из сбросов.</strong><br>Сбросы противников — источник информации.<br><br><strong>4. Стремитесь к балансу.</strong><br>Баланс между атакой и защитой — ключ к успеху.<br><br><strong>5. Учитесь на ошибках.</strong><br>Анализируйте свои игры.</div><p>Кавамура подчёркивает: маджонг — это <em>игра на длинную дистанцию</em>, где правильные решения важнее удачи.</p>` },
+  { type: "theory", title: "5.4. Общие советы для продвинутых игроков", html: `<ol><li><strong>Изучайте статистику.</strong> Знайте вероятности выпадения тайлов.</li><li><strong>Следите за дорами.</strong> Доры значительно увеличивают стоимость руки.</li><li><strong>Используйте судзи и кабэ.</strong> Это математически обоснованные способы защиты.</li><li><strong>Не бойтесь бэтаори.</strong> Иногда лучше сбросить всё и защищаться.</li><li><strong>Анализируйте свои игры.</strong> Записывайте партии и ищите ошибки.</li><li><strong>Играйте против сильных игроков.</strong> Это лучший способ улучшить навыки.</li><li><strong>Не игнорируйте защиту.</strong> Даже в агрессивной игре защита важна.</li><li><strong>Стремитесь к балансу.</strong> Баланс между атакой и защитой — ключ к успеху.</li></ol><div class="example">Не пытайтесь внедрить всё сразу. Выберите один-два принципа и работайте над ними в течение недели.</div>` }
 ]},
-{ id: "lesson-07", title: "Рянмен — золотой стандарт", desc: "Самая сильная форма в игре", prereqs: ["lesson-06"], blocks: [
-  { type: "theory", title: "Что такое рянмен", html: `<p><strong>Рянмен</strong> — двустороннее ожидание. Форма из двух последовательных тайлов, принимающая тайл слева или справа.</p><div class="hand" data-hand="2m 3m"></div><p>23M принимает 1M или 4M.</p>` },
-  { type: "theory", title: "Почему это сильнейшая форма", html: `<ul><li>Принимает <strong>8 тайлов</strong>.</li><li>Легко превращается в последовательность.</li><li>Устойчива к сбросам.</li></ul>` },
-  { type: "theory", title: "Практический совет", html: `<div class="example">Всегда предпочитайте рянмен другим формам, если есть выбор.</div><div class="hand-caption">Оставляем рянмен 2-3M, сбрасываем 1M:</div><div class="hand" data-hand="1m 2m 3m 5s"></div>` }
-]},
-{ id: "lesson-08", title: "Канчан и пенчан", desc: "Слабые формы", prereqs: ["lesson-07"], blocks: [
-  { type: "theory", title: "Канчан", html: `<p><strong>Канчан</strong> — внутреннее ожидание.</p><div class="hand" data-hand="1m 3m"></div><p>Принимает только 4 тайла. Может быть «ловушкой», если 2M уже сброшен дважды.</p>` },
-  { type: "theory", title: "Пенчан", html: `<p><strong>Пенчан</strong> — краевое ожидание.</p><div class="hand" data-hand="1m 2m"></div><p>Принимает только 4 тайла. Не может быть улучшена до рянмена.</p>` },
-  { type: "theory", title: "Сравнение", html: `<div class="hand" data-hand="123m 456m 789p 12s 13p 5z"></div><p>У нас есть пенчан 12S и канчан 13P. Канчан 13P можно превратить в рянмен, пенчан 12S — нет. Поэтому сбрасываем 1S.</p>` }
-]},
-{ id: "lesson-09", title: "Рянкан — коварная ловушка", desc: "Форма, которая выглядит лучше, чем есть", prereqs: ["lesson-08"], blocks: [
-  { type: "theory", title: "Что такое рянкан", html: `<p><strong>Рянкан</strong> — форма 2-4-6 в одной масти. Формально ждёт 3M и 5M.</p><div class="hand" data-hand="2m 4m 6m"></div>` },
-  { type: "theory", title: "Почему это ловушка", html: `<ul><li>Занимает <strong>3 тайла в руке</strong>.</li><li>Выигрышный тайл один, не оба сразу.</li><li>Реальный уке-ире такой же, как у рянмена, но за 3 тайла.</li></ul>` },
-  { type: "theory", title: "Сравнение", html: `<div class="hand-caption">Рянкан 2-4-6M:</div><div class="hand" data-hand="2m 4m 6m"></div><div class="hand-caption">Рянмен 4-5M плюс одиночная 2M:</div><div class="hand" data-hand="4m 5m 2m"></div><p>Во втором случае одиночная 2M имеет собственные улучшения. Рянкан этого лишён.</p>` }
-]},
-{ id: "lesson-10", title: "Сянпон и сравнение форм", desc: "Все формы на одной странице", prereqs: ["lesson-09"], blocks: [
-  { type: "theory", title: "Сянпон", html: `<p><strong>Сянпон</strong> — ожидание на двух парах. Любая из пар завершит руку.</p><div class="hand" data-hand="123m 456m 55m 99p 234s"></div><p>Принимает 5M или 9P.</p>` },
-  { type: "theory", title: "Таблица сравнения форм", html: `<div class="example"><strong>Рянмен</strong> (23M) — 8 тайлов — ★★★★★<br><br><strong>Сянпон</strong> (55M + 99P) — 4 тайла — ★★★☆☆<br><br><strong>Канчан</strong> (13M) — 4 тайла — ★★☆☆☆<br><br><strong>Пенчан</strong> (12M) — 4 тайла — ★★☆☆☆<br><br><strong>Рянкан</strong> (2-4-6M) — 4 аута — ★☆☆☆☆</div>` }
-]},
-{ id: "lesson-11", title: "Простые ожидания", desc: "Все базовые типы", prereqs: ["lesson-10"], blocks: [
-  { type: "theory", title: "Пять базовых ожиданий", html: `<div class="example"><strong>Рянмен</strong> — 23M → 1M, 4M (8 тайлов).<br><br><strong>Канчан</strong> — 13M → 2M (4 тайла).<br><br><strong>Пенчан</strong> — 12M → 3M (4 тайла).<br><br><strong>Сянпон</strong> — 55M + 99P → 5M или 9P (4 тайла).<br><br><strong>Танки</strong> — одиночный 5M → второй 5M (3 тайла).</div>` },
-  { type: "theory", title: "Пример танки", html: `<div class="hand" data-hand="123m 456m 789m 22p 1s"></div><p>Темпай с ожиданием 1S (танки).</p>` },
-  { type: "theory", title: "Пример сянпона", html: `<div class="hand" data-hand="111m 234m 567m 99p 22s"></div><p>Ждём 9P или 2S.</p>` }
-]},
-{ id: "lesson-12", title: "Санмэнчан", desc: "Трёхстороннее ожидание", prereqs: ["lesson-11"], blocks: [
-  { type: "theory", title: "Что такое санмэнчан", html: `<p><strong>Санмэнчан</strong> — форма из 5 последовательных тайлов. Даёт до 12 аутов.</p><div class="hand" data-hand="2m 3m 4m 5m 6m"></div>` },
-  { type: "theory", title: "Как это разложить", html: `<ul><li>2-3 + 4-5-6 → 1M или 4M.</li><li>2-3-4 + 5-6 → 4M или 7M.</li><li>2-3-4-5 + 6 → 6M (танки).</li></ul><p><strong>Итого:</strong> 1M, 4M, 7M — до 12 тайлов.</p>` },
-  { type: "theory", title: "Практический пример", html: `<div class="hand" data-hand="23456m 234p 567p 88s"></div><p>23456M — санмэнчан, 234P и 567P — сеты, 88S — пара. Ожидание: 1M, 4M, 7M.</p>` }
-]},
-{ id: "lesson-13", title: "Нобэтан", desc: "Растянутое ожидание", prereqs: ["lesson-12"], blocks: [
-  { type: "theory", title: "Что такое нобэтан", html: `<p><strong>Нобэтан</strong> — форма из 4 последовательных тайлов. Принимает крайние.</p><div class="hand" data-hand="2p 3p 4p 5p"></div><p>Ожидание: 2P или 5P. 6 аутов.</p>` },
-  { type: "theory", title: "Как это работает", html: `<ul><li>Приходит 2P: 2345P → 234P + 5P.</li><li>Приходит 5P: 2345P → 234P + 55P (пара).</li></ul>` },
-  { type: "theory", title: "Полный пример", html: `<div class="hand" data-hand="123m 456m 789m 2345p 5z"></div><p>2345P — нобэтан, плюс одиночный 5Wh. Итого ожидание: 2P, 5P, 5Wh.</p>` }
-]},
-{ id: "lesson-14", title: "Сложные многогранные ожидания", desc: "Пинфу-санмэн, рянмэн-санмэн", prereqs: ["lesson-13"], blocks: [
-  { type: "theory", title: "Пинфу-санмэн", html: `<div class="hand" data-hand="123m 456m 789m 55p 67p 88s"></div><p>Ожидание: 5P, 8P или 8S. 10 тайлов.</p>` },
-  { type: "theory", title: "Рянмэн-санмэн", html: `<div class="hand" data-hand="123m 456m 789m 234p 567p"></div><p>Ожидание: 1P, 4P, 7P — 12 тайлов.</p>` },
-  { type: "theory", title: "Итоговая таблица", html: `<div class="example"><strong>Санмэнчан</strong> (23456M) — 1M, 4M, 7M — до 12 тайлов.<br><br><strong>Нобэтан</strong> (2345P) — 2P, 5P — 6 тайлов.<br><br><strong>Пинфу-санмэн</strong> — 5P, 8P, 8S — 10 тайлов.<br><br><strong>Рянмэн-санмэн</strong> — 1P, 4P, 7P — 12 тайлов.</div>` }
-]},
-{ id: "lesson-15", title: "Принципы защиты", desc: "Когда атака не работает", prereqs: ["lesson-14"], blocks: [
-  { type: "theory", title: "Четыре принципа защиты", html: `<ol><li>Следите за сбросами.</li><li>Не сбрасывайте опасные тайлы.</li><li>Используйте судзи.</li><li>Не бойтесь бэтаори.</li></ol>` },
-  { type: "theory", title: "Почему защита — не слабость", html: `<p>Три из четырёх раздач мы не выигрываем. Значит, главная задача большинства раздач — просто не набросить.</p><div class="example">Защита — не пассивность. Это активное решение, основанное на оценке ситуации.</div>` }
-]},
-{ id: "lesson-16", title: "Судзи — безопасные тайлы", desc: "Математически обоснованный способ", prereqs: ["lesson-15"], blocks: [
-  { type: "theory", title: "Что такое судзи", html: `<p><strong>Судзи</strong> — тайлы, безопасные для сброса после риичи противника.</p>` },
-  { type: "theory", title: "Правило судзи", html: `<ul><li>Сбросил 1M → безопасны 4M.</li><li>Сбросил 2M → безопасен 5M.</li><li>Сбросил 3M → безопасен 6M.</li><li>Сбросил 4M → безопасны 1M и 7M.</li><li>Сбросил 5M → безопасны 2M и 8M.</li><li>Сбросил 6M → безопасны 3M и 9M.</li><li>Сбросил 7M → безопасен 4M.</li><li>Сбросил 8M → безопасен 5M.</li><li>Сбросил 9M → безопасен 6M.</li></ul>` },
-  { type: "theory", title: "Пример", html: `<div class="hand-caption">Противник сбросил 4S:</div><div class="discard-row" data-discard="4s"></div><div class="hand-caption">Его кава:</div><div class="discard-row" data-discard="1p 9s 4z 2m 3z 4s 7p 8p"></div><p>Гэмбуцу: 2M, 4S, 7P, 8P. Судзи от 4S: 1S и 7S.</p>` }
-]},
-{ id: "lesson-17", title: "Кабэ — стены", desc: "Как использовать полностью видимые тайлы", prereqs: ["lesson-16"], blocks: [
-  { type: "theory", title: "Что такое кабэ", html: `<p><strong>Кабэ</strong> — ситуация, когда все четыре копии тайла видны. Это делает связанные ожидания маловероятными.</p>` },
-  { type: "theory", title: "Примеры", html: `<ul><li>Если все четыре 3M видны — ожидания на 1M, 2M, 4M, 5M менее вероятны.</li><li>Если все четыре 7P видны — ожидания на 5P, 6P, 8P, 9P менее вероятны.</li></ul><div class="hand-caption">Противник сбросил все четыре 2P:</div><div class="discard-row" data-discard="2p 2p 2p 2p"></div><p>Значит, у него не может быть 1-2-3P или 2-3-4P.</p>` },
-  { type: "theory", title: "Как использовать", html: `<p>Кабэ — сильный сигнал, потому что основан на <em>отсутствии возможности</em>.</p>` }
-]},
-{ id: "lesson-18", title: "Бэтаори — полная защита", desc: "Как отступить и не потерять очки", prereqs: ["lesson-17"], blocks: [
-  { type: "theory", title: "Что такое бэтаори", html: `<p><strong>Бэтаори</strong> — стратегия полной защиты. Вы полностью отказываетесь от руки.</p>` },
-  { type: "theory", title: "Когда использовать", html: `<ul><li>Рука слабая и не имеет шансов.</li><li>Противник объявил риичи, нет безопасных тайлов.</li><li>Вы в фуритене.</li><li>Поздняя стадия, вы на 1-м месте.</li></ul>` },
-  { type: "theory", title: "Как играть", html: `<ol><li>Сбрасывайте только безопасные тайлы.</li><li>Не объявляйте риичи, если рука слабая.</li><li>Не пытайтесь собрать руку через опасные тайлы.</li><li>Иногда сбрасывайте собственные формы ради безопасности.</li></ol>` }
-]},
-{ id: "lesson-19", title: "Саки-гири и разрушение пар", desc: "Две тактики упреждающей защиты", prereqs: ["lesson-18"], blocks: [
-  { type: "theory", title: "Саки-гири", html: `<p><strong>Саки-гири</strong> — упреждающий сброс опасного тайла до того, как противник объявит риичи.</p><div class="hand" data-hand="3m"></div><p>Сбросьте заранее — если позже 3M окажется опасным, у вас его уже не будет.</p>` },
-  { type: "theory", title: "Разрушение пар", html: `<p><strong>Разрушение пар</strong> — сброс одного тайла из пары для уменьшения урона.</p><div class="hand" data-hand="5m 5m"></div><p>Сбросьте один 5M — уменьшает вероятность рона.</p>` }
-]},
-{ id: "lesson-20", title: "Стратегии zeRo", desc: "Статистический подход", prereqs: ["lesson-19"], blocks: [
-  { type: "theory", title: "О zeRo", html: `<p><strong>zeRo</strong> — один из сильнейших игроков. Стратегии основаны на статистике и математике.</p>` },
-  { type: "theory", title: "Советы zeRo", html: `<div class="example"><strong>1.</strong> Сбрасывайте 1M и 9M в начале.<br><br><strong>2.</strong> Не объявляйте пон без яку.<br><br><strong>3.</strong> Стремитесь к пинфу.<br><br><strong>4.</strong> Используйте судзи для защиты.<br><br><strong>5.</strong> Не бойтесь бэтаори.</div>` },
-  { type: "theory", title: "Общий подход", html: `<p>zeRo делает ставку на <em>последовательность правильных решений</em>, а не на единичные крупные победы.</p>` }
-]},
-{ id: "lesson-21", title: "Стратегии ASAPIN", desc: "Агрессивная игра", prereqs: ["lesson-20"], blocks: [
-  { type: "theory", title: "Об ASAPIN", html: `<p><strong>ASAPIN</strong> — известный японский игрок, специализирующийся на агрессивной игре.</p>` },
-  { type: "theory", title: "Советы ASAPIN", html: `<div class="example"><strong>1.</strong> Атакуйте, если у вас преимущество.<br><br><strong>2.</strong> Не бойтесь риичи.<br><br><strong>3.</strong> Используйте кабэ для атаки.<br><br><strong>4.</strong> Следите за дорами.<br><br><strong>5.</strong> Не игнорируйте защиту.</div>` }
-]},
-{ id: "lesson-22", title: "Стратегии Кавамуры", desc: "Баланс и дисциплина", prereqs: ["lesson-21"], blocks: [
-  { type: "theory", title: "О Кавамуре", html: `<p><strong>Кавамура</strong> — известный японский игрок и автор книг по риичи-маджонгу.</p>` },
-  { type: "theory", title: "Советы Кавамуры", html: `<div class="example"><strong>1.</strong> Играйте по статистике.<br><br><strong>2.</strong> Не пытайтесь выиграть каждую руку.<br><br><strong>3.</strong> Используйте информацию из сбросов.<br><br><strong>4.</strong> Стремитесь к балансу.<br><br><strong>5.</strong> Учитесь на ошибках.</div>` }
-]},
-{ id: "lesson-23", title: "Общие советы продвинутым", desc: "Восемь принципов для роста", prereqs: ["lesson-22"], blocks: [
-  { type: "theory", title: "Восемь советов", html: `<ol><li>Изучайте статистику.</li><li>Следите за дорами.</li><li>Используйте судзи и кабэ.</li><li>Не бойтесь бэтаори.</li><li>Анализируйте свои игры.</li><li>Играйте против сильных игроков.</li><li>Не игнорируйте защиту.</li><li>Стремитесь к балансу.</li></ol>` },
-  { type: "theory", title: "Как применять", html: `<p>Не пытайтесь внедрить всё сразу. Выберите один-два принципа и работайте над ними.</p>` }
-]},
-{ id: "lesson-24", title: "Полезные ресурсы и заключение", desc: "Куда двигаться дальше", prereqs: ["lesson-23"], blocks: [
-  { type: "theory", title: "Онлайн-платформы", html: `<ul><li><strong>Tenhou</strong> (tenhou.net) — классическая японская платформа.</li><li><strong>Mahjong Soul</strong> (mahjongsoul.com) — популярная платформа с аниме-стилистикой.</li><li><strong>Ron2</strong> (ron2.jp) — хорошая графика.</li><li><strong>Sega MJ</strong> (sega-mj.com) — японская платформа.</li></ul>` },
-  { type: "theory", title: "Тренажёры", html: `<ul><li><strong>Chinitsu</strong> — отработка защиты и атаки.</li><li><strong>Mahjong Awaiting</strong> — отработка ожиданий.</li><li><strong>Machiate</strong> — ожидания.</li><li><strong>Mahjong 101</strong> — задачи для начинающих.</li></ul>` },
-  { type: "theory", title: "Правила и документация", html: `<ul><li><strong>EMA Rules</strong> (mahjong-europe.org).</li><li><strong>WRC Rules</strong> (worldriichi.org).</li><li><strong>Riichi Wiki</strong> (riichi.wiki).</li></ul>` },
-  { type: "theory", title: "Русскоязычные ресурсы", html: `<ul><li><strong>Тесудзи</strong> (tesuji-club.ru).</li><li><strong>Mahjong.ru</strong>.</li><li><strong>Riichi Mahjong Russia</strong> (vk.com/riichi).</li></ul>` },
-  { type: "theory", title: "Заключение", html: `<p>Это руководство охватывает все ключевые аспекты риичи-маджонга.</p><p><strong>Главные выводы:</strong></p><ol><li>Дайте руке собраться самой.</li><li>Стремитесь к рянмену.</li><li>Используйте судзи и кабэ для защиты.</li><li>Не бойтесь бэтаори.</li><li>Играйте по статистике.</li><li>Анализируйте свои игры.</li></ol><p>Удачи за столом!</p>` }
+{ id: "part-06", badge: "VI", title: "Часть 6. Полезные ресурсы", desc: "Куда двигаться дальше", prereqs: ["part-05"], blocks: [
+  { type: "theory", title: "6.1. Онлайн-платформы для игры", html: `<ul><li><strong>Tenhou</strong> (tenhou.net) — классическая японская платформа. Высокий уровень игроков.</li><li><strong>Mahjong Soul / Majsoul</strong> (mahjongsoul.com) — популярная платформа с аниме-стилистикой. Подходит для начинающих.</li><li><strong>Ron2</strong> (ron2.jp) — платформа с хорошей графикой и удобным интерфейсом.</li><li><strong>Sega MJ</strong> (sega-mj.com) — японская платформа с высоким уровнем игроков.</li></ul>` },
+  { type: "theory", title: "6.2. Тренажёры и задачи", html: `<ul><li><strong>清一色 (Chinitsu)</strong> — тренажёр для отработки защиты и атаки.</li><li><strong>Mahjong Awaiting</strong> — тренажёр для отработки ожиданий.</li><li><strong>まちあて (Machiate)</strong> — тренажёр ожиданий.</li><li><strong>Mahjong 101</strong> — интерактивные задачи для начинающих.</li></ul>` },
+  { type: "theory", title: "6.3. Правила и документация", html: `<ul><li><strong>EMA Rules</strong> (mahjong-europe.org) — официальные правила Европейской ассоциации маджонга.</li><li><strong>WRC Rules</strong> (worldriichi.org) — правила World Riichi Championship.</li><li><strong>Riichi Wiki</strong> (riichi.wiki) — википедия по риичи-маджонгу.</li></ul>` },
+  { type: "theory", title: "6.4. Русскоязычные ресурсы", html: `<ul><li><strong>Тесудзи</strong> (tesuji-club.ru) — русскоязычный сайт по риичи-маджонгу. Статьи, переводы, задачи.</li><li><strong>Mahjong.ru</strong> — русскоязычный форум и ресурсы по маджонгу.</li><li><strong>Riichi Mahjong Russia</strong> (vk.com/riichi) — группа ВКонтакте для русскоязычных игроков.</li></ul>` },
+  { type: "theory", title: "6.5. Книги и статьи", html: `<ul><li><strong>Riichi Mahjong: The Ultimate Guide</strong> — комплексное руководство по риичи-маджонгу.</li><li><strong>Mahjong Tactics</strong> — тактики и стратегии для продвинутых игроков.</li><li><strong>Riichi Book 1</strong> — введение в риичи-маджонг.</li><li><strong>Statistical Mahjong</strong> — статистический подход к игре.</li></ul>` },
+  { type: "theory", title: "6.6. Видеоуроки", html: `<ul><li><strong>YouTube: Riichi Mahjong Tutorials</strong> — видеоуроки для начинающих.</li><li><strong>Twitch: Riichi Mahjong Streams</strong> — стримы профессиональных игроков.</li><li><strong>Bilibili: Mahjong Videos</strong> — видео по маджонгу.</li></ul>` },
+  { type: "theory", title: "Заключение", html: `<p>Это руководство охватывает все ключевые аспекты риичи-маджонга: от базовых принципов до продвинутых стратегий. Оно основано на материалах сайта «Тесудзи» и других авторитетных источников.</p><p><strong>Главные выводы:</strong></p><ol><li>Дайте руке собраться самой. Не пытайтесь силой собрать руку.</li><li>Стремитесь к рянмену — это самая сильная форма.</li><li>Используйте судзи и кабэ для защиты.</li><li>Не бойтесь бэтаори.</li><li>Играйте по статистике.</li><li>Анализируйте свои игры.</li></ol><p>Удачи за столом!</p>` }
 ]}
 ]};
 
 /* ============ STATE ============ */
-const STORAGE_KEY = 'riichi_guide_v3';
+const STORAGE_KEY = 'riichi_guide_v4';
 function loadState() {
   try { const s = localStorage.getItem(STORAGE_KEY); if (s) return JSON.parse(s); } catch (e) {}
   return { completed: {}, stats: { correct: 0, total: 0 } };
@@ -954,7 +890,7 @@ document.getElementById('btn-settings-back').addEventListener('click', () => sho
 document.getElementById('btn-lesson-back').addEventListener('click', () => { renderCourses(); showScreen('screen-courses'); });
 document.getElementById('btn-back').addEventListener('click', () => showScreen('screen-home'));
 
-/* ============ COURSE ============ */
+/* ============ COURSE RENDERING ============ */
 function renderCourses() {
   const list = document.getElementById('courses-list');
   const summary = document.getElementById('courses-summary');
@@ -966,7 +902,7 @@ function renderCourses() {
   COURSE.lessons.forEach((lesson, idx) => {
     const card = document.createElement('div');
     card.className = 'lesson-card' + (STATE.completed[lesson.id] ? ' completed' : '');
-    const num = document.createElement('div'); num.className = 'lesson-num'; num.textContent = idx + 1;
+    const num = document.createElement('div'); num.className = 'lesson-num'; num.textContent = lesson.badge || (idx + 1);
     const info = document.createElement('div'); info.className = 'lesson-info';
     const title = document.createElement('div'); title.className = 'lesson-title'; title.textContent = lesson.title;
     const desc = document.createElement('div'); desc.className = 'lesson-desc'; desc.textContent = lesson.desc;
@@ -994,7 +930,7 @@ function renderLessonBlock() {
   const container = document.getElementById('lesson-content');
   container.innerHTML = '';
   const header = document.createElement('div'); header.className = 'lesson-header';
-  header.innerHTML = `<div class="l-title">Урок ${currentLessonIndex+1}: ${escapeHtml(lesson.title)}</div><div class="l-desc">${escapeHtml(lesson.desc)}</div>`;
+  header.innerHTML = `<div class="l-title">${escapeHtml(lesson.title)}</div><div class="l-desc">${escapeHtml(lesson.desc)}</div>`;
   container.appendChild(header);
   const dots = document.createElement('div'); dots.className = 'lesson-progress-dots';
   lesson.blocks.forEach((_, i) => {
@@ -1026,7 +962,7 @@ function renderLessonBlock() {
   back.addEventListener('click', () => { if (currentBlockIndex > 0) { currentBlockIndex--; renderLessonBlock(); } });
   const right = document.createElement('div'); right.className = 'nav-right';
   const next = document.createElement('button'); next.className = 'primary';
-  next.textContent = currentBlockIndex === lesson.blocks.length - 1 ? 'Завершить урок' : 'Далее →';
+  next.textContent = currentBlockIndex === lesson.blocks.length - 1 ? 'Завершить раздел' : 'Далее →';
   next.addEventListener('click', () => {
     if (currentBlockIndex < lesson.blocks.length - 1) { currentBlockIndex++; renderLessonBlock(); }
     else { completeLesson(); }
@@ -1043,14 +979,14 @@ function completeLesson() {
   const container = document.getElementById('lesson-content');
   container.innerHTML = '';
   const banner = document.createElement('div'); banner.className = 'lesson-complete-banner';
-  banner.innerHTML = `<div class="icon">🎉</div><h3>Урок пройден!</h3><p>Отличная работа. Продолжайте к следующему уроку.</p>`;
+  banner.innerHTML = `<div class="icon">🎉</div><h3>Раздел пройден!</h3><p>Отличная работа. Продолжайте к следующему разделу.</p>`;
   container.appendChild(banner);
   const nav = document.createElement('div'); nav.className = 'lesson-nav';
-  const back = document.createElement('button'); back.className = 'secondary'; back.textContent = '← К урокам';
+  const back = document.createElement('button'); back.className = 'secondary'; back.textContent = '← К разделам';
   back.addEventListener('click', () => { renderCourses(); showScreen('screen-courses'); });
   const right = document.createElement('div'); right.className = 'nav-right';
   const next = document.createElement('button'); next.className = 'primary';
-  next.textContent = currentLessonIndex < COURSE.lessons.length - 1 ? 'Следующий урок →' : 'В меню';
+  next.textContent = currentLessonIndex < COURSE.lessons.length - 1 ? 'Следующий раздел →' : 'В меню';
   next.addEventListener('click', () => {
     if (currentLessonIndex < COURSE.lessons.length - 1) openLesson(currentLessonIndex + 1);
     else { renderCourses(); showScreen('screen-home'); }
@@ -1232,13 +1168,13 @@ function renderSettings() {
   const total = COURSE.lessons.length;
   let completed = 0;
   COURSE.lessons.forEach(l => { if (STATE.completed[l.id]) completed++; });
-  document.getElementById('course-progress-desc').textContent = `Пройдено: ${completed} из ${total}`;
+  document.getElementById('course-progress-desc').textContent = `Пройдено разделов: ${completed} из ${total}`;
   const s = STATE.stats || { correct: 0, total: 0 };
   const acc = s.total > 0 ? Math.round(s.correct / s.total * 100) : 0;
   document.getElementById('settings-stats-desc').textContent = `Правильно: ${s.correct} из ${s.total} (${acc}%)`;
 }
 document.getElementById('btn-reset-course').addEventListener('click', () => {
-  if (!confirm('Сбросить прогресс курса?')) return;
+  if (!confirm('Сбросить прогресс руководства?')) return;
   STATE.completed = {}; saveState(STATE); renderSettings(); renderCourses();
 });
 document.getElementById('btn-reset-stats').addEventListener('click', () => {
@@ -1252,7 +1188,7 @@ function renderHomeStats() {
   let completed = 0;
   COURSE.lessons.forEach(l => { if (STATE.completed[l.id]) completed++; });
   document.getElementById('stats-mini').innerHTML = `
-    <span>Уроков: <strong>${completed}/${COURSE.lessons.length}</strong></span>
+    <span>Разделов: <strong>${completed}/${COURSE.lessons.length}</strong></span>
     <span>Задач: <strong>${s.total}</strong></span>
     <span>Точность: <strong>${acc}%</strong></span>
   `;
