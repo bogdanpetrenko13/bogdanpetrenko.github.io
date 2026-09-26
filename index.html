@@ -488,6 +488,7 @@ const GLOSSARY = [
   { term: 'Орасу', ja: 'オーラス', cat: 'general', def: 'Последняя раздача ханчана.' },
   { term: 'Рэнчан', ja: '連荘', cat: 'general', def: 'Продолжение игры дилером.' },
   { term: 'Тонпу', ja: '東風', cat: 'general', def: 'Только восточный раунд.' },
+  { term: 'Номи', ja: 'のみ', cat: 'general', def: 'Рука ровно с одним яку (обычно дешёвым). «Пинфу номи» — 1 хан, только пинфу. Не путать с даматэн: у номи яку есть, просто одно.' },
   { term: 'Шунц', ja: '順子', cat: 'basic', def: 'Последовательность из трёх тайлов одной масти.' },
   { term: 'Коцу', ja: '刻子', cat: 'basic', def: 'Тройка одинаковых тайлов.' },
   { term: 'Пара', ja: '対子', cat: 'basic', def: 'Два одинаковых тайла.' },
@@ -585,6 +586,7 @@ const GLOSSARY = [
   { term: 'Перестроение', ja: '', cat: 'strategy', def: 'Изменение структуры руки в процессе раздачи.' },
   { term: 'Открытие', ja: '鳴き', cat: 'strategy', def: 'Взятие тайла из сброса: чи, пон, кан.' },
   { term: 'Разбор', ja: '', cat: 'strategy', def: 'Анализ прошедших партий для улучшения.' },
+  { term: 'Догоняющее риичи', ja: '', cat: 'strategy', def: 'Риичи, когда вы отстаёте по очкам и нужна крупная победа, чтобы изменить расстановку в ханчане.' },
   { term: 'Дабури', ja: 'ダブリー', cat: 'advanced', def: 'Двойное риичи.' },
   { term: 'Дабутон', ja: 'ダブ東', cat: 'advanced', def: 'Двойной Восток.' },
   { term: 'Сокури', ja: '即リー', cat: 'advanced', def: 'Мгновенное риичи.' },
@@ -603,13 +605,25 @@ for (const g of GLOSSARY) { if (!TERMS[g.term.toLowerCase()]) TERMS[g.term.toLow
 function renderGlossary(container, text) {
   const lower = text.toLowerCase(); const found = [];
   for (const [key, val] of Object.entries(TERMS)) {
-    try { const re = new RegExp('(?<![а-яё])' + escapeRegex(key) + '(?![а-яё])', 'i'); if (re.test(lower)) found.push([key, val]); }
-    catch (e) { const idx = lower.indexOf(key); if (idx !== -1) { const b = idx === 0 ? ' ' : lower[idx-1]; const a = idx+key.length >= lower.length ? ' ' : lower[idx+key.length]; if (!/[а-яё]/.test(b) && !/[а-яё]/.test(a)) found.push([key, val]); } }
+    try {
+      const re = new RegExp('(?<![а-яё])' + escapeRegex(key) + '[а-яё]{0,3}(?![а-яё])', 'i');
+      if (re.test(lower)) found.push([key, val]);
+    } catch (e) {
+      const idx = lower.indexOf(key);
+      if (idx !== -1) {
+        const b = idx === 0 ? ' ' : lower[idx-1];
+        const a = idx + key.length >= lower.length ? ' ' : lower[idx+key.length];
+        if (!/[а-яё]/.test(b) && !/[а-яё]/.test(a)) found.push([key, val]);
+      }
+    }
   }
-  if (found.length === 0) return;
-  found.sort((a, b) => b[0].length - a[0].length);
+  const seen = new Set(found.map(f => f[0]));
+  const filtered = found.filter(([k]) => ![...seen].some(other => other !== k && other.startsWith(k)));
+  if (filtered.length === 0) return;
+  filtered.sort((a, b) => b[0].length - a[0].length);
   const div = document.createElement('div'); div.className = 'term-glossary';
-  div.innerHTML = '<h4>📖 Термины в этом уроке</h4>' + found.map(([k,v]) => `<div class="glossary-item-inline"><strong>${escapeHtml(k)}</strong> — ${escapeHtml(v)}</div>`).join('');
+  div.innerHTML = '<h4>📖 Термины в этом уроке</h4>' +
+    filtered.map(([k,v]) => `<div class="glossary-item-inline"><strong>${escapeHtml(k)}</strong> — ${escapeHtml(v)}</div>`).join('');
   container.appendChild(div);
 }
 
@@ -654,7 +668,7 @@ const COURSE = { lessons: [
     { type: "theory", title: "Судзи", html: `<p>Если противник сбросил X, то X−3 и X+3 менее опасны.</p><ul><li>4 → 1 и 7.</li><li>5 → 2 и 8.</li><li>6 → 3 и 9.</li></ul>` },
     { type: "practice", mode: "defense", tasks: [
       { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["1p","9s","4z","2m","3z","1s","7p","8p"], riichiTile: "8p", safeDiscards: [], explain: "<strong>2M, 7P, 8P</strong> — гэмбуцу: противник сам сбрасывал эти тайлы. 100% безопасны." },
-      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "<strong>1M, 2P</strong> — гэмбуцу. Дополнительно: <strong>6M</strong> — судзи от сброшенной 3M. (3M не в вашей руке, поэтому сбросить его нельзя.)" },
+      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "<strong>1M, 2P</strong> — гэмбуцу. Дополнительно: <strong>6M</strong> — судзи от сброшенной 3M." },
       { hand: "1m 2m 3m 4m 5m 6m 7p 8p 9p 2z 2z 5z 5z", opponentDiscard: ["1s","3z","7z","5m"], riichiTile: "5m", safeDiscards: [], explain: "<strong>5M</strong> — гэмбуцу. <strong>2M</strong> — судзи от сброшенной 5M." },
       { hand: "1s 7s 2m 5m 8m 3p 6p 9p 5z 5z 1z 2z 3z", opponentDiscard: ["4s","9m","2p","6z"], riichiTile: "4s", safeDiscards: [], explain: "<strong>1S, 7S</strong> — судзи от сброшенной 4S. <strong>9M, G</strong> — гэмбуцу." },
       { hand: "2p 8p 3p 7p 4s 7s 1s 2z 2z 5z 5z 6z 9m", opponentDiscard: ["5p","1z","9s"], riichiTile: "5p", safeDiscards: [], explain: "<strong>2P, 8P</strong> — судзи от сброшенной 5P. <strong>E, 9S</strong> — гэмбуцу." },
@@ -708,7 +722,7 @@ const COURSE = { lessons: [
   blocks: [
     { type: "theory", title: "Четыре базовых", html: `<ul><li><strong>Танки</strong> — 3 тайла.</li><li><strong>Канчан</strong> — 4 тайла.</li><li><strong>Пенчан</strong> — 4 тайла.</li><li><strong>Рянмен</strong> — 8 тайлов.</li></ul>` },
     { type: "practice", mode: "waits", tasks: [
-      { hand: "123m 456m 789m 22p 1s", waits: ["1s"], explain: "Три сета, пара 22P. <strong>Танки</strong> на 1S. 3 тайла. Ожидание в пару." },
+      { hand: "123m 456m 789m 222p 1s", waits: ["1s"], explain: "Четыре сета (123M, 456M, 789M, 222P) и одиночная 1S. <strong>Танки</strong> на 1S. 3 тайла. Ожидание в пару." },
       { hand: "123m 456m 789m 13p 55s", waits: ["2p"], explain: "Три сета, пара 55S. <strong>Канчан</strong> 1-3P ждёт 2P. 4 тайла. Внутреннее ожидание." },
       { hand: "123m 456m 789m 12p 55s", waits: ["3p"], explain: "Три сета, пара 55S. <strong>Пенчан</strong> 1-2P ждёт 3P. 4 тайла. Краевое ожидание." }
     ], intro: "Определите тип ожидания: танки, канчан или пенчан." }
@@ -745,12 +759,13 @@ const COURSE = { lessons: [
 { id: "lesson-13", title: "Отступить или надавить", desc: "4 параметра (Фукути)", prereqs: ["lesson-12"],
   blocks: [
     { type: "theory", title: "4 параметра", html: `<ol><li><strong>Стоимость руки.</strong></li><li><strong>Качество ожидания.</strong> Рянмен и лучше — атакуем.</li><li><strong>Близость к темпаю.</strong> Темпай — атакуем.</li><li><strong>Место в ханчане.</strong> 1-е — осторожнее; 4-е — агрессивнее.</li></ol>` },
+    { type: "theory", title: "Термины: номи и догоняющее", html: `<p><strong>Номи</strong> (яп. 「のみ」, «только») — рука ровно с одним яку, обычно дешёвым. Примеры:</p><ul><li><em>Пинфу номи</em> — 1 хан, только пинфу.</li><li><em>Таняо номи</em> — 1 хан, только таняо.</li><li><em>Риичи номи</em> — 1 хан, только риичи.</li></ul><p><strong>Быстрая номи</strong> — рука в темпае к 6–8 ходу, часто с открытыми сетами.</p><p><strong>Медленная номи</strong> — та же дешёвая рука, но собранная поздно (10+ ход).</p><div class="example"><strong>Догоняющее риичи</strong> — риичи, когда вы отстаёте по очкам и вам нужна крупная победа, чтобы переломить раздачу. Такое риичи рискованнее обычного: ошибка стоит дороже.</div>` },
     { type: "theory", title: "Правила 1-4", html: `<ol><li>Пинфу номи — даматэн — пережиток.</li><li>Догоняющее с пинфу — только до 9-го хода.</li><li>Не кидаем риичи пинфу против дилерского риичи.</li><li>Пинфу дора — всегда риичи.</li></ol>` },
     { type: "theory", title: "Правила 5-11", html: `<ol start="5"><li>Быстрая номи с рянменом — железное риичи.</li><li>Медленная номи с рянменом — риичи.</li><li>Догоняющее риичи в рянмен — сложно.</li><li>Номи с канчаном — риичи нельзя.</li><li>Дилерское риичи с канчаном — как нравится.</li><li>Риичи с перспективным канчаном — как нравится.</li><li>Дилерское риичи с перспективным канчаном — риичи.</li></ol>` },
     { type: "practice", mode: "efficiency", tasks: [
       { hand: "123m 456m 789m 11p 34s 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: рука дешёвая (нет дор, только базовые яку). <strong>Параметр «близость к темпаю»</strong>: 1-шантэн. Сбрасываем одиночный G — он не участвует в структуре (4 сета + пара уже почти готовы)." },
       { hand: "234m 567m 567p 34s 88s 2z", best: ["2z"], explain: "<strong>Параметр «качество ожидания»</strong>: рянмен 3-4S ждёт 2S или 5S (8 тайлов) — сильное. Пять блоков уже есть. S (Южный) — чужой ветер, сброс." },
-      { hand: "234m 567m 567p 234s 5z 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: 4 сета + 2 одиночных. Нужна пара. Wh может дать якухай при поне. G — просто изолированный. Сброс G." }
+      { hand: "234m 567m 567p 234s 5z 3z", best: ["3z"], explain: "<strong>Параметр «стоимость руки»</strong>: 4 сета + 2 одиночных. Нужна пара. <strong>Wh (белый дракон)</strong> при поне даёт якухай (+1 хан). <strong>W (Западный ветер)</strong> — просто изолированный: якухай даёт только ветер раунда или ваш личный, а Запад сейчас ни то, ни другое. Сброс W." }
     ], intro: "Каждая задача иллюстрирует один из 4 параметров Фукути." }
   ] },
 { id: "lesson-14", title: "Риичи: когда кидать", desc: "Даматэн и правила", prereqs: ["lesson-13"],
@@ -888,7 +903,6 @@ function validateCourse() {
           errors.push(`${lesson.id}: неверная длина руки (${hand.length}): ${t.hand}`);
           continue;
         }
-        // Заполняем ответ ТОЛЬКО если автор его не указал.
         if (mode === 'waits') {
           if (!Array.isArray(t.waits) || t.waits.length === 0) {
             if (hand.length === 13) {
@@ -1102,6 +1116,35 @@ function startPracticeBlock(block) {
     const mode = block.mode || 'waits';
     let selected = new Set();
     let answered = false;
+
+    function setupPalette() {
+      paletteArea.innerHTML = '';
+      if (mode !== 'waits') return;
+      const label = document.createElement('div');
+      label.className = 'palette-label';
+      label.textContent = 'Выберите тайлы, которые завершают руку:';
+      paletteArea.appendChild(label);
+      const pal = document.createElement('div'); pal.className = 'palette';
+      for (const suit of ['m','p','s','z']) {
+        const grp = document.createElement('div'); grp.className = 'suit-group';
+        const maxN = suit === 'z' ? 7 : 9;
+        for (let n = 1; n <= maxN; n++) {
+          const code = n + suit;
+          const el = makeTile(code, { small: true, clickable: !answered, selected: selected.has(code) });
+          el.addEventListener('click', () => {
+            if (answered) return;
+            if (selected.has(code)) selected.delete(code); else selected.add(code);
+            checkBtn.disabled = selected.size === 0;
+            clearBtn.style.display = selected.size > 0 ? '' : 'none';
+            refresh(); setupPalette();
+          });
+          grp.appendChild(el);
+        }
+        pal.appendChild(grp);
+      }
+      paletteArea.appendChild(pal);
+    }
+
     function refresh() {
       if (mode === 'efficiency' && parseHand(task.hand).length === 14) {
         const sorted = sortHand(parseHand(task.hand));
@@ -1120,8 +1163,8 @@ function startPracticeBlock(block) {
         handDiv.appendChild(drawnEl);
       } else {
         renderHand(handDiv, parseHand(task.hand), {
-          clickable: !answered,
-          selected,
+          clickable: !answered && mode !== 'waits',
+          selected: mode === 'waits' ? new Set() : selected,
           onClick: (t) => {
             if (answered) return;
             if (mode === 'efficiency' || mode === 'reading') { selected.clear(); selected.add(t); }
@@ -1133,7 +1176,7 @@ function startPracticeBlock(block) {
         });
       }
     }
-    clearBtn.addEventListener('click', () => { selected.clear(); checkBtn.disabled = true; clearBtn.style.display = 'none'; refresh(); });
+    clearBtn.addEventListener('click', () => { selected.clear(); checkBtn.disabled = true; clearBtn.style.display = 'none'; refresh(); setupPalette(); });
     checkBtn.addEventListener('click', () => {
       if (answered) return;
       answered = true;
@@ -1171,6 +1214,7 @@ function startPracticeBlock(block) {
       nextBtn.addEventListener('click', renderTask, { once: true });
     });
     refresh();
+    setupPalette();
   }
   renderTask();
 }
