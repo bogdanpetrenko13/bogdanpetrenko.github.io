@@ -80,11 +80,10 @@ h1 { font-size: 1.6rem; font-weight: 700; color: #f5e6c8; text-align: center; ma
 .lesson-complete-banner p { color: #b8d8b8; font-size: 0.9rem; line-height: 1.5; }
 .hand { display: flex; flex-wrap: wrap; gap: 4px; margin: 0.8rem 0; padding: 1rem 0.6rem; background: #16211b; border-radius: 12px; min-height: 70px; align-items: center; justify-content: center; }
 .tile { width: 40px; height: 54px; background: linear-gradient(170deg, #fdfdfa 0%, #e8e4d8 100%); border-radius: 5px; border: 1px solid #b8b0a0; box-shadow: 0 2px 0 #a89e8a, 0 3px 5px rgba(0,0,0,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; cursor: pointer; transition: all 0.12s; user-select: none; flex-shrink: 0; }
-@media (min-width: 720px) { .tile { width: 46px; height: 62px; } .tile .num { font-size: 1.35rem; } .tile .honor { font-size: 1.3rem; } .tile .honor.honor-wide { font-size: 1rem; } }
+@media (min-width: 720px) { .tile { width: 46px; height: 62px; } .tile .num { font-size: 1.35rem; } .tile .honor { font-size: 1.55rem; } }
 .tile .num { font-size: 1.2rem; line-height: 1; }
 .tile .suit { font-size: 0.6rem; line-height: 1; margin-top: 2px; opacity: 0.9; font-weight: 700; letter-spacing: 0.02em; }
-.tile .honor { font-size: 1.1rem; line-height: 1; font-weight: 700; }
-.tile .honor.honor-wide { font-size: 0.85rem; letter-spacing: -0.02em; }
+.tile .honor { font-size: 1.35rem; line-height: 1; font-weight: 700; font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', 'Noto Sans CJK JP', 'Source Han Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
 .tile.m .num, .tile.m .suit { color: #b83a3a; }
 .tile.p .num, .tile.p .suit { color: #2a6f8f; }
 .tile.s .num, .tile.s .suit { color: #2b7a2b; }
@@ -99,8 +98,7 @@ h1 { font-size: 1.6rem; font-weight: 700; color: #f5e6c8; text-align: center; ma
 .tile.disabled { cursor: default; opacity: 0.9; }
 .tile.small { width: 30px; height: 40px; }
 .tile.small .num { font-size: 0.9rem; }
-.tile.small .honor { font-size: 0.9rem; }
-.tile.small .honor.honor-wide { font-size: 0.7rem; }
+.tile.small .honor { font-size: 1rem; }
 .tile.small .suit { font-size: 0.5rem; margin-top: 0; }
 .tile.drawn { box-shadow: 0 0 0 3px #8ec9e8, 0 3px 0 #a89e8a, 0 4px 10px rgba(142, 201, 232, 0.4); }
 .question { font-size: 0.98rem; line-height: 1.55; color: #e8e8e8; margin-bottom: 1rem; }
@@ -226,7 +224,7 @@ mark { background: rgba(212, 163, 115, 0.35); color: #f5e6c8; padding: 0.05rem 0
 <script>
 /* ============ TILE UTILS ============ */
 const HONOR_CHAR = {1:'E', 2:'S', 3:'W', 4:'N', 5:'Wh', 6:'G', 7:'R'};
-const HONOR_DISPLAY = {1:'E', 2:'S', 3:'W', 4:'N', 5:'Wh', 6:'G', 7:'R'};
+const HONOR_DISPLAY = {1:'東', 2:'南', 3:'西', 4:'北', 5:'白', 6:'發', 7:'中'};
 const SUIT_CHAR = {m:'M', p:'P', s:'S'};
 const TILE_RE = /^[1-9][mpsz]$/;
 function isValidTile(t) { return typeof t === 'string' && TILE_RE.test(t); }
@@ -250,9 +248,7 @@ function makeTile(code, opts) {
   if (s === 'z') {
     const h = document.createElement('div');
     h.className = 'honor';
-    const txt = HONOR_DISPLAY[n] || '?';
-    if (txt.length > 1) h.classList.add('honor-wide');
-    h.textContent = txt;
+    h.textContent = HONOR_DISPLAY[n] || '?';
     el.appendChild(h);
   } else {
     const num = document.createElement('div'); num.className = 'num'; num.textContent = n;
@@ -636,9 +632,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Классический порядок", html: `<ol><li>Чужие ветра.</li><li>Ветер раунда (если не ваш и не пара).</li><li>Одиночные краевые 1 и 9.</li><li>Одиночные 2 и 8.</li></ol><div class="example">Это эвристика, а не абсолют.</div>` },
     { type: "theory", title: "Опорные тайлы", html: `<p>Центральные тайлы (3–7) образуют <strong>рянмены</strong>. Одиночная 5P — опорный тайл с 4 соседями. Одиночная 1M — изолированный краевой.</p><div class="example">9M почти всегда хуже 5P.</div>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 12s 1z 9m 5z", best: ["1z"], explain: "<strong>1E (Восточный)</strong> — чужой ветер. По классическому порядку сноса чужие ветра уходят первыми. <strong>9M</strong> — терминал, но он может стать частью 789M. <strong>5Wh</strong> — дракон, ценен для якухая. Сброс 1E." },
-      { hand: "123m 456m 234p 567p 2z 1m 9s", best: ["2z"], explain: "<strong>2S (Южный)</strong> — чужой ветер. <strong>1M</strong> и <strong>9S</strong> — терминалы, но у 1M есть потенциал с 2M-3M. Чужой ветер не даёт ничего. Сброс 2S." },
-      { hand: "234m 567m 22p 88p 34s 6z 9m", best: ["9m"], explain: "<strong>9M</strong> — изолированный терминал. <strong>6G (Зелёный дракон)</strong> — ценен: пара или пон дадут якухай. По порядку сноса терминал уходит раньше дракона. Сброс 9M." }
+      { hand: "234m 567m 78p 12s 1z 9m 5z", best: ["1z"], explain: "<strong>E (Восточный)</strong> — чужой ветер. По классическому порядку сноса чужие ветра уходят первыми. <strong>9M</strong> — терминал, но он может стать частью 789M. <strong>Wh</strong> — дракон, ценен для якухая. Сброс E." },
+      { hand: "123m 456m 234p 567p 2z 1m", best: ["2z"], explain: "<strong>S (Южный)</strong> — чужой ветер. <strong>1M</strong> — терминал, но у него есть потенциал с 2M-3M. Чужой ветер не даёт ничего. Сброс S." },
+      { hand: "234m 567m 22p 88p 34s 6z 9m", best: ["9m"], explain: "<strong>9M</strong> — изолированный терминал. <strong>G (Зелёный дракон)</strong> — ценен: пара или пон дадут якухай. По порядку сноса терминал уходит раньше дракона. Сброс 9M." }
     ], intro: "Выберите сброс, следуя классическому порядку: чужие ветра → одиночные 1/9 → одиночные 2/8." }
   ] },
 { id: "lesson-03", title: "Уке vs хэнка", desc: "Ключевое различие", prereqs: ["lesson-02"],
@@ -646,9 +642,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Что такое уке и хэнка", html: `<ul><li><strong>Уке</strong> — уменьшает шантэн. <em>Приближает к победе</em>.</li><li><strong>Хэнка</strong> — не уменьшает шантэн, но улучшает форму.</li></ul><div class="example"><strong>Уке:</strong> 1-2-3M + 4-5P, приходит 6P → готовый сет 4-5-6P. Шантэн уменьшился.</div><div class="example"><strong>Хэнка:</strong> 1-2-3M + 3-5P, приходит 6P → сет не завершён (нужен 4P), но можно собирать как 3-4-5-6 (два рянмена).</div>` },
     { type: "theory", title: "5 основ сбора (Nemata)", html: `<ol><li>Уке приоритетнее хэнка.</li><li>Уке приоритетнее защиты.</li><li>Самое важное уке — уке вблизи победы.</li><li>Уке, увеличивающее стоимость, приоритетнее уке, увеличивающего ауты.</li><li>Ожидание лучше рянмена и стоимость выше мангана не стоят потерь в скорости.</li></ol>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "<strong>1E</strong> — одиночный ветер без пары. Это чистый <em>хэнка</em>: он не уменьшает шантэн. <strong>5M</strong> — центральный опорный тайл: к нему подойдут 3M, 4M, 6M, 7M. Любой из них даст <em>уке</em> через рянмен. 1E никогда не даст уке. Сброс 1E." },
-      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Пять блоков уже есть. <strong>3W (Западный)</strong> и <strong>5Wh (Белый дракон)</strong> — оба одиночные, оба <em>хэнка</em>. Но качество разное: пон 3W не даёт яку, а пон 5Wh даёт +1 хан <em>якухая</em>. Выбираем слабейший хэнка. Сброс 3W." },
-      { hand: "234m 567m 78p 24s 88s 5z 3z", best: ["3z"], explain: "<strong>24S</strong> — канчан, даёт <em>уке</em> на 3S. <strong>3W</strong> и <strong>5Wh</strong> — лишние одиночные (<em>хэнка</em>). Сравниваем качество: 3W (ветер без пары) слабее 5Wh (дракон, пон даёт якухай). Сброс 3W." }
+      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "<strong>E</strong> — одиночный ветер без пары. Это чистый <em>хэнка</em>: он не уменьшает шантэн. <strong>5M</strong> — центральный опорный тайл: к нему подойдут 3M, 4M, 6M, 7M. Любой из них даст <em>уке</em> через рянмен. E никогда не даст уке. Сброс E." },
+      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Пять блоков уже есть. <strong>W (Западный)</strong> и <strong>Wh (Белый дракон)</strong> — оба одиночные, оба <em>хэнка</em>. Но качество разное: пон W не даёт яку, а пон Wh даёт +1 хан <em>якухая</em>. Выбираем слабейший хэнка. Сброс W." },
+      { hand: "234m 567m 78p 24s 88s 5z 3z", best: ["3z"], explain: "<strong>24S</strong> — канчан, даёт <em>уке</em> на 3S. <strong>W</strong> и <strong>Wh</strong> — лишние одиночные (<em>хэнка</em>). Сравниваем качество: W (ветер без пары) слабее Wh (дракон, пон даёт якухай). Сброс W." }
     ], intro: "В каждом объяснении явно указано, какой тайл — уке, а какой — хэнка." }
   ] },
 { id: "lesson-04", title: "Введение в защиту", desc: "Гэмбуцу и судзи", prereqs: ["lesson-03"],
@@ -658,11 +654,11 @@ const COURSE = { lessons: [
     { type: "theory", title: "Судзи", html: `<p>Если противник сбросил X, то X−3 и X+3 менее опасны.</p><ul><li>4 → 1 и 7.</li><li>5 → 2 и 8.</li><li>6 → 3 и 9.</li></ul>` },
     { type: "practice", mode: "defense", tasks: [
       { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["1p","9s","4z","2m","3z","1s","7p","8p"], riichiTile: "8p", safeDiscards: [], explain: "<strong>2M, 7P, 8P</strong> — гэмбуцу: противник сам сбрасывал эти тайлы. 100% безопасны." },
-      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "<strong>1M, 2P, 3M</strong> — гэмбуцу. Дополнительно: <strong>6M</strong> — судзи от сброшенной 3M." },
+      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "<strong>1M, 2P</strong> — гэмбуцу. Дополнительно: <strong>6M</strong> — судзи от сброшенной 3M. (3M не в вашей руке, поэтому сбросить его нельзя.)" },
       { hand: "1m 2m 3m 4m 5m 6m 7p 8p 9p 2z 2z 5z 5z", opponentDiscard: ["1s","3z","7z","5m"], riichiTile: "5m", safeDiscards: [], explain: "<strong>5M</strong> — гэмбуцу. <strong>2M</strong> — судзи от сброшенной 5M." },
-      { hand: "1s 7s 2m 5m 8m 3p 6p 9p 5z 5z 1z 2z 3z", opponentDiscard: ["4s","9m","2p","6z"], riichiTile: "4s", safeDiscards: [], explain: "<strong>1S, 7S</strong> — судзи от сброшенной 4S. <strong>9M, 6G</strong> — гэмбуцу." },
-      { hand: "2p 8p 3p 7p 4s 7s 1s 2z 2z 5z 5z 6z 9m", opponentDiscard: ["5p","1z","9s"], riichiTile: "5p", safeDiscards: [], explain: "<strong>2P, 8P</strong> — судзи от сброшенной 5P. <strong>1E, 9S</strong> — гэмбуцу." },
-      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s"], riichiTile: "6m", safeDiscards: [], explain: "<strong>3M, 9M</strong> — судзи от сброшенной 6M. <strong>1E, 9S</strong> — гэмбуцу." }
+      { hand: "1s 7s 2m 5m 8m 3p 6p 9p 5z 5z 1z 2z 3z", opponentDiscard: ["4s","9m","2p","6z"], riichiTile: "4s", safeDiscards: [], explain: "<strong>1S, 7S</strong> — судзи от сброшенной 4S. <strong>9M, G</strong> — гэмбуцу." },
+      { hand: "2p 8p 3p 7p 4s 7s 1s 2z 2z 5z 5z 6z 9m", opponentDiscard: ["5p","1z","9s"], riichiTile: "5p", safeDiscards: [], explain: "<strong>2P, 8P</strong> — судзи от сброшенной 5P. <strong>E, 9S</strong> — гэмбуцу." },
+      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s"], riichiTile: "6m", safeDiscards: [], explain: "<strong>3M, 9M</strong> — судзи от сброшенной 6M. <strong>E, 9S</strong> — гэмбуцу." }
     ], intro: "Сначала ищите гэмбуцу (тайлы из дискарда противника), затем добавляйте судзи." }
   ] },
 { id: "lesson-05", title: "Формы и их сила", desc: "Рянмен, канчан, пенчан", prereqs: ["lesson-04"],
@@ -681,9 +677,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Что такое блок", html: `<ul><li>Готовый сет — 3-4-5M.</li><li>Пара — Wh-Wh.</li><li>Рянмен — 3-4M.</li><li>Канчан — 2-4M.</li><li>Пенчан — 1-2M.</li><li>Опорный тайл — одиночная 5P.</li></ul>` },
     { type: "theory", title: "Всегда 5 блоков", html: `<p>4 сета + пара = <strong>ровно 5 блоков</strong>.</p><ul><li>5 — идеально.</li><li>6+ — режьте слабейший.</li><li>4 — создавайте новые.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 12s 22z 5z", best: ["5z"], explain: "У вас 6 блоков: 234M, 567M, 78P, 12S, 22Z, 5Wh. Для победы нужно <strong>ровно 5</strong>. <strong>5Wh</strong> — лишний одиночный дракон без пары. Сброс 5Wh." },
+      { hand: "234m 567m 78p 12s 22z 5z", best: ["5z"], explain: "У вас 6 блоков: 234M, 567M, 78P, 12S, S-S, Wh. Для победы нужно <strong>ровно 5</strong>. <strong>Wh</strong> — лишний одиночный дракон без пары. Сброс Wh." },
       { hand: "123m 456m 789m 12p 78s 9s", best: ["9s"], explain: "У вас 6 блоков: 123M, 456M, 789M, 12P, 78S, 9S. <strong>9S</strong> — одиночный терминал, не участвует в форме 7-8S. Сброс 9S оставляет 5 блоков." },
-      { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "Блоки: 234M, 567M, 78P, 34S, 55S, 6G. <strong>1M</strong> — изолированный терминал, седьмой блок. Сброс 1M." }
+      { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "Блоки: 234M, 567M, 78P, 34S, 55S, G. <strong>1M</strong> — изолированный терминал, седьмой блок. Сброс 1M." }
     ], intro: "Посчитайте блоки. Их должно быть ровно 5. Найдите лишний." }
   ] },
 { id: "lesson-07", title: "Классификация ишантэнов", desc: "3 типа", prereqs: ["lesson-06"],
@@ -692,9 +688,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "С двумя сетами и парой", html: `<p>Самый частый. Выбор: пронести тацу / зафиксировать тацу / снести плавающий тайл.</p>` },
     { type: "theory", title: "Хэддоресу и куццуки", html: `<p><strong>Хэддоресу</strong> — без пары, ценны формы, легко дающие пару.</p><p><strong>Куццуки</strong> — лучший ишантэн.</p>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Тип руки: <strong>с двумя сетами и парой</strong>. Готовы 234M, 567M, пара 22Z, есть 78P и 12S. Лишние 3W и 5Wh. Сброс 3W (слабейший)." },
+      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Тип руки: <strong>с двумя сетами и парой</strong>. Готовы 234M, 567M, пара S-S, есть 78P и 12S. Лишние W и Wh. Сброс W (слабейший)." },
       { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "Тип руки: <strong>с двумя сетами и парой</strong>. 234M, 567M, пара 55S, формы 78P и 34S. 1M — лишний терминал. Сброс 1M." },
-      { hand: "123m 456m 78m 234p 5z 5z 1z", best: ["1z"], explain: "Тип руки: <strong>куццуки</strong>. Готовы 3 сета (123M, 456M, 234P) и пара 5Z-5Z. 78M — плавающая форма. 1E — лишний ветер. Сброс 1E." }
+      { hand: "123m 456m 78m 234p 5z 5z 1z", best: ["1z"], explain: "Тип руки: <strong>куццуки</strong>. Готовы 3 сета (123M, 456M, 234P) и пара Wh-Wh. 78M — плавающая форма. E — лишний ветер. Сброс E." }
     ], intro: "Определите тип ишантэна: с двумя сетами и парой / хэддоресу / куццуки. Затем выберите сброс." }
   ] },
 { id: "lesson-08", title: "Выбор ожидания", desc: "Стоимость vs процент", prereqs: ["lesson-07"],
@@ -723,7 +719,7 @@ const COURSE = { lessons: [
     { type: "theory", title: "Нобетан", html: `<p>4 подряд (2-3-4-5M). Ждёт 2M или 5M — 6 тайлов.</p>` },
     { type: "practice", mode: "waits", tasks: [
       { hand: "23456m 234p 567p 88s", waits: ["1m","4m","7m"], explain: "<strong>Санмэнчан 2-3-4-5-6M</strong>. Разложение: 2-3 + 4-5-6 → 1M/4M; 2-3-4 + 5-6 → 4M/7M; 2-3-4-5 + 6 → 6M (танки). Итого 1M, 4M, 7M — до 12 тайлов." },
-      { hand: "123m 456m 789m 2345p 5z", waits: ["2p","5p","5z"], explain: "<strong>Нобетан 2-3-4-5P</strong> принимает 2P или 5P. Плюс танки на 5Z. Итого 2P, 5P, 5Z." },
+      { hand: "123m 456m 789m 2345p", waits: ["2p","5p"], explain: "<strong>Нобетан 2-3-4-5P</strong> принимает 2P или 5P. 6 тайлов." },
       { hand: "111m 234m 567m 99p 22s", waits: ["9p","2s"], explain: "Три сета и две пары 99P и 22S. <strong>Сянпон</strong>: 9P или 2S. Плюс 1M — закрытый пон, но он не участвует в ожидании." }
     ], intro: "Найдите все выигрышные тайлы. Обращайте внимание на длинные формы (5+ подряд)." }
   ] },
@@ -731,9 +727,9 @@ const COURSE = { lessons: [
   blocks: [
     { type: "theory", title: "Основные яку", html: `<ul><li><strong>Таняо</strong> — тайлы 2–8. +1 хан. Открытая и закрытая.</li><li><strong>Пинфу</strong> — все сеты последовательности, пара не дракон/ветер. +1 хан. ТОЛЬКО закрытая.</li><li><strong>Якухай</strong> — ПОН драконов или ветра раунда. +1 хан. Пара НЕ даёт якухай.</li><li><strong>Иппэйко</strong> — 2 одинаковые последовательности. +1 хан. ТОЛЬКО закрытая.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Целимся в <strong>пинфу</strong>: все сеты последовательности, пара 22Z (не дракон, не ветер раунда). 3W и 5Wh не дают новых форм. Сброс 3W." },
-      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M полезнее 1E. Целимся в <strong>пинфу</strong> или <strong>таняо</strong> (если уберём 1M). 1E — одиночный ветер, не встраивается в пинфу. Сброс 1E." },
-      { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "1M — терминал. Целимся в <strong>пинфу</strong> (все сеты последовательности, пара 55S) или <strong>таняо</strong>. 6G — дракон, может стать якухаем. Сброс 1M." }
+      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Целимся в <strong>пинфу</strong>: все сеты последовательности, пара S-S (не дракон, не ветер раунда). W и Wh не дают новых форм. Сброс W." },
+      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M полезнее E. Целимся в <strong>пинфу</strong> или <strong>таняо</strong>. E — одиночный ветер, не встраивается в пинфу. Сброс E." },
+      { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "1M — терминал. Целимся в <strong>пинфу</strong> (все сеты последовательности, пара 55S) или <strong>таняо</strong>. G — дракон, может стать якухаем. Сброс 1M." }
     ], intro: "Выбирайте сброс, помня о цели: какое яку вы собираете — пинфу, таняо или якухай." }
   ] },
 { id: "lesson-12", title: "Дора и акадора", desc: "Как встраивать", prereqs: ["lesson-11"],
@@ -741,8 +737,8 @@ const COURSE = { lessons: [
     { type: "theory", title: "Дора", html: `<p><strong>Дора</strong> — бонусный тайл. +1 хан. Не яку.</p><p><strong>Ура-дора</strong> — после риичи.</p>` },
     { type: "theory", title: "Акадора", html: `<p><strong>Акадора</strong> — красная 5. +1 хан. Трудна для встраивания.</p>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Дор в руке нет. Целимся в скорость: сбрасываем слабейший одиночный тайл (3W). 5Wh может стать якухаем — оставляем." },
-      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M — центральный тайл (может стать дорой при индикаторе 4M/6M). 1E — одиночный ветер, доры не даёт. Сброс 1E." },
+      { hand: "234m 567m 78p 12s 22z 3z 5z", best: ["3z"], explain: "Дор в руке нет. Целимся в скорость: сбрасываем слабейший одиночный тайл (W). Wh может стать якухаем — оставляем." },
+      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M — центральный тайл (может стать дорой при индикаторе 4M/6M). E — одиночный ветер, доры не даёт. Сброс E." },
       { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "1M — терминал. В игре с акадорами только 5 может быть красной. 1M доры не даёт. Сброс 1M." }
     ], intro: "Помните: дора — не яку. Оценивайте, встраивается ли дора в форму." }
   ] },
@@ -752,9 +748,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Правила 1-4", html: `<ol><li>Пинфу номи — даматэн — пережиток.</li><li>Догоняющее с пинфу — только до 9-го хода.</li><li>Не кидаем риичи пинфу против дилерского риичи.</li><li>Пинфу дора — всегда риичи.</li></ol>` },
     { type: "theory", title: "Правила 5-11", html: `<ol start="5"><li>Быстрая номи с рянменом — железное риичи.</li><li>Медленная номи с рянменом — риичи.</li><li>Догоняющее риичи в рянмен — сложно.</li><li>Номи с канчаном — риичи нельзя.</li><li>Дилерское риичи с канчаном — как нравится.</li><li>Риичи с перспективным канчаном — как нравится.</li><li>Дилерское риичи с перспективным канчаном — риичи.</li></ol>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "123m 456m 789m 11p 34s 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: рука дешёвая (нет дор, только базовые яку). <strong>Параметр «близость к темпаю»</strong>: 1-шантэн. Сбрасываем одиночный 6G — он не участвует в структуре (4 сета + пара уже почти готовы)." },
-      { hand: "234m 567m 567p 34s 88s 2z", best: ["2z"], explain: "<strong>Параметр «качество ожидания»</strong>: рянмен 3-4S ждёт 2S или 5S (8 тайлов) — сильное. Пять блоков уже есть. 2S (Южный) — чужой ветер, сброс." },
-      { hand: "234m 567m 567p 234s 5z 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: 4 сета + 2 одиночных. Нужна пара. 5Wh может дать якухай при поне. 6G — просто изолированный. Сброс 6G." }
+      { hand: "123m 456m 789m 11p 34s 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: рука дешёвая (нет дор, только базовые яку). <strong>Параметр «близость к темпаю»</strong>: 1-шантэн. Сбрасываем одиночный G — он не участвует в структуре (4 сета + пара уже почти готовы)." },
+      { hand: "234m 567m 567p 34s 88s 2z", best: ["2z"], explain: "<strong>Параметр «качество ожидания»</strong>: рянмен 3-4S ждёт 2S или 5S (8 тайлов) — сильное. Пять блоков уже есть. S (Южный) — чужой ветер, сброс." },
+      { hand: "234m 567m 567p 234s 5z 6z", best: ["6z"], explain: "<strong>Параметр «стоимость руки»</strong>: 4 сета + 2 одиночных. Нужна пара. Wh может дать якухай при поне. G — просто изолированный. Сброс G." }
     ], intro: "Каждая задача иллюстрирует один из 4 параметров Фукути." }
   ] },
 { id: "lesson-14", title: "Риичи: когда кидать", desc: "Даматэн и правила", prereqs: ["lesson-13"],
@@ -772,9 +768,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Концепция", html: `<p>Ваша рука может быть быстрой, но если соперники ещё быстрее — вы проиграете. <strong>Относительная скорость</strong> важнее абсолютной.</p>` },
     { type: "theory", title: "Как оценить", html: `<ul><li><strong>Дискарды</strong> — центральные тайлы = близко к темпаю.</li><li><strong>Открытия</strong> — быстрые = быстрая рука.</li><li><strong>Порядок сносов</strong> — снос формы = фолд или темпай.</li><li><strong>Задержки</strong> — соперник думает.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "У вас 5 блоков, рука близка к темпаю — <strong>относительная скорость высокая</strong>. Можно играть эффективно. Сбрасываем слабейший одиночный (3W, чужой ветер)." },
-      { hand: "123m 456m 789m 12p 34s 5z", best: ["5z"], explain: "4 сета + пара + 2 рянмена. Относительная скорость — максимальная. Одиночный 5Wh — сброс, он не нужен при такой сильной структуре." },
-      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "4 сета + пара + 2 одиночных. Нужна пара для 5-го блока. 9S — терминал, его ценность ниже, чем у 5Wh (потенциальный якухай). Сброс 9S." }
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "У вас 5 блоков, рука близка к темпаю — <strong>относительная скорость высокая</strong>. Можно играть эффективно. Сбрасываем слабейший одиночный (W, чужой ветер)." },
+      { hand: "123m 456m 789m 12p 34s 5z", best: ["5z"], explain: "4 сета + пара + 2 рянмена. Относительная скорость — максимальная. Одиночный Wh — сброс, он не нужен при такой сильной структуре." },
+      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "4 сета + пара + 2 одиночных. Нужна пара для 5-го блока. 9S — терминал, его ценность ниже, чем у Wh (потенциальный якухай). Сброс 9S." }
     ], intro: "Оцените относительную скорость: чем ближе ваша рука к темпаю, тем выгоднее атаковать." }
   ] },
 { id: "lesson-16", title: "Защита в деталях", desc: "Судзи, кабе, бэтаори", prereqs: ["lesson-15"],
@@ -783,9 +779,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Бэтаори, саки-гири", html: `<ul><li><strong>Бэтаори</strong> — полная защита.</li><li><strong>Саки-гири</strong> — упреждающий сброс.</li><li><strong>Разрушение пар</strong>.</li></ul>` },
     { type: "theory", title: "Против двух риичи", html: `<ul><li>Нотэн — строгий фолд.</li><li>Темпай: 2600+ и хорошее ожидание — можно рискнуть.</li></ul>` },
     { type: "practice", mode: "defense", tasks: [
-      { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["2p","2p","2p","2p","1s","9m","4z","3z"], riichiTile: "3z", safeDiscards: [], explain: "Все 4 копии 2P видны — это <strong>кабэ</strong>. Противник не может иметь форму 1-3 или 4-6 через 2P. Соседние с 2P тайлы становятся безопаснее. Гэмбуцу: 1S, 9M, 4Z. Плюс тайлы за кабэ от 2P." },
-      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Гэмбуцу: 1M, 2P, 3M (все три в дискарде). <strong>Судзи</strong> от 3M: 6M. Судзи от 2P: 5P. Тайлы <em>за кабэ</em>: 5M (у вас тройка 5-6-7M, но у противника 5M не полный — оставшиеся копии судзи)." },
-      { hand: "1s 7s 2m 5m 8m 3p 6p 9p 5z 5z 1z 2z 3z", opponentDiscard: ["4s","9m","2p","6z","4s"], riichiTile: "4s", safeDiscards: [], explain: "Противник сбросил две 4S — это признак работы <strong>кабэ</strong> по 4S. Гэмбуцу: 9M, 2P, 6G. Судзи от 4S: 1S и 7S." }
+      { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["2p","2p","2p","2p","1s","9m","4z","3z"], riichiTile: "3z", safeDiscards: [], explain: "Все 4 копии 2P видны — это <strong>кабэ</strong>. Противник не может иметь форму 1-3 или 4-6 через 2P. Соседние с 2P тайлы становятся безопаснее. Гэмбуцу: 1S, 9M, N. Плюс тайлы за кабэ от 2P." },
+      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Гэмбуцу: 1M, 2P. <strong>Судзи</strong> от 3M: 6M. Судзи от 2P: 5P." },
+      { hand: "1s 7s 2m 5m 8m 3p 6p 9p 5z 5z 1z 2z 3z", opponentDiscard: ["4s","9m","2p","6z","4s"], riichiTile: "4s", safeDiscards: [], explain: "Противник сбросил две 4S — это признак работы <strong>кабэ</strong> по 4S. Гэмбуцу: 9M, 2P, G. Судзи от 4S: 1S и 7S." }
     ], intro: "Гэмбуцу — 100%. Судзи — высокая вероятность. Кабэ — форма работает в вашу пользу." }
   ] },
 { id: "lesson-17", title: "Чтение дискардов", desc: "Вероятностное чтение", prereqs: ["lesson-16"],
@@ -795,8 +791,8 @@ const COURSE = { lessons: [
     { type: "theory", title: "Комбинации сносов", html: `<p>Оценивайте риск комбинации, а не каждого сноса по отдельности.</p>` },
     { type: "practice", mode: "defense", tasks: [
       { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["1p","9s","4z","2m","3z","1s","7p","8p"], riichiTile: "8p", safeDiscards: [], explain: "Дискард противника содержит 4 разных ветра и 2 терминала — это признак либо <strong>читоицу</strong>, либо дальнего ишантэна. Гэмбуцу: 2M, 7P, 8P. Судзи от 8P: 5P. Судзи от 2M: 5M (осторожно, 5M может быть в руке)." },
-      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Дискард противника <strong>плотный</strong> — есть центральные тайлы (3M, 2P). Это не читоицу, а скорее плоская рука. Гэмбуцу: 1M, 2P, 3M. Судзи от 3M: 6M. Судзи от 2P: 5P." },
-      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s","6m"], riichiTile: "6m", safeDiscards: [], explain: "Противник дважды сбросил 6M — значит, у него не может быть формы 4-5-6M. Но судзи от 6M остаются: 3M и 9M. Гэмбуцу: 3P, 1E, 9S. Судзи от 3P: 6P." }
+      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Дискард противника <strong>плотный</strong> — есть центральные тайлы (3M, 2P). Это не читоицу, а скорее плоская рука. Гэмбуцу: 1M, 2P. Судзи от 3M: 6M. Судзи от 2P: 5P." },
+      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s","6m"], riichiTile: "6m", safeDiscards: [], explain: "Противник дважды сбросил 6M — значит, у него не может быть формы 4-5-6M. Но судзи от 6M остаются: 3M и 9M. Гэмбуцу: 3P, E, 9S. Судзи от 3P: 6P." }
     ], intro: "Читайте паттерны дискарда: плотные / скудные / с повторами." }
   ] },
 { id: "lesson-18", title: "Игра по позиции", desc: "1-е, 4-е место, орасу", prereqs: ["lesson-17"],
@@ -805,9 +801,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Орасу", html: `<ul><li>1-е: помогайте другим.</li><li>4-е: атакуйте.</li><li>2-3: думайте о разнице в очках.</li></ul>` },
     { type: "theory", title: "Работа 1-го места", html: `<ul><li>Не кидайте догоняющее риичи в 3-м юге.</li><li>Не объявляйте ненужных канов.</li><li>Помогайте дилеру, если он не ваш конкурент.</li><li>Не давайте дилеру собраться, если он ваш шимоча.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Позиция 1-е место в орасу</strong>. Приоритет — не набросить, а не выиграть. Сбрасываем 3W (чужой ветер) — слабейший тайл, может стать безопасным в будущем." },
-      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Позиция 4-е место</strong>. Нужно атаковать — 5 блоков есть. Сбрасываем одиночный 5Wh, чтобы сохранить структуру для быстрой победы." },
-      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "<strong>Позиция 2-е место</strong>. Можно немного рискнуть. 9S — терминал, терять его безопаснее, чем 5Wh (потенциальный якухай). Сброс 9S." }
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Позиция 1-е место в орасу</strong>. Приоритет — не набросить, а не выиграть. Сбрасываем W (чужой ветер) — слабейший тайл, может стать безопасным в будущем." },
+      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Позиция 4-е место</strong>. Нужно атаковать — 5 блоков есть. Сбрасываем одиночный Wh, чтобы сохранить структуру для быстрой победы." },
+      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "<strong>Позиция 2-е место</strong>. Можно немного рискнуть. 9S — терминал, терять его безопаснее, чем Wh (потенциальный якухай). Сброс 9S." }
     ], intro: "Приоритеты зависят от позиции: 1-е — защита, 4-е — атака, 2-3 — баланс." }
   ] },
 { id: "lesson-19", title: "Формальный темпай", desc: "Ценность и техники", prereqs: ["lesson-18"],
@@ -816,9 +812,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Пропорция", html: `<ul><li>Обычная рука — с 12-го хода.</li><li>+1 дора — сдвиг на 1 круг.</li><li>+2 доры — сдвиг на 2 круга.</li><li>Хорошие формы — на 1 круг раньше.</li><li>Плохие — на 1-2 раньше.</li></ul>` },
     { type: "theory", title: "Техники", html: `<ul><li>Пропуск взятия со стены.</li><li>Переброс безопасного тайла.</li><li>Увеличение взятий для других.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "До конца раздачи далеко (условно ход 8). Ещё рано думать о <em>формальном темпае</em> — собирайте руку. Сброс 3W." },
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "До конца раздачи далеко (условно ход 8). Ещё рано думать о <em>формальном темпае</em> — собирайте руку. Сброс W." },
       { hand: "123m 456m 789m 11p 2s 5z 9m", best: ["9m"], explain: "Близко к концу раздачи (условно ход 14). Пора думать о <em>формальном темпае</em> — старайтесь выйти в темпай даже с плохой формой. Сброс 9M (терминал)." },
-      { hand: "123m 456m 234p 567p 5z 9s", best: ["9s"], explain: "4 сета + 2 одиночных. Пора в <em>формальный темпай</em>. Сброс 9S — оставляем 5Wh для потенциального якухая." }
+      { hand: "123m 456m 234p 567p 5z 9s", best: ["9s"], explain: "4 сета + 2 одиночных. Пора в <em>формальный темпай</em>. Сброс 9S — оставляем Wh для потенциального якухая." }
     ], intro: "Стандарт ASAPIN: 12-15 ход — зона формального темпая." }
   ] },
 { id: "lesson-20", title: "Игра против открытых рук", desc: "Хоницу, кокуши, пон дор", prereqs: ["lesson-19"],
@@ -828,8 +824,8 @@ const COURSE = { lessons: [
     { type: "theory", title: "Кокуши и пон дор", html: `<ul><li>Кокуши — 13 сирот.</li><li>Пон дор — быстро или дорого.</li><li>Дабутон дора — считайте темпай.</li></ul>` },
     { type: "practice", mode: "defense", tasks: [
       { hand: "2m 3m 4m 7p 8p 2s 3s 4s 5z 5z 1z 2z 9m", opponentDiscard: ["1p","2p","3p","4p","5p","6p","7p","8p"], riichiTile: "8p", safeDiscards: [], explain: "Противник сбрасывает только пины — это <strong>хоницу</strong> на пинах. Не сбрасывайте пины! Гэмбуцу: 2M, 7P, 8P. Судзи от 8P: 5P — <em>но это опасно против хоницу</em>. Лучший выбор: 2M (гэмбуцу)." },
-      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Противник сбросил 3M и 1M — значит, работает либо с манами, либо фолдит. Сброшенные тайлы могут быть безопасны. Гэмбуцу: 1M, 2P, 3M." },
-      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s","6m"], riichiTile: "6m", safeDiscards: [], explain: "Противник пронёс 6M дважды и не сбрасывает центральные — возможно, <strong>танки на 6M</strong> или <strong>кокуши</strong>. Будьте осторожны с терминалами и краевыми. Гэмбуцу: 3M, 9M, 3P, 1E, 9S." }
+      { hand: "1m 1m 5m 6m 7m 2p 3p 4p 2z 2z 5z 5z 9s", opponentDiscard: ["1s","3m","9p","3z","1m","2p"], riichiTile: "2p", safeDiscards: [], explain: "Противник сбросил 3M и 1M — значит, работает либо с манами, либо фолдит. Сброшенные тайлы могут быть безопасны. Гэмбуцу: 1M, 2P." },
+      { hand: "3m 9m 1p 4p 7p 2s 5s 8s 5z 5z 1z 2z 7z", opponentDiscard: ["6m","3p","1z","9s","6m"], riichiTile: "6m", safeDiscards: [], explain: "Противник пронёс 6M дважды и не сбрасывает центральные — возможно, <strong>танки на 6M</strong> или <strong>кокуши</strong>. Будьте осторожны с терминалами и краевыми. Гэмбуцу: 3M, 9M, 3P, E, 9S." }
     ], intro: "Против хоницу не давайте тайлы его масти. Против кокуши следите за терминалами." }
   ] },
 { id: "lesson-21", title: "Открытия", desc: "Chi, pon, kan — когда и зачем", prereqs: ["lesson-20"],
@@ -838,8 +834,8 @@ const COURSE = { lessons: [
     { type: "theory", title: "Когда открываться", html: `<ul><li>Быстрые дешёвые руки: <em>таняо</em>, <em>якухай</em>.</li><li>Срочно нужна победа: догоняете, орасу.</li><li>Есть якухай (пон драконов или ветра раунда).</li></ul><p>НЕ открывайтесь, если есть потенциал на <em>пинфу</em>, <em>иппэйко</em>, <em>риичи</em> или <em>ура-доры</em>.</p>` },
     { type: "theory", title: "Атодзуке", html: `<p><strong>Атодзуке</strong> — открыть руку без яку, но с потенциалом его получить (например, пон дракона «на будущее»).</p><div class="example">Опасно: без яку рука не может выиграть. Нужно точно знать, какое яку появится.</div>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Дор в руке нет</strong>. Открытие не окупается — риичи даст +1 хан. Играем эффективно в закрытую. Сброс 3W." },
-      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M полезнее 1E. <strong>Рука стоит 2+ хана при риичи</strong> — открываться не стоит. Сброс 1E." },
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Дор в руке нет</strong>. Открытие не окупается — риичи даст +1 хан. Играем эффективно в закрытую. Сброс W." },
+      { hand: "123m 456m 234p 567p 1z 5m", best: ["1z"], explain: "5M полезнее E. <strong>Рука стоит 2+ хана при риичи</strong> — открываться не стоит. Сброс E." },
       { hand: "234m 567m 78p 34s 55s 6z 1m", best: ["1m"], explain: "1M — терминал. <strong>Открытая рука теряет иппэйко и ура-доры</strong>, а у вас есть потенциал на пинфу. Сброс 1M, играем в закрытую." }
     ], intro: "Открытие оправдано, когда цена потери (риичи, ура-доры) окупается скоростью." }
   ] },
@@ -849,8 +845,8 @@ const COURSE = { lessons: [
     { type: "theory", title: "Когда перестраивать", html: `<ul><li>В начале раздачи (1–6 ход).</li><li>Когда хорошая форма лучше текущей: канчан → рянмен.</li><li>Из плохого ожидания в хорошее: пенчан → рянмен.</li><li>Из дешёвой руки в дорогую: добавить хоницу, таняо, иппэйко.</li></ul>` },
     { type: "theory", title: "Риски", html: `<ul><li>Потеря времени — соперник может выиграть.</li><li>Уменьшение шансов на победу.</li><li>Поздняя игра — <strong>не перестраивать</strong>.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "В начале раздачи можно стремиться к хорошим формам, даже ценой потери шантэна. Но здесь структура уже хорошая — не перестраиваем. Сброс 3W." },
-      { hand: "234m 567m 78p 24s 88s 5z 3z", best: ["3z"], explain: "Возможное перестроение: 24S (канчан) → 34S через 3S. Но пока рано. 5Wh может стать якухаем. Сброс 3W — слабейший тайл." },
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "В начале раздачи можно стремиться к хорошим формам, даже ценой потери шантэна. Но здесь структура уже хорошая — не перестраиваем. Сброс W." },
+      { hand: "234m 567m 78p 24s 88s 5z 3z", best: ["3z"], explain: "Возможное перестроение: 24S (канчан) → 34S через 3S. Но пока рано. Wh может стать якухаем. Сброс W — слабейший тайл." },
       { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "Возможное перестроение: 9S → 45S или 78S (улучшение финальной формы). Но 9S — терминал, сейчас не стоит его держать. Сброс 9S." }
     ], intro: "Перестроение оправдано в начале раздачи, когда шантэн ещё не критичен." }
   ] },
@@ -860,9 +856,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Цели по позиции", html: `<ul><li><strong>1-е</strong> — удержать лидерство: не рисковать, не давать догнать.</li><li><strong>2-е</strong> — догнать 1-го: атаковать, но считать разницу.</li><li><strong>3-е</strong> — выжить / обойти 2-го: балансировать.</li><li><strong>4-е</strong> — любой ценой: атаковать агрессивно, рисковать.</li></ul>` },
     { type: "theory", title: "Тактика в орасу", html: `<ul><li>Не давать дилеру ренчан.</li><li>Считать разницу в очках между соседними местами.</li><li>Формальный темпай для защиты от нотэна.</li><li>Теория кумаши (намеренная передача очков) — только в крайних случаях.</li></ul>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Предорасу, вы на 1-м месте.</strong> Считайте разницу с конкурентом. Если отрыв большой — можно рискнуть, но приоритет: не набросить. Сброс 3W (безопасный тайл)." },
-      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Орасу, вы на 2-м месте.</strong> Нужно догнать — играем на скорость. 5 блоков уже есть. Сброс 5Wh (одиночный дракон без пары)." },
-      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "<strong>Орасу, вы на последнем месте.</strong> Нужна любая победа. 4 сета + пара — 1-шантэн. Сброс 9S (терминал), сохраняем 5Wh для якухая." }
+      { hand: "234m 567m 78p 34s 22z 3z 5z", best: ["3z"], explain: "<strong>Предорасу, вы на 1-м месте.</strong> Считайте разницу с конкурентом. Если отрыв большой — можно рискнуть, но приоритет: не набросить. Сброс W (безопасный тайл)." },
+      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Орасу, вы на 2-м месте.</strong> Нужно догнать — играем на скорость. 5 блоков уже есть. Сброс Wh (одиночный дракон без пары)." },
+      { hand: "123m 456m 234p 567p 9s 5z", best: ["9s"], explain: "<strong>Орасу, вы на последнем месте.</strong> Нужна любая победа. 4 сета + пара — 1-шантэн. Сброс 9S (терминал), сохраняем Wh для якухая." }
     ], intro: "В орасу каждое решение влияет на распределение мест." }
   ] },
 { id: "lesson-24", title: "Разбор ханчана", desc: "Анализ своих игр", prereqs: ["lesson-23"],
@@ -871,9 +867,9 @@ const COURSE = { lessons: [
     { type: "theory", title: "Что анализировать", html: `<ul><li><strong>Точки решений</strong> — риичи или даматэн.</li><li><strong>Сбросы</strong> — правильные ли ходы для эффективности.</li><li><strong>Защита</strong> — могли ли не набросить.</li><li><strong>Открытия</strong> — оправданы ли.</li><li><strong>Атака</strong> — стоило ли давить в спорных ситуациях.</li></ul>` },
     { type: "theory", title: "Инструменты", html: `<ul><li>Логи Tenhou / Majsoul — просмотр партий.</li><li>Просмотр с точки зрения соперника.</li><li>Статистика: процент побед, набросов, риичи.</li><li>Разбор с сильным игроком.</li></ul><div class="example">Записывайте партии и возвращайтесь к ним через 1–2 недели.</div>` },
     { type: "practice", mode: "efficiency", tasks: [
-      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Синтез:</strong> рука сильная (4 сета + пара + рянмен 2-3S). Стоимость средняя. Относительная скорость высокая. Сброс 5Wh — он не в структуре." },
-      { hand: "234m 567m 78p 24s 88s 3z 5z", best: ["3z"], explain: "<strong>Синтез:</strong> 5 блоков есть. Два лишних одиночных дракона. 5Wh может стать якухаем. Сброс 3W. Применяем уке vs хэнка, 5 блоков, качество хэнка." },
-      { hand: "234m 567m 78p 34s 22z 5z 9m", best: ["9m"], explain: "<strong>Синтез:</strong> 5 блоков + 2 одиночных (5Wh, 9M). 9M — терминал. 5Wh — дракон. Сброс 9M. Применяем все концепции: уке/хэнка, качество, форма, ожидание." }
+      { hand: "123m 456m 789m 11p 2s 3s 5z", best: ["5z"], explain: "<strong>Синтез:</strong> рука сильная (4 сета + пара + рянмен 2-3S). Стоимость средняя. Относительная скорость высокая. Сброс Wh — он не в структуре." },
+      { hand: "234m 567m 78p 24s 88s 3z 5z", best: ["3z"], explain: "<strong>Синтез:</strong> 5 блоков есть. Два лишних одиночных дракона. Wh может стать якухаем. Сброс W. Применяем уке vs хэнка, 5 блоков, качество хэнка." },
+      { hand: "234m 567m 78p 34s 22z 5z 9m", best: ["9m"], explain: "<strong>Синтез:</strong> 5 блоков + 2 одиночных (Wh, 9M). 9M — терминал. Wh — дракон. Сброс 9M. Применяем все концепции: уке/хэнка, качество, форма, ожидание." }
     ], intro: "Финальные задачи. Применяйте всё, что выучили." }
   ] }
 ] };
@@ -882,12 +878,7 @@ const COURSE = { lessons: [
 function validateCourse() {
   const errors = [];
   for (const lesson of COURSE.lessons) {
-    const cleaned = [];
-    for (const b of lesson.blocks) {
-      if (b.type === 'quiz') continue;
-      cleaned.push(b);
-    }
-    lesson.blocks = cleaned;
+    lesson.blocks = lesson.blocks.filter(b => b.type !== 'quiz');
     for (const b of lesson.blocks) {
       if (b.type !== 'practice') continue;
       const mode = b.mode || 'waits';
@@ -895,27 +886,32 @@ function validateCourse() {
         const hand = parseHand(t.hand);
         if (hand.length !== 13 && hand.length !== 14) {
           errors.push(`${lesson.id}: неверная длина руки (${hand.length}): ${t.hand}`);
+          continue;
         }
+        // Заполняем ответ ТОЛЬКО если автор его не указал.
         if (mode === 'waits') {
-          if (hand.length === 13) {
-            t.waits = findWaits(hand);
-          } else if (hand.length === 14) {
-            const best = findBestDiscards(hand);
-            if (best.best.length > 0) {
-              const d = best.best[0].discard;
-              const h13 = hand.slice(); h13.splice(h13.indexOf(d), 1);
-              t.waits = findWaits(h13);
+          if (!Array.isArray(t.waits) || t.waits.length === 0) {
+            if (hand.length === 13) {
+              t.waits = findWaits(hand);
+            } else {
+              const best = findBestDiscards(hand);
+              if (best.best.length > 0) {
+                const d = best.best[0].discard;
+                const h13 = hand.slice(); h13.splice(h13.indexOf(d), 1);
+                t.waits = findWaits(h13);
+              }
             }
           }
         }
         if (mode === 'efficiency') {
-          if (hand.length === 14) {
+          if ((!Array.isArray(t.best) || t.best.length === 0) && hand.length === 14) {
             const best = findBestDiscards(hand);
             if (best.best.length > 0) t.best = best.best.map(x => x.discard);
           }
         }
         if (mode === 'defense') {
-          if (t.opponentDiscard && t.hand) {
+          if (t.opponentDiscard && hand.length === 13
+              && (!Array.isArray(t.safeDiscards) || t.safeDiscards.length === 0)) {
             t.safeDiscards = computeSafeDiscards(hand, t.opponentDiscard);
           }
         }
